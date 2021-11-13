@@ -1,8 +1,6 @@
 package vn.grooo.filters;
 
-import vn.grooo.entity.UserEntity;
-import vn.grooo.service.UserService;
-import vn.grooo.service.impl.UserServiceImpl;
+import vn.grooo.entity.Customer;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -29,7 +27,7 @@ public class AdminFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        UserEntity model = (UserEntity) session.getAttribute("user");
+        Customer model = (Customer) session.getAttribute("user");
         if (model != null) {
             if(model.getRole().equals("ADMIN")){
                 filterChain.doFilter(servletRequest, servletResponse);

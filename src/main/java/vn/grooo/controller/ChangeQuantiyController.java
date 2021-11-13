@@ -1,12 +1,6 @@
 package vn.grooo.controller;
 
 import vn.grooo.constant.SystemConstant;
-import vn.grooo.entity.CartItem;
-import vn.grooo.entity.Product;
-import vn.grooo.service.ProductService;
-import vn.grooo.service.impl.ProductServiceImpl;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;

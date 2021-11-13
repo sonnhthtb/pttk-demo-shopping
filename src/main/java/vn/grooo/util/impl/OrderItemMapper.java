@@ -1,8 +1,5 @@
 package vn.grooo.util.impl;
 
-import vn.grooo.dao.ProductDAO;
-import vn.grooo.dao.impl.ProductDAOImpl;
-import vn.grooo.entity.Order;
 import vn.grooo.entity.OrderItem;
 import vn.grooo.util.RowMapper;
 

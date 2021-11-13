@@ -1,9 +1,6 @@
 package vn.grooo.filters;
 
 
-import vn.grooo.entity.UserEntity;
-import vn.grooo.service.UserService;
-import vn.grooo.service.impl.UserServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

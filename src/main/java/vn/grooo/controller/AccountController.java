@@ -1,9 +1,5 @@
 package vn.grooo.controller;
 
-import vn.grooo.entity.UserEntity;
-import vn.grooo.service.UserService;
-import vn.grooo.service.impl.UserServiceImpl;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +8,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/my-account"})
 public class AccountController extends HttpServlet {
-
-    private final UserService userService = new UserServiceImpl();
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

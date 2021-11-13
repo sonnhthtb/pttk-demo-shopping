@@ -1,9 +1,6 @@
 package vn.grooo.controller;
 
-
-import vn.grooo.entity.UserEntity;
-import vn.grooo.service.UserService;
-import vn.grooo.service.impl.UserServiceImpl;
+import vn.grooo.entity.Customer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,8 +10,6 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/sign-up"})
 public class SignUpController extends HttpServlet {
-
-    private final UserService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,40 +40,5 @@ public class SignUpController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        try {
-
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String rePassword = request.getParameter("re-password");
-            String fullName = request.getParameter("fullName");
-
-            // validate input
-            if (username != null && password != null && rePassword != null && fullName != null
-                    && !username.trim().isEmpty() && !password.trim().isEmpty() && !rePassword.trim().isEmpty() && !fullName.trim().isEmpty()) {
-
-                //validate re-password
-                if (!password.equals(rePassword)) {
-                    response.sendRedirect(request.getContextPath() + "/sign-up?message=re-password_incorrect");
-                } else {
-                    //check username exits or not
-                    UserEntity user = userService.findByUserName(username);
-                    if (user == null) {
-                        userService.save(username, password, fullName);
-                        request.setAttribute("message", "Đăng ký thành công");
-                        request.setAttribute("alert", "success");
-                        request.setAttribute("username", username);
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("views/login.jsp");
-                        dispatcher.forward(request, response);
-                    } else {
-                        response.sendRedirect(request.getContextPath() + "/sign-up?message=username_exit");
-                    }
-                }
-            } else {
-                response.sendRedirect(request.getContextPath() + "/sign-up?message=not_null");
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("/error");
-        }
     }
 }
