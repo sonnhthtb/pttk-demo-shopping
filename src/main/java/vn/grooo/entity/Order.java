@@ -1,26 +1,18 @@
 package vn.grooo.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class Order extends BaseEntity{
-
-    private UserEntity user;
-
-    private List<OrderItem> orderItems;
-
-    private float totalPrice;
-
-    private int totalAmount;
-
+    private Date date;
     private String status;
-
+    private Customer customer;
+    private Shipment shipment;
+    private Payment payment;
 }

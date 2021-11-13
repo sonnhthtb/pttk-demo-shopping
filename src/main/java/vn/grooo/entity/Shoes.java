@@ -1,23 +1,18 @@
 package vn.grooo.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Product extends BaseEntity {
-
+@AllArgsConstructor
+public class Shoes extends BaseEntity{
+    private String type;
     private String name;
-
-    private String image;
-
-    private float price;
-
+    private Float price;
+    private String brand;
+    private String color;
+    private String origin;
     private String description;
-
-    private Category category;
-
 }

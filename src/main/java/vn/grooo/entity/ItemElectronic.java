@@ -5,11 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class OrderItem extends BaseEntity{
-
-    private Product product;
-
-    private int quantity;
+@AllArgsConstructor
+public class ItemElectronic extends BaseEntity{
+    private Float price;
 }
