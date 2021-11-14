@@ -18,16 +18,19 @@ public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
     @Override
     public Customer findByAccount(Account account) {
         account = findAccountByUserNameAndPassword(account.getUsername(), account.getPassword());
-        String sql = "SELECT c.* FROM Customer c LEFT JOIN Account a ON c.id = a.CustomerID WHERE a.id = ?";
-        List<Customer> customers = query(sql, new CustomerMapper(), account.getId());
-        Customer customer = customers.isEmpty() ? null : customers.get(0);
-        if(customer != null) {
-            int customerId = customer.getId();
-            customer.setAccount(account);
-            customer.setAddress(findAddressByCustomerId(customerId));
-            customer.setFullName(findFullNameByCustomerID(customerId));
+        if(account != null) {
+            String sql = "SELECT c.* FROM Customer c LEFT JOIN Account a ON c.id = a.CustomerID WHERE a.id = ?";
+            List<Customer> customers = query(sql, new CustomerMapper(), account.getId());
+            Customer customer = customers.isEmpty() ? null : customers.get(0);
+            if (customer != null) {
+                int customerId = customer.getId();
+                customer.setAccount(account);
+                customer.setAddress(findAddressByCustomerId(customerId));
+                customer.setFullName(findFullNameByCustomerID(customerId));
+            }
+            return customer;
         }
-        return customer;
+        return null;
     }
 
     private Account findAccountByUserNameAndPassword(String username, String password) {
