@@ -2,6 +2,10 @@ package vn.grooo.filters;
 
 
 
+import vn.grooo.entity.Customer;
+import vn.grooo.service.CustomerService;
+import vn.grooo.service.impl.CustomerServiceImpl;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
@@ -15,7 +19,7 @@ public class AuthenticationFilter implements Filter {
 
     private ServletContext context;
 
-    private final UserService userService = new UserServiceImpl();
+    private final CustomerService customerService = new CustomerServiceImpl();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,7 +34,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        UserEntity model = (UserEntity) session.getAttribute("user");
+        Customer model = (Customer) session.getAttribute("customer");
 
         //check logged in
         if (model != null) {
@@ -57,9 +61,9 @@ public class AuthenticationFilter implements Filter {
                 //check cookie for log in
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
 
-                    UserEntity user = userService.findByUserNameAndPassword(username, password);
-                    if (user != null) {
-                        session.setAttribute("user", user);
+                    Customer customer = customerService.findByUserNameAndPassword(username, password);
+                    if (customer != null) {
+                        session.setAttribute("customer", customer);
                         response.sendRedirect("/home");
                         return;
                     } else {

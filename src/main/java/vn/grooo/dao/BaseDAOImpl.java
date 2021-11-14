@@ -1,6 +1,5 @@
-package vn.grooo.dao.impl;
+package vn.grooo.dao;
 
-import vn.grooo.dao.BaseDAO;
 import vn.grooo.util.RowMapper;
 
 import java.sql.*;

@@ -18,10 +18,11 @@
             <li class="nav-item">
               <a class="nav-link" href='<c:url value="/cart"/>'>Cart</a>
             </li>
+            <c:set var="user" value="${sessionScope.customer}"/>
             <c:if test="${not empty user}">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  ${user.fullName}
+                  ${user.fullName.firstName} ${user.fullName.middleName} ${user.fullName.lastName}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/my-account">Tài khoản của tôi</a>

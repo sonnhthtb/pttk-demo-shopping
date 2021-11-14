@@ -2,6 +2,9 @@ package vn.grooo.controller;
 
 
 import vn.grooo.constant.SystemConstant;
+import vn.grooo.entity.Customer;
+import vn.grooo.service.CustomerService;
+import vn.grooo.service.impl.CustomerServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +14,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
+
+    private final CustomerService customerService = new CustomerServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,5 +42,37 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String isRemember = request.getParameter("remember");
+            Customer customer = customerService.findByUserNameAndPassword(username, password);
+            // check user
+            if (customer != null) {
+
+                // add username and password to cookie when select remember me
+                if (isRemember != null) {
+
+                    Cookie cookieUsername = new Cookie("username", customer.getAccount().getUsername());
+                    cookieUsername.setMaxAge(SystemConstant.COOKIE_MAX_AGE);
+                    response.addCookie(cookieUsername);
+
+                    Cookie cookiePassword = new Cookie("password", customer.getAccount().getPassword());
+                    cookiePassword.setMaxAge(SystemConstant.COOKIE_MAX_AGE);
+                    response.addCookie(cookiePassword);
+
+                }
+                // add user to session
+                HttpSession session = request.getSession();
+                session.setAttribute("customer", customer);
+                response.sendRedirect("/home");
+
+            } else {
+                response.sendRedirect(request.getContextPath() + "/login?message=username_password_invalid");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("/error");
+        }
     }
 }

@@ -12,7 +12,8 @@ public class HomeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String view = "views/web/home.jsp";
+        response.sendRedirect(view);
     }
 
     @Override

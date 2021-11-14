@@ -1,5 +1,7 @@
 package vn.grooo.controller;
 
+import vn.grooo.entity.Customer;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,13 +52,13 @@ public class AccountController extends HttpServlet {
                 } else {
                     //check username exits or not
                     HttpSession session = request.getSession();
-                    UserEntity user = (UserEntity) session.getAttribute("user");
+                    Customer customer = (Customer) session.getAttribute("customer");
 
                     //check password
-                    if (user.getPassword().equals(password)) {
-                        user.setPassword(newPassword);
-                        userService.update(user);
-                        session.setAttribute("user", user);
+                    if (customer.getAccount().getPassword().equals(password)) {
+                        customer.getAccount().setPassword(newPassword);
+//                        userService.update(customer);
+                        session.setAttribute("customer", customer);
                         Cookie[] cookies = request.getCookies();
 
                         // reset cookie
@@ -66,7 +68,7 @@ public class AccountController extends HttpServlet {
                                 response.addCookie(cookie);
                             }
                         }
-                        session.setAttribute("user", user);
+                        session.setAttribute("customer", customer);
                         request.setAttribute("message", "Đổi mật khẩu thành công");
                         request.setAttribute("alert", "success");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/account.jsp");

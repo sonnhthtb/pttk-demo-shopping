@@ -27,7 +27,7 @@ public class AdminFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        Customer model = (Customer) session.getAttribute("user");
+        Customer model = (Customer) session.getAttribute("customer");
         if (model != null) {
             if(model.getRole().equals("ADMIN")){
                 filterChain.doFilter(servletRequest, servletResponse);

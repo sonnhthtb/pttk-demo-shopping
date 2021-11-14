@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class BaseEntity {
 
-    private Long id;
+    private Integer id;
 
     private Timestamp createdAt;
 

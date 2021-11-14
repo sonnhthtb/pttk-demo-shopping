@@ -1,7 +1,6 @@
 package vn.grooo.filters;
 
-import vn.grooo.entity.UserEntity;
-
+import vn.grooo.entity.Customer;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ public class UserFilter implements Filter{
 
     private ServletContext context;
 
-    private final UserService userService = new UserServiceImpl();
+    private final Customer userService = new Customer();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -28,7 +27,7 @@ public class UserFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        UserEntity model = (UserEntity) session.getAttribute("user");
+        Customer model = (Customer) session.getAttribute("customer");
         if (model != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
