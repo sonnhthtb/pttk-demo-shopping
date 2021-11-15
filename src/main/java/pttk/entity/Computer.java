@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Computer extends BaseEntity{
+public class Computer extends Electronic{
     private String size;
     private String ram;
     private String power;
