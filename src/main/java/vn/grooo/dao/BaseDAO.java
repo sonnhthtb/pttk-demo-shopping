@@ -3,6 +3,7 @@ package vn.grooo.dao;
 import vn.grooo.util.RowMapper;
 
 import java.util.List;
+import java.util.Queue;
 
 public interface BaseDAO<T> {
 
