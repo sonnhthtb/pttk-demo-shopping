@@ -40,6 +40,16 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
         return count(sql);
     }
 
+    @Override
+    public ItemBook findById(int id) {
+        String sql = "SELECT * FROM ItemBook WHERE id = ?";
+        List<ItemBook> itemBookList =  query(sql, new ItemBookMapper(), id);
+        itemBookList.stream().forEach(itemBook -> {
+            itemBook.setBook(getBookByItemBookId(itemBook.getId()));
+        });
+        return itemBookList.isEmpty() ? null : itemBookList.get(0);
+    }
+
     private Book getBookByItemBookId(int itemBookID) {
         String sql = "SELECT * FROM Book WHERE ItemBookId = ?";
         List<Book> bookList = query(sql, new BookMapper(), itemBookID);

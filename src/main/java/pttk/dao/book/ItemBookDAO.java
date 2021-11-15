@@ -9,4 +9,5 @@ public interface ItemBookDAO extends BaseDAO<ItemBook> {
     List<ItemBook> findAll();
     List<ItemBook> findAll(int limit, int offset);
     public int getTotalItem();
+    ItemBook findById(int id);
 }

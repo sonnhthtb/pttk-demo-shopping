@@ -12,6 +12,11 @@ public class ItemBookServiceImpl implements ItemBookService {
     private final ItemBookDAO itemBookDAO = new ItemBookDAOImpl();
 
     @Override
+    public ItemBook findById(int itemBookId) {
+        return itemBookDAO.findById(itemBookId);
+    }
+
+    @Override
     public List<ItemBook> findAll() {
         return itemBookDAO.findAll();
     }

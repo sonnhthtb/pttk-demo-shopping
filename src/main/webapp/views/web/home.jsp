@@ -58,17 +58,17 @@
                 </div>
 
                 <div class="row">
-                    <c:forEach var="itemBook" items="${listItemBook}">
+                    <c:forEach var="item" items="${listItemBook}">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100" >
                                 <form action="/addToCart" method="post">
-                                    <a href="/detailItemBook?id=${itemBook.id}"><img class="card-img-top" src="${itemBook.imgUrl}" alt=""></a>
+                                    <a href="/detailItemBook?id=${item.id}"><img class="card-img-top" src="${item.imageUrl}" alt=""></a>
                                     <div class="card-body" style="margin-bottom: 50px">
                                         <h4 class="card-title">
-                                            <a href="/detailItemBook?id=${itemBook.id}">${itemBook.book.name}</a>
+                                            <a href="/product?id=${item.id}">${item.book.title}</a>
                                         </h4>
-                                        <h5>${itemBook.book.price}</h5>
-                                        <input type="hidden" value="${itemBook.id}" name="id">
+                                        <h5>${item.price} đ</h5>
+                                        <input type="hidden" value="${item.id}" name="id">
                                         <input type="hidden" value="1" name="quantity">
 
                                     </div>
