@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemShoes extends BaseEntity{
-    private Float price;
-    private Shoes shoes;
+public class LineItemBook {
+    private int id;
+    private int quantity;
+    private ItemBook itemBook;
 }

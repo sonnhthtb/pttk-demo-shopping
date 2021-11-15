@@ -26,7 +26,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/my-account">Tài khoản của tôi</a>
-                  <a class="dropdown-item" href="/list-order">Đơn mua</a>
+                  <a class="dropdown-item" href="/user/purchase/">Đơn mua</a>
                   <c:if test="${user.role eq 'ADMIN'}">
                     <a class="dropdown-item" href="/admin">Quản trị viên</a>
                   </c:if>
