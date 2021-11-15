@@ -65,7 +65,7 @@
                                     <a href="/detailItemBook?id=${item.id}"><img class="card-img-top" src="${item.imageUrl}" alt=""></a>
                                     <div class="card-body" style="margin-bottom: 50px">
                                         <h4 class="card-title">
-                                            <a href="/product?id=${item.id}">${item.book.title}</a>
+                                            <a href="/itemBook?id=${item.id}">${item.book.title}</a>
                                         </h4>
                                         <h5>${item.price} đ</h5>
                                         <input type="hidden" value="${item.id}" name="id">
