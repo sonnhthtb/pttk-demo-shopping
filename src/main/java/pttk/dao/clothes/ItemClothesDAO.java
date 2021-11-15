@@ -10,4 +10,5 @@ public interface ItemClothesDAO extends BaseDAO<ItemClothes> {
     List<ItemClothes> findAll(int limit, int offset);
     public int getTotalItem();
     ItemClothes findById(int id);
+    List<ItemClothes> findByName(String name);
 }
