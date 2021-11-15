@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ItemElectronic extends BaseEntity{
     private Float price;
+    private Electronic electronic;
 }

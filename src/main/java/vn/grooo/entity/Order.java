@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,4 +16,5 @@ public class Order extends BaseEntity{
     private Customer customer;
     private Shipment shipment;
     private Payment payment;
+    private Cart cart;
 }
