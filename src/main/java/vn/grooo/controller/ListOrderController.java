@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns =  {"/list-order"})
+@WebServlet(urlPatterns =  {"user/purchase/"})
 public class ListOrderController extends HttpServlet {
 
 

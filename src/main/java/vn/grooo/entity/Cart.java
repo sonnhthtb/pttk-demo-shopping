@@ -12,8 +12,9 @@ import java.util.List;
 public class Cart extends BaseEntity{
     private String cartStatus;
     private Float totalPrice;
-    private List<ItemBook> itemBookList;
-    private List<ItemElectronic> itemElectronicList;
-    private List<ItemShoes> itemShoesList;
+    private List<LineItemBook> lineItemBooks;
+    private List<LineItemElectronic> lineItemElectronics;
+    private List<LineItemClothes> lineItemClothes;
+    private List<LineItemShoes> lineItemShoes;
     private Customer customer;
 }

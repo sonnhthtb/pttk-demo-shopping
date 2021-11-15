@@ -2,10 +2,7 @@ package vn.grooo.dao.customer.impl;
 
 import vn.grooo.dao.BaseDAOImpl;
 import vn.grooo.dao.customer.CustomerDAO;
-import vn.grooo.entity.Account;
-import vn.grooo.entity.Address;
-import vn.grooo.entity.Customer;
-import vn.grooo.entity.FullName;
+import vn.grooo.entity.*;
 import vn.grooo.util.impl.AccountMapper;
 import vn.grooo.util.impl.AddressMapper;
 import vn.grooo.util.impl.CustomerMapper;
@@ -28,6 +25,28 @@ public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
             customer.setFullName(findFullNameByCustomerID(customerId));
         }
         return customer;
+    }
+
+    @Override
+    public Customer findCustomerByCart(Cart Cart) {
+        String sql = "SELECT * FROM Customer, Cart " +
+                "Where Customer.ID = Cart.CustomerID" +
+                "and Card.ID = ?";
+        List<Customer> customers = query(sql, new CustomerMapper(), Cart.getId());
+        Customer customer = customers.isEmpty() ? null : customers.get(0);
+        if(customer != null) {
+            int customerId = customer.getId();
+            customer.setAccount(findAccountByCustomerId(customerId));
+            customer.setAddress(findAddressByCustomerId(customerId));
+            customer.setFullName(findFullNameByCustomerID(customerId));
+        }
+        return customer;
+    }
+
+    private Account findAccountByCustomerId(int customerId){
+        String sql = "SELECT * FROM Account WHERE CustomerID = ?";
+        List<Account> accountList =  query(sql, new AccountMapper(), customerId);
+        return accountList.isEmpty() ? null : accountList.get(0);
     }
 
     private Account findAccountByUserNameAndPassword(String username, String password) {
