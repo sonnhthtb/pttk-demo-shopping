@@ -31,7 +31,7 @@ public class HomeController extends HttpServlet {
             if (request.getParameter("currentPage") != null) {
                 currentPage = Integer.parseInt(request.getParameter("currentPage"));
             }
-            if (currentPage <= 0 || currentPage > totalPage) {
+            if (currentPage <= 0 || (currentPage > totalPage && totalPage != 0)) {
                 response.sendRedirect("/error");
             } else {
                 int offset = (currentPage - 1) * SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE;
