@@ -18,9 +18,11 @@
 
                 <h1 class="my-4">Danh mục</h1>
                 <div class="list-group">
-                    <c:forEach var="category" items="${categories}" >
-                        <a href="/category?id=${category.id}" class="list-group-item">${category.name}</a>
-                    </c:forEach>
+                    <a href="/itemBook" class="list-group-item">Book</a>
+                    <a href="/itemElectronic" class="list-group-item">Electronic</a>
+                    <a href="/itemClothes" class="list-group-item">Clothes</a>
+                    <a href="/itemShoes" class="list-group-item">Shoes</a>
+
                 </div>
 
             </div>
@@ -36,13 +38,13 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="https://cf.shopee.sg/file/4b8e08f7087c8404e2b3245bb3db4543_xxhdpi" alt="First slide">
+                            <img class="d-block img-fluid" src="https://cf.shopee.sg/file/21204006070a1853c94de3bc7aac7ef9_xxhdpi" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid" src="https://cf.shopee.sg/file/76dd7d21c6228338237b87558bcf4a36_xxhdpi" alt="Second slide">
+                            <img class="d-block img-fluid" src="https://cf.shopee.sg/file/3010a8258d6580aafa621c3ebf670aa5_xxhdpi" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid" src="https://cf.shopee.sg/file/dfd09a0b5f3241b6f0f368470cfb7bf6_xxhdpi" alt="Third slide">
+                            <img class="d-block img-fluid" src="https://cf.shopee.sg/file/311205e065170ff5411c99dc076616ae_xxhdpi" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -56,17 +58,17 @@
                 </div>
 
                 <div class="row">
-                    <c:forEach var="item" items="${productList}">
+                    <c:forEach var="itemBook" items="${listItemBook}">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100" >
                                 <form action="/addToCart" method="post">
-                                    <a href="/product?id=${item.id}"><img class="card-img-top" src="${item.image}" alt=""></a>
+                                    <a href="/detailItemBook?id=${itemBook.id}"><img class="card-img-top" src="${itemBook.imgUrl}" alt=""></a>
                                     <div class="card-body" style="margin-bottom: 50px">
                                         <h4 class="card-title">
-                                            <a href="/product?id=${item.id}">${item.name}</a>
+                                            <a href="/detailItemBook?id=${itemBook.id}">${itemBook.book.name}</a>
                                         </h4>
-                                        <h5>${item.price}</h5>
-                                        <input type="hidden" value="${item.id}" name="id">
+                                        <h5>${itemBook.book.price}</h5>
+                                        <input type="hidden" value="${itemBook.id}" name="id">
                                         <input type="hidden" value="1" name="quantity">
 
                                     </div>
@@ -74,9 +76,7 @@
                                         <input type="submit" value="Add to cart" class="btn btn-success">
                                     </div>
                                 </form>
-
                             </div>
-
                         </div>
                     </c:forEach>
                 </div>
