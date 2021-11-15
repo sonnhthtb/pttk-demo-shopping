@@ -9,5 +9,6 @@ public interface ItemClothesService {
     ItemClothes findClothesById(int itemClothesId);
     List<ItemClothes> findAllItemClothes();
     List<ItemClothes> findAll(int limit, int offset);
+    List<ItemClothes> findByName(String name);
     int getTotalItem();
 }

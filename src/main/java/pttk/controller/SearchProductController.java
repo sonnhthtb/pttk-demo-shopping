@@ -3,8 +3,12 @@ package pttk.controller;
 
 import pttk.constant.SystemConstant;
 import pttk.entity.ItemBook;
+import pttk.entity.ItemClothes;
 import pttk.service.ItemBookService;
+import pttk.service.ItemClothesService;
 import pttk.service.impl.ItemBookServiceImpl;
+import pttk.service.impl.ItemClothesServiceImpl;
+import pttk.util.impl.ItemBookMapper;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,14 +23,14 @@ import java.util.List;
 public class SearchProductController extends HttpServlet {
 
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
-
+    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String name = request.getParameter("name");
             List<ItemBook> listItemBook = itemBookService.findByName(name);
-
-            int totalItem = listItemBook.size();
+            List<ItemClothes> listItemClothes = itemClothesService.findByName(name);
+            int totalItem = listItemBook.size() + listItemClothes.size();
 
             // number of item in a page
             int totalPage = (int) Math.ceil((double) totalItem / SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE);
@@ -40,6 +44,7 @@ public class SearchProductController extends HttpServlet {
             } else {
                 int offset = (currentPage - 1) * SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE;
 
+                request.setAttribute("listItemClothes",listItemClothes);
                 request.setAttribute("listItemBook", listItemBook);
                 request.setAttribute("totalPage", totalPage);
                 request.setAttribute("currentPage", currentPage);

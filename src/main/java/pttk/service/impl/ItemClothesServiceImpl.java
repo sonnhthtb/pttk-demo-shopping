@@ -31,6 +31,11 @@ public class ItemClothesServiceImpl implements ItemClothesService {
     }
 
     @Override
+    public List<ItemClothes> findByName(String name) {
+        return null;
+    }
+
+    @Override
     public int getTotalItem() {
         return itemClothesDAO.getTotalItem();
     }

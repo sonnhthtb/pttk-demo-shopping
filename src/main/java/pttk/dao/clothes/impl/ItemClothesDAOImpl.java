@@ -45,6 +45,19 @@ public class ItemClothesDAOImpl extends BaseDAOImpl<ItemClothes> implements Item
         return listItemClothes.isEmpty() ? null : listItemClothes.get(0);
     }
 
+    @Override
+    public List<ItemClothes> findByName(String name) {
+        name += '%';
+        String sql = "SELECT * FROM ItemClothes, Clothes WHERE " +
+                "Clothes.ItemClothesID = ItemClothesID " +
+                "AND Clothes.Title like ?";
+        List<ItemClothes> listItemClothes =  query(sql, new ItemClothesMapper(), name);
+        listItemClothes.stream().forEach(itemClothes -> {
+            itemClothes.setClothes(getClothesByItemClothesId(itemClothes.getId()));
+        });
+        return listItemClothes;
+    }
+
     private Clothes getClothesByItemClothesId(int itemClothesID) {
         String sql = "SELECT * FROM Clothes WHERE ItemClothesId = ?";
         List<Clothes> listClothes = query(sql, new ClothesMapper(), itemClothesID);
