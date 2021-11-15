@@ -27,6 +27,11 @@ public class ItemBookServiceImpl implements ItemBookService {
     }
 
     @Override
+    public List<ItemBook> findByName(String name) {
+        return itemBookDAO.findByName(name);
+    }
+
+    @Override
     public int getTotalItem() {
         return itemBookDAO.getTotalItem();
     }

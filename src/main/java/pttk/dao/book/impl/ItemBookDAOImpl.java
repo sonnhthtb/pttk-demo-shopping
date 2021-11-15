@@ -48,4 +48,18 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
         return itemBookList.isEmpty() ? null : itemBookList.get(0);
     }
 
+    @Override
+    public List<ItemBook> findByName(String name) {
+        name += '%';
+        String sql = "SELECT * FROM ItemBook, Book WHERE " +
+                "Book.ItemBookID = ItemBookID " +
+                "AND Book.Title like ?";
+
+        List<ItemBook> itemBookList = query(sql, new ItemBookMapper(), name);
+        itemBookList.stream().forEach(itemBook -> {
+            itemBook.setBook(bookDAO.getBookByItemBookId(itemBook.getId()));
+        });
+        return itemBookList;
+    }
+
 }
