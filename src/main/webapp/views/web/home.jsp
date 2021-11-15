@@ -18,10 +18,10 @@
 
                 <h1 class="my-4">Danh mục</h1>
                 <div class="list-group">
-                    <a href="/itemBook" class="list-group-item">Book</a>
-                    <a href="/itemElectronic" class="list-group-item">Electronic</a>
-                    <a href="/itemClothes" class="list-group-item">Clothes</a>
-                    <a href="/itemShoes" class="list-group-item">Shoes</a>
+                    <a href="/list-itemBook" class="list-group-item">Book</a>
+                    <a href="/list-itemElectronic" class="list-group-item">Electronic</a>
+                    <a href="/list-itemClothes" class="list-group-item">Clothes</a>
+                    <a href="/list-itemShoes" class="list-group-item">Shoes</a>
 
                 </div>
 
@@ -66,6 +66,27 @@
                                     <div class="card-body" style="margin-bottom: 50px">
                                         <h4 class="card-title">
                                             <a href="/itemBook?id=${item.id}">${item.book.title}</a>
+                                        </h4>
+                                        <h5>${item.price} đ</h5>
+                                        <input type="hidden" value="${item.id}" name="id">
+                                        <input type="hidden" value="1" name="quantity">
+
+                                    </div>
+                                    <div class="text-center" style="position:absolute; bottom: 20px; margin-left: 30%; margin-top: 10px">
+                                        <input type="submit" value="Add to cart" class="btn btn-success">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:forEach var="item" items="${listItemClothes}">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100" >
+                                <form action="/addToCart" method="post">
+                                    <a href="/detailItemClothes?id=${item.id}"><img class="card-img-top" src="${item.imageUrl}" alt=""></a>
+                                    <div class="card-body" style="margin-bottom: 50px">
+                                        <h4 class="card-title">
+                                            <a href="/itemClothes?id=${item.id}">${item.clothes.name}</a>
                                         </h4>
                                         <h5>${item.price} đ</h5>
                                         <input type="hidden" value="${item.id}" name="id">
