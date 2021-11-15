@@ -2,8 +2,11 @@ package pttk.controller;
 
 import pttk.constant.SystemConstant;
 import pttk.entity.ItemBook;
+import pttk.entity.ItemClothes;
 import pttk.service.ItemBookService;
+import pttk.service.ItemClothesService;
 import pttk.service.impl.ItemBookServiceImpl;
+import pttk.service.impl.ItemClothesServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,33 +21,17 @@ import java.util.List;
 public class HomeController extends HttpServlet {
 
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
+    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int totalItem = itemBookService.getTotalItem();
-
-            // number of item in a page
-            int totalPage = (int) Math.ceil((double) totalItem / SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE);
-            int currentPage = 1;
-            //check if request have any currentPage param
-            if (request.getParameter("currentPage") != null) {
-                currentPage = Integer.parseInt(request.getParameter("currentPage"));
-            }
-            if (currentPage <= 0 || (currentPage > totalPage && totalPage != 0)) {
-                response.sendRedirect("/error");
-            } else {
-                int offset = (currentPage - 1) * SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE;
-
-                List<ItemBook> listItemBook = itemBookService.findAll( SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE, offset);
-
-                request.setAttribute("listItemBook", listItemBook);
-                request.setAttribute("totalPage", totalPage);
-                request.setAttribute("currentPage", currentPage);
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/home.jsp");
-                dispatcher.forward(request, response);
-            }
+            List<ItemBook> listItemBook = itemBookService.findAll();
+            request.setAttribute("listItemBook", listItemBook);
+            List<ItemClothes> listItemClothes = itemClothesService.findAllItemClothes();
+            request.setAttribute("listItemClothes", listItemClothes);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/home.jsp");
+            dispatcher.forward(request, response);
         }catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("/error");
