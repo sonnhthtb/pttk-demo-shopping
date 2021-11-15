@@ -38,22 +38,36 @@
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"></span>
-                Quản lý shop
+                Quản lý sản phẩm
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href='<c:url value="/admin-product?type=list"/>'>
+                    <a href='<c:url value="/admin-book?type=list"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
-                        Quản lý sản phẩm
+                        Quản lý sách
                     </a>
                     <b class="arrow"></b>
                 </li>
                 <li>
-                    <a href='<c:url value="/admin-order"/>'>
+                    <a href='<c:url value="/admin-electronic"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
-                        Quản lý đơn hàng
+                        Quản lý đồ điện tử
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href='<c:url value="/admin-shoes"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Quản lý giày
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href='<c:url value="/admin-clothes"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Quản lý quần áo
                     </a>
                     <b class="arrow"></b>
                 </li>
