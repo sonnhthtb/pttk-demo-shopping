@@ -1,6 +1,6 @@
 package pttk.service;
 
-import pttk.entity.clothes.ItemClothes;
+import pttk.model.clothes.ItemClothes;
 
 import java.util.List;
 

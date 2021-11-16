@@ -1,7 +1,7 @@
 package pttk.dao.book;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.book.ItemBook;
+import pttk.model.book.ItemBook;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package pttk.service.impl;
 
 import pttk.dao.clothes.ItemClothesDAO;
 import pttk.dao.clothes.impl.ItemClothesDAOImpl;
-import pttk.entity.clothes.ItemClothes;
+import pttk.model.clothes.ItemClothes;
 import pttk.service.ItemClothesService;
 
 import java.util.List;

@@ -2,8 +2,8 @@ package pttk.service.impl;
 
 import pttk.dao.customer.CustomerDAO;
 import pttk.dao.customer.impl.CustomerDAOImpl;
-import pttk.entity.customer.Account;
-import pttk.entity.customer.Customer;
+import pttk.model.customer.Account;
+import pttk.model.customer.Customer;
 import pttk.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService {

@@ -2,10 +2,10 @@ package pttk.dao.clothes.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.clothes.ItemClothesDAO;
-import pttk.entity.clothes.Clothes;
-import pttk.entity.clothes.ItemClothes;
-import pttk.entity.clothes.Origin;
-import pttk.entity.clothes.Trademark;
+import pttk.model.clothes.Clothes;
+import pttk.model.clothes.ItemClothes;
+import pttk.model.clothes.Origin;
+import pttk.model.clothes.Trademark;
 import pttk.util.impl.*;
 
 import java.util.List;

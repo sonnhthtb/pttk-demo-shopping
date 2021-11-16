@@ -5,9 +5,9 @@ import pttk.dao.customer.AccountDAO;
 import pttk.dao.customer.AddressDAO;
 import pttk.dao.customer.CustomerDAO;
 import pttk.dao.customer.FullNameDAO;
-import pttk.entity.customer.Account;
-import pttk.entity.customer.Customer;
-import pttk.entity.order.Cart;
+import pttk.model.customer.Account;
+import pttk.model.customer.Customer;
+import pttk.model.order.Cart;
 import pttk.util.impl.CustomerMapper;
 
 import java.util.List;

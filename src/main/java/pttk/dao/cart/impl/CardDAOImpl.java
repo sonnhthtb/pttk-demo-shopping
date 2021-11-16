@@ -2,11 +2,11 @@ package pttk.dao.cart.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.cart.CartDAO;
-import pttk.entity.book.LineItemBook;
-import pttk.entity.clothes.LineItemClothes;
-import pttk.entity.electronic.LineItemElectronic;
-import pttk.entity.order.Cart;
-import pttk.entity.shoes.LineItemShoes;
+import pttk.model.book.LineItemBook;
+import pttk.model.clothes.LineItemClothes;
+import pttk.model.electronic.LineItemElectronic;
+import pttk.model.order.Cart;
+import pttk.model.shoes.LineItemShoes;
 import pttk.util.impl.*;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package pttk.filters;
 
 
 
-import pttk.entity.customer.Customer;
+import pttk.model.customer.Customer;
 import pttk.service.CustomerService;
 import pttk.service.impl.CustomerServiceImpl;
 

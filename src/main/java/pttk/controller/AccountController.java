@@ -1,6 +1,6 @@
 package pttk.controller;
 
-import pttk.entity.customer.Customer;
+import pttk.model.customer.Customer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

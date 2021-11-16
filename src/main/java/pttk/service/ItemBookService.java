@@ -1,6 +1,6 @@
 package pttk.service;
 
-import pttk.entity.book.ItemBook;
+import pttk.model.book.ItemBook;
 
 import java.util.List;
 

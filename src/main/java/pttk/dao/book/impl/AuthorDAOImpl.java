@@ -2,8 +2,8 @@ package pttk.dao.book.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.book.AuthorDAO;
-import pttk.entity.book.Author;
-import pttk.entity.book.Publisher;
+import pttk.model.book.Author;
+import pttk.model.book.Publisher;
 import pttk.util.impl.AuthorMapper;
 import pttk.util.impl.PublisherMapper;
 

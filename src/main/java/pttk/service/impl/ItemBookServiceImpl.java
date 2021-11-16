@@ -1,6 +1,6 @@
 package pttk.service.impl;
 
-import pttk.entity.book.ItemBook;
+import pttk.model.book.ItemBook;
 import pttk.dao.book.ItemBookDAO;
 import pttk.dao.book.impl.ItemBookDAOImpl;
 import pttk.service.ItemBookService;

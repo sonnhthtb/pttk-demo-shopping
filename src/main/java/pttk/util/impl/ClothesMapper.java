@@ -1,8 +1,8 @@
 package pttk.util.impl;
 
-import pttk.entity.clothes.Clothes;
-import pttk.entity.clothes.Origin;
-import pttk.entity.clothes.Trademark;
+import pttk.model.clothes.Clothes;
+import pttk.model.clothes.Origin;
+import pttk.model.clothes.Trademark;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

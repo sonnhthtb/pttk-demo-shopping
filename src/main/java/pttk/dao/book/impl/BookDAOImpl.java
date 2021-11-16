@@ -4,7 +4,7 @@ import pttk.dao.BaseDAOImpl;
 import pttk.dao.book.AuthorDAO;
 import pttk.dao.book.BookDAO;
 import pttk.dao.book.PublisherDAO;
-import pttk.entity.book.Book;
+import pttk.model.book.Book;
 import pttk.util.impl.BookMapper;
 
 import java.util.List;

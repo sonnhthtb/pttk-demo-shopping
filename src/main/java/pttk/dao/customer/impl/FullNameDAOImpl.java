@@ -2,7 +2,7 @@ package pttk.dao.customer.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.customer.FullNameDAO;
-import pttk.entity.customer.FullName;
+import pttk.model.customer.FullName;
 import pttk.util.impl.FullNameMapper;
 
 import java.util.List;

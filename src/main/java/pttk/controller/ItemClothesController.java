@@ -1,6 +1,6 @@
 package pttk.controller;
 
-import pttk.entity.clothes.ItemClothes;
+import pttk.model.clothes.ItemClothes;
 import pttk.service.ItemClothesService;
 import pttk.service.impl.ItemClothesServiceImpl;
 

@@ -1,7 +1,7 @@
 package pttk.util.impl;
 
-import pttk.entity.electronic.ItemElectronic;
-import pttk.entity.electronic.LineItemElectronic;
+import pttk.model.electronic.ItemElectronic;
+import pttk.model.electronic.LineItemElectronic;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,7 +1,7 @@
 package pttk.dao.clothes;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.clothes.ItemClothes;
+import pttk.model.clothes.ItemClothes;
 
 import java.util.List;
 

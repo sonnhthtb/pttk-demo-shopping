@@ -1,6 +1,6 @@
 package pttk.controller;
 
-import pttk.entity.book.ItemBook;
+import pttk.model.book.ItemBook;
 import pttk.service.ItemBookService;
 import pttk.service.impl.ItemBookServiceImpl;
 
