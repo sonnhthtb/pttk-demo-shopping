@@ -2,13 +2,12 @@ package pttk.controller;
 
 
 import pttk.constant.SystemConstant;
-import pttk.entity.ItemBook;
-import pttk.entity.ItemClothes;
+import pttk.entity.book.ItemBook;
+import pttk.entity.clothes.ItemClothes;
 import pttk.service.ItemBookService;
 import pttk.service.ItemClothesService;
 import pttk.service.impl.ItemBookServiceImpl;
 import pttk.service.impl.ItemClothesServiceImpl;
-import pttk.util.impl.ItemBookMapper;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

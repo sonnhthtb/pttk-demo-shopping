@@ -2,7 +2,7 @@ package pttk.controller;
 
 
 import pttk.constant.SystemConstant;
-import pttk.entity.Customer;
+import pttk.entity.customer.Customer;
 import pttk.service.CustomerService;
 import pttk.service.impl.CustomerServiceImpl;
 

@@ -1,8 +1,7 @@
 package pttk.dao.book;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.Author;
-import pttk.entity.Publisher;
+import pttk.entity.book.Publisher;
 
 public interface PublisherDAO extends BaseDAO<Publisher> {
     Publisher getPublisherById(int publisherId);

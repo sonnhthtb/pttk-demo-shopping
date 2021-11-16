@@ -1,7 +1,7 @@
 package pttk.util.impl;
 
-import pttk.entity.Cart;
-import pttk.entity.Customer;
+import pttk.entity.order.Cart;
+import pttk.entity.customer.Customer;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

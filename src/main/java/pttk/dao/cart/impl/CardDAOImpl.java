@@ -2,34 +2,18 @@ package pttk.dao.cart.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.cart.CartDAO;
-import pttk.dao.customer.CustomerDAO;
-import pttk.entity.*;
+import pttk.entity.book.LineItemBook;
+import pttk.entity.clothes.LineItemClothes;
+import pttk.entity.electronic.LineItemElectronic;
+import pttk.entity.order.Cart;
+import pttk.entity.shoes.LineItemShoes;
 import pttk.util.impl.*;
 
 import java.util.List;
 
 public class CardDAOImpl extends BaseDAOImpl implements CartDAO {
 
-    private final CustomerDAO customerDAO;
 
-    public CardDAOImpl(CustomerDAO customerDAO) {
-        this.customerDAO = customerDAO;
-    }
-
-    @Override
-    public Cart getCartByOrderId(Order order) {
-        String sql = "SELECT * FROM Cart where OrderID = ?";
-        List<Cart> carts = query(sql, new CartMapper(), order.getId());
-        Cart cart = carts.isEmpty() ? null : carts.get(0);
-        if(cart != null){
-            cart.setCustomer(customerDAO.findCustomerByCart(cart));
-            cart.setLineItemBooks(getListLineItemBookByCartID(cart.getId()));
-            cart.setLineItemClothes(getListLineItemClothesByCartID(cart.getId()));
-            cart.setLineItemElectronics(getListLineItemElectronicByCartID(cart.getId()));
-            cart.setLineItemShoes(getListLineItemShoesByCartID(cart.getId()));
-        }
-        return cart;
-    }
 
     private List<LineItemBook> getListLineItemBookByCartID(int cartId){
         String sql = "SELECT * FROM lineitembook, cart " +
@@ -63,4 +47,10 @@ public class CardDAOImpl extends BaseDAOImpl implements CartDAO {
         return lineItemShoes;
     }
 
+    @Override
+    public Cart getCartByCustomerId(int customerId) {
+        String sql = "SELECT * FROM cart WHERE CustomerId = ?";
+        List<Cart> cartList = query(sql, new CartMapper(), customerId);
+        return cartList.isEmpty() ? null : cartList.get(0);
+    }
 }

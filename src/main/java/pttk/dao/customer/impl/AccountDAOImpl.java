@@ -2,7 +2,7 @@ package pttk.dao.customer.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.customer.AccountDAO;
-import pttk.entity.Account;
+import pttk.entity.customer.Account;
 import pttk.util.impl.AccountMapper;
 
 import java.util.List;

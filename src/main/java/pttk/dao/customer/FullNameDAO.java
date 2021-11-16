@@ -1,8 +1,7 @@
 package pttk.dao.customer;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.Account;
-import pttk.entity.FullName;
+import pttk.entity.customer.FullName;
 
 public interface FullNameDAO extends BaseDAO {
     FullName findFullNameByCustomerID(int customerId);

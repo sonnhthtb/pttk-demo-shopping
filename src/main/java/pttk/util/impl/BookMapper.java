@@ -1,8 +1,8 @@
 package pttk.util.impl;
 
-import pttk.entity.Author;
-import pttk.entity.Book;
-import pttk.entity.Publisher;
+import pttk.entity.book.Author;
+import pttk.entity.book.Book;
+import pttk.entity.book.Publisher;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

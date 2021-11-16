@@ -1,7 +1,6 @@
 package pttk.controller;
 
-import pttk.entity.Book;
-import pttk.entity.ItemBook;
+import pttk.entity.book.ItemBook;
 import pttk.service.ItemBookService;
 import pttk.service.impl.ItemBookServiceImpl;
 
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 @WebServlet(urlPatterns = {"/itemBook"})
 public class ItemBookController extends HttpServlet {

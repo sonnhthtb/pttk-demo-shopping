@@ -13,10 +13,4 @@ public class BaseEntity {
 
     private Integer id;
 
-    private Timestamp createdAt;
-
-    private Timestamp updatedAt;
-
-    private Boolean isDeleted;
-
 }

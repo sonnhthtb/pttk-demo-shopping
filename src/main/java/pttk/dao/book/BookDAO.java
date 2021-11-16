@@ -1,10 +1,7 @@
 package pttk.dao.book;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.Book;
-import pttk.entity.ItemBook;
-
-import java.util.List;
+import pttk.entity.book.Book;
 
 public interface BookDAO extends BaseDAO<Book> {
     Book getBookByItemBookId(int itemBookID);

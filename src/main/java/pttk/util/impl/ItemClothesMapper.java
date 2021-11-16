@@ -1,7 +1,6 @@
 package pttk.util.impl;
 
-import pttk.entity.ItemBook;
-import pttk.entity.ItemClothes;
+import pttk.entity.clothes.ItemClothes;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

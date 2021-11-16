@@ -1,10 +1,7 @@
 package pttk.dao.customer;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.Account;
-import pttk.util.impl.AccountMapper;
-
-import java.util.List;
+import pttk.entity.customer.Account;
 
 public interface AccountDAO extends BaseDAO {
     Account findAccountByUserNameAndPassword(String username, String password);

@@ -1,9 +1,8 @@
 package pttk.dao.cart;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.Order;
-import pttk.entity.Cart;
+import pttk.entity.order.Cart;
 
 public interface CartDAO extends BaseDAO {
-    Cart getCartByOrderId(Order order);
+    Cart getCartByCustomerId(int customerId);
 }

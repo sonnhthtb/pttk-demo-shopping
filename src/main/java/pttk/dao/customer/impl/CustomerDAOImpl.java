@@ -5,11 +5,10 @@ import pttk.dao.customer.AccountDAO;
 import pttk.dao.customer.AddressDAO;
 import pttk.dao.customer.CustomerDAO;
 import pttk.dao.customer.FullNameDAO;
-import pttk.entity.*;
-import pttk.util.impl.AccountMapper;
-import pttk.util.impl.AddressMapper;
+import pttk.entity.customer.Account;
+import pttk.entity.customer.Customer;
+import pttk.entity.order.Cart;
 import pttk.util.impl.CustomerMapper;
-import pttk.util.impl.FullNameMapper;
 
 import java.util.List;
 

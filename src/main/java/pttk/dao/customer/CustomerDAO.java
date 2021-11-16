@@ -1,9 +1,9 @@
 package pttk.dao.customer;
 
 import pttk.dao.BaseDAO;
-import pttk.entity.Account;
-import pttk.entity.Customer;
-import pttk.entity.Cart;
+import pttk.entity.customer.Account;
+import pttk.entity.customer.Customer;
+import pttk.entity.order.Cart;
 
 public interface CustomerDAO extends BaseDAO {
     Customer findByAccount(Account account);

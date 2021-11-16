@@ -3,7 +3,7 @@ package pttk.dao.book.impl;
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.book.BookDAO;
 import pttk.dao.book.ItemBookDAO;
-import pttk.entity.ItemBook;
+import pttk.entity.book.ItemBook;
 import pttk.util.impl.ItemBookMapper;
 
 import java.util.List;
