@@ -9,4 +9,5 @@ import java.util.List;
 public interface AccountDAO extends BaseDAO {
     Account findAccountByUserNameAndPassword(String username, String password);
     Account findAccountByCustomerId(int customerId);
+    Account findById(Long id);
 }

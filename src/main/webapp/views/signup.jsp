@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Đăng nhập</title>
+    <title>Đăng ký</title>
     <link href="<c:url value='../template/web/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="<c:url value='../template/web/jquery/jquery.min.js' />"></script>
     <script type="text/javascript" src="<c:url value='../template/web/bootstrap/js/bootstrap.bundle.min.js' />"></script>
@@ -24,9 +24,13 @@
             </c:if>
             <form action="<c:url value='/sign-up'/>" id="formLogin" method="post">
 
-                <div class="form-group">
-                    <input type="text" class="form-control" id="fullName" name="fullName"
-                           placeholder="Họ và tên *">
+                <div class="form-group d-flex align-items-center justify-content-around">
+                    <input type="text" class="form-control mr-2" id="fullName" name="first-name"
+                           placeholder="Họ  ">
+                    <input type="text" class="form-control mr-2" id="fullName" name="middle-name"
+                           placeholder="Tên đệm">
+                    <input type="text" class="form-control" id="fullName" name="last-name"
+                           placeholder="Tên *">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="username" name="username"

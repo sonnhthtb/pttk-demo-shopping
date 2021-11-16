@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Trang chủ</title>
+    <title>Thay đổi mật khẩu</title>
     <link href="<c:url value='../../template/web/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" type="text/css" media="all"/>
     <link href="<c:url value='../../template/web/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
 </head>
@@ -13,7 +13,7 @@
     <jsp:include page="../../common/web/header.jsp"/>
     <div class="container">
         <div class="row">
-            <div class="col mt-5" style="text-align: center"><h2>Thông tin tài khoản</h2> </div>
+            <div class="col mt-5" style="text-align: center"><h2>Thay đổi mật khẩu</h2> </div>
             <div class="col-lg-12 mt-5 mb-3">
                 <div class="row justify-content-center">
                     <c:if test="${not empty message}">
@@ -39,7 +39,11 @@
                             <input type="password" class="form-control" id="re-password" name="re-password"
                                    placeholder="Nhập lại mật khẩu">
                         </div>
-                        <button type="submit" class="btn btn-primary" >Cập nhật thông tin</button>
+                        <div>
+                            <button type="submit" class="btn btn-danger" ><a href="/home">Hủy bỏ</a></button>
+                            <button type="submit" class="btn btn-primary" >Chấp nhận</button>
+                            
+                        </div>
                     </form>
                 </div>
                 </div>

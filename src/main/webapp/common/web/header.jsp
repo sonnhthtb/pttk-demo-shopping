@@ -26,10 +26,12 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/my-account">Tài khoản của tôi</a>
+
                   <a class="dropdown-item" href="/user/purchase/">Đơn mua</a>
                   <c:if test="${user.role eq 'ADMIN'}">
                     <a class="dropdown-item" href="/admin">Quản trị viên</a>
                   </c:if>
+                    <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/logout">Đăng Xuất</a>
                 </div>

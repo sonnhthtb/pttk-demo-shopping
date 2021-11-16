@@ -4,6 +4,7 @@ import pttk.dao.customer.CustomerDAO;
 import pttk.dao.customer.impl.CustomerDAOImpl;
 import pttk.entity.Account;
 import pttk.entity.Customer;
+import pttk.entity.FullName;
 import pttk.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -13,5 +14,10 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findByUserNameAndPassword(String username, String password) {
         Account account = new Account(username, password);
         return customerDAO.findByAccount(account);
+    }
+
+    @Override
+    public Boolean createNewCustomer(Customer customer) {
+        return customerDAO.create(customer);
     }
 }

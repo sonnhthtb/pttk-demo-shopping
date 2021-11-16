@@ -52,4 +52,24 @@ public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
         }
         return customer;
     }
+
+    @Override
+    public Boolean create(Customer customer) {
+        try {
+            String sqlCustomer = "INSERT INTO `customer` (Role) VALUES (?)";
+            Long idCustomer = insert(sqlCustomer, "customer");
+            System.out.println("-------" +idCustomer);
+            Account account = customer.getAccount();
+            String sqlAccount = "INSERT INTO `account` (Username, Password, CustomerID) VALUES ( ?, ?,?)";
+            long idAccount = accountDAO.insert(sqlAccount ,account.getUsername(), account.getPassword(),idCustomer);
+            System.out.println("---------"+idAccount );
+            FullName fullname = customer.getFullName();
+            String sqlFullname = "INSERT INTO `fullname` (FirstName, MiddleName, LastName,CustomerID) VALUES ( ?, ?,?,?)";
+            long idFullname = fullNameDAO.insert(sqlFullname ,fullname.getFirstName(), fullname.getMiddleName(),fullname.getLastName(),idCustomer);
+            System.out.println("---------"+idFullname);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

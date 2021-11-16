@@ -10,14 +10,16 @@ import java.util.ResourceBundle;
 public class BaseDAOImpl<T> implements BaseDAO<T> {
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
-
+    private String jdbcURL = "jdbc:mysql://localhost:3306/btl_pttk?useSSL=false";
+    private String jdbcUsername = "root";
+    private String jdbcPassword = "";
     public Connection getConnection() {
         try {
-            Class.forName(resourceBundle.getString("driverName"));
-            String url = resourceBundle.getString("url");
-            String user = resourceBundle.getString("user");
-            String password = resourceBundle.getString("password");
-            return DriverManager.getConnection(url, user, password);
+           Class.forName("com.mysql.jdbc.Driver");
+           // String url = resourceBundle.getString("jdbc:mysql://localhost:3306/btl_pttk");
+            //String user = resourceBundle.getString("root");
+            //String password = resourceBundle.getString("");
+            return DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (ClassNotFoundException | SQLException e) {
             return null;
         }
