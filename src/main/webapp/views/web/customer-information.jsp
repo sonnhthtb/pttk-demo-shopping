@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Thay đổi mật khẩu</title>
+    <title>My Account</title>
     <link href="<c:url value='../../template/web/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" type="text/css" media="all"/>
     <link href="<c:url value='../../template/web/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
 </head>
@@ -13,7 +13,7 @@
     <jsp:include page="../../common/web/header.jsp"/>
     <div class="container">
         <div class="row">
-            <div class="col mt-5" style="text-align: center"><h2>Thay đổi mật khẩu</h2> </div>
+            <div class="col mt-5" style="text-align: center"><h2>Thông tin tài khoản</h2> </div>
             <div class="col-lg-12 mt-5 mb-3">
                 <div class="row justify-content-center">
                     <c:if test="${not empty message}">
@@ -22,22 +22,32 @@
                         </div>
                     </c:if>
                 </div>
-
                 <div class="row justify-content-center">
+                    <p name="username"></p>
                     <form action="<c:url value='/my-account'/>" id="formLogin" method="post">
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="password" name="password"
-                                   placeholder="Mật khẩu hiện tại">
+                         <div class="form-group d-flex align-items-center justify-content-around">
+                            <input type="text" class="form-control mr-2" id="fullName" name="first-name"
+                                   placeholder="Họ " value='<%=request.getParameter("first-name")%>'>
+                            <input type="text" class="form-control mr-2" id="fullName" name="middle-name"
+                                   placeholder="Tên đệm">
+                            <input type="text" class="form-control" id="fullName" name="last-name"
+                                   placeholder="Tên *">
                         </div>
-
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="new-password" name="new-password"
-                                   placeholder="Mật khẩu mới">
+                         <div class="form-group">
+                            <input type="text" class="form-control" id="password" name="nation"
+                                   placeholder="Quốc gia" >
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="re-password" name="re-password"
-                                   placeholder="Nhập lại mật khẩu">
+                            <input type="text" class="form-control" id="password" name="city"
+                                   placeholder="Thành phố " >
+                        </div>
+                         <div class="form-group d-flex align-items-center justify-content-around">
+                            <input type="text" class="form-control mr-2" id="fullName" name="district"
+                                   placeholder="Quận ">
+                            <input type="text" class="form-control mr-2" id="fullName" name="street"
+                                   placeholder="Đường">
+                            <input type="text" class="form-control" id="fullName" name="number-house"
+                                   placeholder="Số nhà">
                         </div>
                         <div class="d-flex algin-items-center justify-content-between">
                             <button type="submit" class="btn btn-danger" ><a href="/home" style="color:white; text-decoration: none">Hủy bỏ</a></button>

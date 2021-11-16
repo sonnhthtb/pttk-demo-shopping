@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/my-account"})
+@WebServlet(urlPatterns = {"/change-password"})
 public class AccountController extends HttpServlet {
     
 
@@ -18,19 +18,19 @@ public class AccountController extends HttpServlet {
         String message = request.getParameter("message");
         if (message != null) {
             if (message.equals("password_incorrect")){
-                request.setAttribute("message", "Mật khẩu sai");
+                request.setAttribute("message", "Password wrong !");
                 request.setAttribute("alert", "danger");
             }
             if (message.equals("re-password_incorrect")) {
-                request.setAttribute("message", "Mật khẩu mới không khớp");
+                request.setAttribute("message", "Re-password and password don't match! ");
                 request.setAttribute("alert", "danger");
             }
             if (message.equals("not_null")) {
-                request.setAttribute("message", "Các trường không được để rỗng");
+                request.setAttribute("message", "Fiels not empty !");
                 request.setAttribute("alert", "danger");
             }
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/account.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/change-password.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -39,8 +39,6 @@ public class AccountController extends HttpServlet {
         String password = request.getParameter("password");
         String newPassword = request.getParameter("new-password");
         String rePassword = request.getParameter("re-password");
-
-
         try {
             // validate input
             if (password != null && rePassword != null && newPassword != null
@@ -48,7 +46,7 @@ public class AccountController extends HttpServlet {
 
                 //validate re-password
                 if (!newPassword.equals(rePassword)) {
-                    response.sendRedirect(request.getContextPath() + "/my-account?message=re-password_incorrect");
+                    response.sendRedirect(request.getContextPath() + "/change-password?message=re-password_incorrect");
                 } else {
                     //check username exits or not
                     HttpSession session = request.getSession();
@@ -69,16 +67,16 @@ public class AccountController extends HttpServlet {
                             }
                         }
                         session.setAttribute("customer", customer);
-                        request.setAttribute("message", "Đổi mật khẩu thành công");
+                        request.setAttribute("message", "C?p nh?t m?t kh?u th�nh c�ng!");
                         request.setAttribute("alert", "success");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/account.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/change-password.jsp");
                         dispatcher.forward(request, response);
                     } else {
-                        response.sendRedirect(request.getContextPath() + "/my-account?message=password_incorrect");
+                        response.sendRedirect(request.getContextPath() + "/change-password?message=password_incorrect");
                     }
                 }
             } else {
-                response.sendRedirect(request.getContextPath() + "/my-account?message=not_null");
+                response.sendRedirect(request.getContextPath() + "/change-password?message=not_null");
             }
         } catch (Exception exception) {
             exception.printStackTrace();

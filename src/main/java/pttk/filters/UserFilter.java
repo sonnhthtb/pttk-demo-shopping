@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/order", "/order-detail.jsp", "/list-order", "/order-list.jsp", "/my-account", "/account.jsp"})
+@WebFilter(urlPatterns = {"/order", "/order-detail.jsp", "/list-order", "/order-list.jsp", "/my-account", "/account.jsp","/change-password"})
 public class UserFilter implements Filter{
 
     private ServletContext context;
