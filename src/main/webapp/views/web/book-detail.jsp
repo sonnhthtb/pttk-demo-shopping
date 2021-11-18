@@ -176,7 +176,7 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<h2>itemBook.book.name</h2>
+								<h2>${itemBook.book.title}</h2>
 								<span>
 									<span>${itemBook.price}</span>
 									<label>Quantity:</label>
@@ -186,9 +186,10 @@
 										Add to cart
 									</button>
 								</span>
-								<p><b>Title:</b> ${itemBook.book.title}</p>
-								<p><b>Author:</b> ${itemBook.book.author.name}</p>
+								<p><b>Type:</b> ${itemBook.book.type}</p>
+								<p><b>Author:</b> ${itemBook.book.author.type}</p>
 								<p><b>NXB:</b> ${itemBook.book.publisher.name}</p>
+								<p><b>NXB:</b> ${itemBook.book.size}</p>
 								<p><b>Mô tả:</b> ${itemBook.book.description}</p>
 								<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
