@@ -2,9 +2,8 @@ package pttk.dao.electronic.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.electronic.MobileDAO;
-import pttk.model.book.Author;
 import pttk.model.electronic.Mobile;
-import pttk.util.impl.AuthorMapper;
+import pttk.util.impl.MobileMapper;
 
 import java.util.List;
 

@@ -41,7 +41,7 @@
 								   placeholder="Mật khẩu">
 							<span>
 								<input type="checkbox" value="1" name="remember"/>
-						<i>Remember me</i>
+								<i>Remember me</i>
 							</span>
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>

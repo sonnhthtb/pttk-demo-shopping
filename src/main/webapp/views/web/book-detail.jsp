@@ -49,7 +49,7 @@
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOP</h1>
+									<h1><span>E</span>-SHOPPER</h1>
 									<h2>100% Responsive Design</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -62,7 +62,7 @@
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOP</h1>
+									<h1><span>E</span>-SHOPPER</h1>
 									<h2>Free Ecommerce Template</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -174,31 +174,10 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemBook?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}"  alt=""/></a>
+											<div class="productinfo text-center">
+												<a href="/detailItemBook?id=${item.id}"><img src="${item.imageUrl}" alt=""/></a>
 												<h2>${item.price}</h2>
-												<a href="/detailItemBook?id=${item.id}">
-													<p>${item.book.title}</p>
-												</a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
-						<c:forEach var="item" items="${listItemShoes}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemShoes?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemShoes?id=${item.id}"><p>${item.shoes.name}</p></a>
+												<a href="/detailItemBook?id=${item.id}"><p>${item.book.title}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
 												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
@@ -214,8 +193,8 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemBook?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
+											<div class="productinfo text-center">
+												<a href="/detailItemBook?id=${item.id}"><img src="${item.imageUrl}" alt=""/></a>
 												<h2>${item.price}</h2>
 												<a href="/detailItemBook?id=${item.id}"><p>${item.clothes.name}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
