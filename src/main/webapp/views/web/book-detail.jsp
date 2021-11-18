@@ -187,7 +187,7 @@
 									</button>
 								</span>
 								<p><b>Type:</b> ${itemBook.book.type}</p>
-								<p><b>Author:</b> ${itemBook.book.author.type}</p>
+								<p><b>Author:</b> ${itemBook.book.author.name}</p>
 								<p><b>NXB:</b> ${itemBook.book.publisher.name}</p>
 								<p><b>NXB:</b> ${itemBook.book.size}</p>
 								<p><b>Mô tả:</b> ${itemBook.book.description}</p>
