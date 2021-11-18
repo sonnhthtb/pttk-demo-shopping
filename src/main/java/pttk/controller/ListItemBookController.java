@@ -1,8 +1,8 @@
 package pttk.controller;
 
-import pttk.model.clothes.ItemClothes;
-import pttk.service.ItemClothesService;
-import pttk.service.impl.ItemClothesServiceImpl;
+import pttk.model.book.ItemBook;
+import pttk.service.ItemBookService;
+import pttk.service.impl.ItemBookServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,15 +15,15 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/list-itemBook"})
 public class ListItemBookController extends HttpServlet {
-    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
+    private final ItemBookService itemBookService = new ItemBookServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
             try {
 
                 try {
-                    List<ItemClothes> listItemClothes = itemClothesService.findAllItemClothes();
-                    request.setAttribute("listItemBook", listItemClothes);
+                    List<ItemBook> listItemBook = itemBookService.findAll();
+                    request.setAttribute("listItemBook", listItemBook);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/listItemBook.jsp");
                     dispatcher.forward(request, response);
                 } catch (Exception e) {
