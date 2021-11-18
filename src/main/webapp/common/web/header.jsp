@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="logo pull-left">
-            <a href="home.jsp"><img src="<c:url value='../../template/images/home/logo.png'/>" alt="" /></a>
+            <a href="/"><img src="<c:url value='../../template/images/home/logo.png'/>" alt="" /></a>
           </div>
         </div>
         <div class="col-sm-8">
@@ -65,7 +65,7 @@
           </div>
           <div class="mainmenu pull-left">
             <ul class="nav navbar-nav collapse navbar-collapse">
-              <li><a href="home.jsp" class="active">Home</a></li>
+              <li><a href="/" class="active">Home</a></li>
               <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                 <ul role="menu" class="sub-menu">
                   <li><a href="shop.jsp">Products</a></li>
