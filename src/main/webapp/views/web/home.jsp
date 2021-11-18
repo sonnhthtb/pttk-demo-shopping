@@ -175,12 +175,12 @@
 									<div class="single-products">
 										<form action="/addToCart" method="post">
 											<div class="productinfo text-center">
-												<a href="/detailItemBook?id=${item.id}"><img src="${item.imageUrl}/>" alt="" /></a>
+												<a href="/detailItemBook?id=${item.id}"><img src="${item.imageUrl}" alt=""/></a>
 												<h2>${item.price}</h2>
 												<a href="/detailItemBook?id=${item.id}"><p>${item.book.title}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart"><i class="fa fa-shopping-cart"></i></input>
+												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
 											</div>
 										</form>
 									</div>
@@ -194,12 +194,12 @@
 									<div class="single-products">
 										<form action="/addToCart" method="post">
 											<div class="productinfo text-center">
-												<a href="/detailItemBook?id=${item.id}"><img src="${item.imageUrl}/>" alt="" /></a>
+												<a href="/detailItemBook?id=${item.id}"><img src="${item.imageUrl}" alt=""/></a>
 												<h2>${item.price}</h2>
 												<a href="/detailItemBook?id=${item.id}"><p>${item.clothes.name}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart"><i class="fa fa-shopping-cart"></i></input>
+												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
 											</div>
 										</form>
 									</div>
