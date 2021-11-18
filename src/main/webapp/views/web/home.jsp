@@ -117,7 +117,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#electronic">
+										<a data-toggle="collapse" data-parent="#accordian" href="/list-itemElectronic">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
 											Electronic
 										</a>
@@ -126,8 +126,8 @@
 								<div id="electronic" class="panel-collapse collapse">
 									<div class="panel-body">
 										<ul>
-											<li><a href="#">Mobile</a></li>
-											<li><a href="#">Computer</a></li>
+											<li><a href="list-itemMobile">Mobile</a></li>
+											<li><a href="list-itemComputer">Computer</a></li>
 										</ul>
 									</div>
 								</div>
@@ -216,6 +216,25 @@
 												<a href="/detailItemBook?id=${item.id}"><img  width="200" height="300" src="${item.imageUrl} alt=""/></a>
 												<h2>${item.price}</h2>
 												<a href="/detailItemBook?id=${item.id}"><p>${item.clothes.name}</p></a>
+												<input type="hidden" value="${item.id}" name="id">
+												<input type="hidden" value="1" name="quantity">
+												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+
+						<c:forEach var="item" items="${listItemElectronic}">
+							<div class="col-sm-4">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<form action="/addToCart" method="post">
+											<div class="product-info text-center">
+												<a href="/detailItemElectronic?id=${item.id}"><img  width="200" height="300" src="${item.imageUrl} alt=""/></a>
+												<h2>${item.price}</h2>
+												<a href="/detailItemElectronic?id=${item.id}"><p>${item.electronic.description}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
 												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
