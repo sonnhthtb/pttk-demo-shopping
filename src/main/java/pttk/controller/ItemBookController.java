@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/itemBook"})
+@WebServlet(urlPatterns = {"/detailItemBook"})
 public class ItemBookController extends HttpServlet {
 
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
@@ -25,11 +25,11 @@ public class ItemBookController extends HttpServlet {
                 try {
                     ItemBook itemBook = itemBookService.findById(Integer.parseInt(id));
                     request.setAttribute("itemBook", itemBook);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/book-detail.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/bookDetail.jsp");
                     dispatcher.forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    response.sendRedirect("/home");
+                    response.sendRedirect("/list-itemBook");
                 }
             }catch (Exception e) {
                 e.printStackTrace();
