@@ -1,46 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/home">Shopping Mall</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <div>
-            <form class="form-inline" action="/search-product" method="get">
-              <input class="form-control mr-sm-2" style="width: 400px; margin-left: 80px" type="search" placeholder="Search" aria-label="Search" name="name">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+<header id="header"><!--header-->
+  <div class="header_top"><!--header_top-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="contactinfo">
+            <ul class="nav nav-pills">
+              <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+            </ul>
           </div>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href='<c:url value="/cart"/>'>Cart</a>
-            </li>
-            <c:set var="user" value="${sessionScope.customer}"/>
-            <c:if test="${not empty user}">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  ${user.fullName.firstName} ${user.fullName.middleName} ${user.fullName.lastName}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/my-account">Tài khoản của tôi</a>
-                  <a class="dropdown-item" href="/user/purchase/">Đơn mua</a>
-                  <c:if test="${user.role eq 'ADMIN'}">
-                    <a class="dropdown-item" href="/admin">Quản trị viên</a>
-                  </c:if>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/logout">Đăng Xuất</a>
-                </div>
-              </li>
-            </c:if>
-            <c:if test="${empty user}">
-              <li class="nav-item">
-                <a class="nav-link" href='<c:url value="/login"/>'>Đăng nhập</a>
-              </li>
-            </c:if>
-          </ul>
+        </div>
+        <div class="col-sm-6">
+          <div class="social-icons pull-right">
+            <ul class="nav navbar-nav">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            </ul>
+          </div>
         </div>
       </div>
-</nav>
+    </div>
+  </div><!--/header_top-->
+
+  <div class="header-middle"><!--header-middle-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="logo pull-left">
+            <a href="/"><img src="<c:url value='../../template/images/home/logo.png'/>" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="shop-menu pull-right">
+            <ul class="nav navbar-nav">
+              <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+              <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+              <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+              <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+              <li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-middle-->
+
+  <div class="header-bottom"><!--header-bottom-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="mainmenu pull-left">
+            <ul class="nav navbar-nav collapse navbar-collapse">
+              <li><a href="/" class="active">Home</a></li>
+              <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                  <li><a href="shop.jsp">Products</a></li>
+                  <li><a href="product-details.jsp">Product Details</a></li>
+                  <li><a href="checkout.jsp">Checkout</a></li>
+                  <li><a href="cart.jsp">Cart</a></li>
+                  <li><a href="login.jsp">Login</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="search_box pull-right">
+            <input type="text" placeholder="Search"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-bottom-->
+</header><!--/header-->

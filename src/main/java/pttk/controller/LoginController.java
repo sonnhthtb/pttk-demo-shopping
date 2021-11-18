@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
                 }
 
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("views/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/login.jsp");
             dispatcher.forward(request, response);
         }catch (Exception e) {
             e.printStackTrace();
