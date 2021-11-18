@@ -56,7 +56,9 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                <div class="row">
 
+                </div>
                 <div class="row">
                     <c:forEach var="item" items="${listItemBook}">
                         <div class="col-lg-4 col-md-6 mb-4">
@@ -79,6 +81,9 @@
                             </div>
                         </div>
                     </c:forEach>
+
+
+
                     <c:forEach var="item" items="${listItemClothes}">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100" >
