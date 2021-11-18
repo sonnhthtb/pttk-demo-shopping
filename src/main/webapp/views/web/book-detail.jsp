@@ -189,7 +189,7 @@
 								<p><b>Type:</b> ${itemBook.book.type}</p>
 								<p><b>Author:</b> ${itemBook.book.author.name}</p>
 								<p><b>NXB:</b> ${itemBook.book.publisher.name}</p>
-								<p><b>NXB:</b> ${itemBook.book.size}</p>
+								<p><b>Kích thước:</b> ${itemBook.book.size}</p>
 								<p><b>Mô tả:</b> ${itemBook.book.description}</p>
 								<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->

@@ -168,7 +168,7 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">List Items</h2>
+						<h2 class="title text-center">List Books</h2>
 						<c:forEach var="item" items="${listItemBook}">
 							<div class="col-sm-4">
 								<div class="product-image-wrapper">
@@ -189,7 +189,9 @@
 								</div>
 							</div>
 						</c:forEach>
-
+					</div>
+					<div class="features_items">
+						<h2 class="title text-center">List Shoes</h2>
 						<c:forEach var="item" items="${listItemShoes}">
 							<div class="col-sm-4">
 								<div class="product-image-wrapper">
@@ -208,7 +210,9 @@
 								</div>
 							</div>
 						</c:forEach>
-
+					</div>
+					<div class="features_items">
+						<h2 class="title text-center">List Clothes</h2>
 						<c:forEach var="item" items="${listItemClothes}">
 							<div class="col-sm-4">
 								<div class="product-image-wrapper">
