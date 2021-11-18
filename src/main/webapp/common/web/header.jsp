@@ -63,4 +63,17 @@
       </div>
     </div>
   </div><!--/header-middle-->
+  <div class="header-bottom"><!--header-bottom-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+        </div>
+        <div class="col-sm-3">
+          <div class="search_box pull-right">
+            <input type="text" placeholder="Search"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-bottom-->
 </header><!--/header-->

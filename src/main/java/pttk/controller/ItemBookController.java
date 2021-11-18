@@ -25,7 +25,7 @@ public class ItemBookController extends HttpServlet {
                 try {
                     ItemBook itemBook = itemBookService.findById(Integer.parseInt(id));
                     request.setAttribute("itemBook", itemBook);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/bookDetail.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/book-detail.jsp");
                     dispatcher.forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
