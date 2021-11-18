@@ -33,6 +33,26 @@ public class ItemShoesDAOImpl extends BaseDAOImpl<ItemShoes> implements ItemShoe
     }
 
     @Override
+    public List<ItemShoes> getAllShoesForMan() {
+        String sql = "SELECT * FROM ItemShoes";
+        List<ItemShoes> listItemShoes =  query(sql, new ItemShoesMapper());
+        listItemShoes.stream().forEach(itemShoes -> {
+            itemShoes.setShoes(shoesDAO.getShoesForManByItemShoesId(itemShoes.getId()));
+        });
+        return listItemShoes;
+    }
+
+    @Override
+    public List<ItemShoes> getAllShoesForWomen() {
+        String sql = "SELECT * FROM ItemShoes";
+        List<ItemShoes> listItemShoes =  query(sql, new ItemShoesMapper());
+        listItemShoes.stream().forEach(itemShoes -> {
+            itemShoes.setShoes(shoesDAO.getShoesForWomenByItemShoesId(itemShoes.getId()));
+        });
+        return listItemShoes;
+    }
+
+    @Override
     public int getTotalItem() {
         String sql = "SELECT count(*) FROM ItemShoes";
         return count(sql);
@@ -50,9 +70,9 @@ public class ItemShoesDAOImpl extends BaseDAOImpl<ItemShoes> implements ItemShoe
 
     @Override
     public List<ItemShoes> findByName(String name) {
-        name += '%';
+        name = "%" + name + "%";
         String sql = "SELECT * FROM ItemShoes, Shoes WHERE " +
-                "Shoes.ItemShoesID = ItemShoesID " +
+                "Shoes.ItemShoesID = ItemShoes.ID " +
                 "AND Shoes.Name like ?";
         List<ItemShoes> listItemShoes =  query(sql, new ItemShoesMapper(), name);
         listItemShoes.stream().forEach(itemShoes -> {

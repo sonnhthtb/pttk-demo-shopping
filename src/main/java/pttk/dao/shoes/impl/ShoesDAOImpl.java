@@ -16,7 +16,6 @@ public class ShoesDAOImpl extends BaseDAOImpl<Shoes> implements ShoesDAO {
 
     @Override
     public Shoes getShoesByItemShoesId(int itemShoesId) {
-        System.out.println(itemShoesId);
         String sql = "SELECT * FROM Shoes WHERE Shoes.ItemShoesID = ?";
         List<Shoes> listShoes = query(sql, new ShoesMapper(), itemShoesId);
         Shoes shoes = listShoes.isEmpty() ? null : listShoes.get(0);
@@ -26,5 +25,25 @@ public class ShoesDAOImpl extends BaseDAOImpl<Shoes> implements ShoesDAO {
         if (shoesForMan != null) return  shoesForMan;
         if (shoesForWomen != null) return shoesForWomen;
         return null;
+    }
+
+    @Override
+    public Shoes getShoesForManByItemShoesId(int itemShoesId) {
+        String sql = "SELECT * FROM Shoes WHERE Shoes.ItemShoesID = ?";
+        List<Shoes> listShoes = query(sql, new ShoesMapper(), itemShoesId);
+        Shoes shoes = listShoes.isEmpty() ? null : listShoes.get(0);
+        if(shoes == null) return null;
+        ShoesForMan shoesForMan = shoesForManImpl.getShoesForManByShoesID(shoes);
+        return  shoesForMan;
+    }
+
+    @Override
+    public Shoes getShoesForWomenByItemShoesId(int itemShoesId) {
+        String sql = "SELECT * FROM Shoes WHERE Shoes.ItemShoesID = ?";
+        List<Shoes> listShoes = query(sql, new ShoesMapper(), itemShoesId);
+        Shoes shoes = listShoes.isEmpty() ? null : listShoes.get(0);
+        if(shoes == null) return null;
+        ShoesForWomen shoesForWomen = shoesForWomenImpl.getShoesForWomenByShoesID(shoes);
+        return  shoesForWomen;
     }
 }

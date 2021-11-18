@@ -144,8 +144,8 @@
 								<div id="shoes" class="panel-collapse collapse">
 									<div class="panel-body">
 										<ul>
-											<li><a href="#">Men</a></li>
-											<li><a href="#">Women</a></li>
+											<li><a href="/item-shoes?type=men">Men</a></li>
+											<li><a href="/item-shoes?type=women">Women</a></li>
 										</ul>
 									</div>
 								</div>

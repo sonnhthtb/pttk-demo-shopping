@@ -11,5 +11,7 @@ public interface ItemShoesService {
     List<ItemShoes> findAllItemShoes();
     List<ItemShoes> findAll(int limit, int offset);
     List<ItemShoes> findByName(String name);
+    List<ItemShoes> getAllShoesForMan();
+    List<ItemShoes> getAllShoesForWomen();
     int getTotalItem();
 }
