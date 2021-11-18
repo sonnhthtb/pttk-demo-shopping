@@ -1,6 +1,6 @@
 package pttk.controller;
 
-import pttk.entity.ItemBook;
+import pttk.model.book.ItemBook;
 import pttk.service.ItemBookService;
 import pttk.service.impl.ItemBookServiceImpl;
 
@@ -47,13 +47,12 @@ public class AdminBookController extends HttpServlet {
             }
             //show edit product
             else if (type.equals("edit")) {
-//                String id = request.getParameter("id");
-//                if (id != null) {
-//                    Book product = bookService.findById(Long.parseLong(id));
-//                    request.setAttribute("product", product);
-//                }
-//                request.setAttribute("categories", categoryService.findAll());
-//                view = "views/admin/product/edit-product.jsp";
+                String id = request.getParameter("id");
+                if (id != null) {
+                    ItemBook itemBook = itemBookService.findById(Integer.parseInt(id));
+                    request.setAttribute("itemBook", itemBook);
+                }
+                view = "views/admin/product/edit-product.jsp";
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher(view);
             dispatcher.forward(request, response);

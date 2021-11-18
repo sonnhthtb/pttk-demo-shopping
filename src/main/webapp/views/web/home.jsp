@@ -18,10 +18,10 @@
 
                 <h1 class="my-4">Danh mục</h1>
                 <div class="list-group">
-                    <a href="/itemBook" class="list-group-item">Book</a>
-                    <a href="/itemElectronic" class="list-group-item">Electronic</a>
-                    <a href="/itemClothes" class="list-group-item">Clothes</a>
-                    <a href="/itemShoes" class="list-group-item">Shoes</a>
+                    <a href="/list-itemBook" class="list-group-item">Book</a>
+                    <a href="/list-itemElectronic" class="list-group-item">Electronic</a>
+                    <a href="/list-itemClothes" class="list-group-item">Clothes</a>
+                    <a href="/list-itemShoes" class="list-group-item">Shoes</a>
 
                 </div>
 
@@ -58,17 +58,38 @@
                 </div>
 
                 <div class="row">
-                    <c:forEach var="itemBook" items="${listItemBook}">
+                    <c:forEach var="item" items="${listItemBook}">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100" >
                                 <form action="/addToCart" method="post">
-                                    <a href="/detailItemBook?id=${itemBook.id}"><img class="card-img-top" src="${itemBook.imgUrl}" alt=""></a>
+                                    <a href="/detailItemBook?id=${item.id}"><img class="card-img-top" src="${item.imageUrl}" alt=""></a>
                                     <div class="card-body" style="margin-bottom: 50px">
                                         <h4 class="card-title">
-                                            <a href="/detailItemBook?id=${itemBook.id}">${itemBook.book.name}</a>
+                                            <a href="/itemBook?id=${item.id}">${item.book.title}</a>
                                         </h4>
-                                        <h5>${itemBook.book.price}</h5>
-                                        <input type="hidden" value="${itemBook.id}" name="id">
+                                        <h5>${item.price} đ</h5>
+                                        <input type="hidden" value="${item.id}" name="id">
+                                        <input type="hidden" value="1" name="quantity">
+
+                                    </div>
+                                    <div class="text-center" style="position:absolute; bottom: 20px; margin-left: 30%; margin-top: 10px">
+                                        <input type="submit" value="Add to cart" class="btn btn-success">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:forEach var="item" items="${listItemClothes}">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100" >
+                                <form action="/addToCart" method="post">
+                                    <a href="/detailItemClothes?id=${item.id}"><img class="card-img-top" src="${item.imageUrl}" alt=""></a>
+                                    <div class="card-body" style="margin-bottom: 50px">
+                                        <h4 class="card-title">
+                                            <a href="/itemClothes?id=${item.id}">${item.clothes.name}</a>
+                                        </h4>
+                                        <h5>${item.price} đ</h5>
+                                        <input type="hidden" value="${item.id}" name="id">
                                         <input type="hidden" value="1" name="quantity">
 
                                     </div>
@@ -81,36 +102,6 @@
                     </c:forEach>
                 </div>
                 <!-- /.row -->
-                <div class="justify-content-end" style="display: flex">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <c:if test="${currentPage != 1}">
-                                <li class="page-item">
-                                    <a class="page-link" href="/home?currentPage=${currentPage-1}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                            </c:if>
-                            <c:forEach begin="1" end="${totalPage}" var="i">
-                                <c:if test="${currentPage == i}">
-                                    <li class="page-item active"><a class="page-link active" href="#">${i}</a></li>
-                                </c:if>
-                                <c:if test="${currentPage != i}">
-                                    <li class="page-item"><a class="page-link" href="/home?currentPage=${i}">${i}</a></li>
-                                </c:if>
-                            </c:forEach>
-                            <c:if test="${currentPage != totalPage}">
-                                <li class="page-item">
-                                    <a class="page-link" href="/home?currentPage=${currentPage+1}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </c:if>
-                        </ul>
-                    </nav>
-                </div>
             </div>
             <!-- /.col-lg-9 -->
 

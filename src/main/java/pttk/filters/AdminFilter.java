@@ -1,6 +1,6 @@
 package pttk.filters;
 
-import pttk.entity.Customer;
+import pttk.model.customer.Customer;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

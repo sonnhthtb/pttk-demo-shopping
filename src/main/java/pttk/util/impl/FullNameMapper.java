@@ -1,6 +1,6 @@
 package pttk.util.impl;
 
-import pttk.entity.FullName;
+import pttk.model.customer.FullName;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

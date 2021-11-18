@@ -1,7 +1,8 @@
 package pttk.service;
 
-import pttk.entity.Cart;
+import pttk.model.order.Cart;
 
 public interface CartService {
     Cart getCartByOrderId(int orderId);
+    Cart getCartByCustomerId(int customerId);
 }

@@ -1,6 +1,6 @@
 package pttk.util.impl;
 
-import pttk.entity.Publisher;
+import pttk.model.book.Publisher;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;

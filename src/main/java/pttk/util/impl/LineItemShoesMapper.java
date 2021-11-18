@@ -1,7 +1,7 @@
 package pttk.util.impl;
 
-import pttk.entity.ItemShoes;
-import pttk.entity.LineItemShoes;
+import pttk.model.shoes.ItemShoes;
+import pttk.model.shoes.LineItemShoes;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
