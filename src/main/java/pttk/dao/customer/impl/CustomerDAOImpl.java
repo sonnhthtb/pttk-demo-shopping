@@ -11,6 +11,7 @@ import pttk.model.order.Cart;
 import pttk.util.impl.CustomerMapper;
 
 import java.util.List;
+import pttk.model.customer.FullName;
 
 public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
 
@@ -50,5 +51,22 @@ public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
             customer.setFullName(fullNameDAO.findFullNameByCustomerID(customerId));
         }
         return customer;
+    }
+
+    @Override
+    public Boolean create(Customer customer) {
+         try {
+            String sqlCustomer = "INSERT INTO `customer` (Role) VALUES (?)";
+            Long idCustomer = insert(sqlCustomer, "customer");
+            Account account = customer.getAccount();
+            String sqlAccount = "INSERT INTO `account` (Username, Password, CustomerID) VALUES ( ?, ?,?)";
+            long idAccount = accountDAO.insert(sqlAccount ,account.getUsername(), account.getPassword(),idCustomer);
+            FullName fullname = customer.getFullName();
+            String sqlFullname = "INSERT INTO `fullname` (FirstName, MiddleName, LastName,CustomerID) VALUES ( ?, ?,?,?)";
+            long idFullname = fullNameDAO.insert(sqlFullname ,fullname.getFirstName(), fullname.getMiddleName(),fullname.getLastName(),idCustomer);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

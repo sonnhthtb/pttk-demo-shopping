@@ -14,4 +14,8 @@ public class CustomerServiceImpl implements CustomerService {
         Account account = new Account(username, password);
         return customerDAO.findByAccount(account);
     }
+    @Override
+    public Boolean createNewCustomer(Customer customer) {
+       return customerDAO.create(customer);
+    }
 }
