@@ -14,4 +14,7 @@ public class Address extends BaseEntity {
     private String district;
     private String city;
     private String nation;
+    public boolean isValid() {
+        return numberHouse != null && street != null && district != null&& city != null&& nation != null;
+  }
 }

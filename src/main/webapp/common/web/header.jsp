@@ -44,7 +44,7 @@
                 <li><a href="/order-list"><i class="fa fa-user"></i> My orders </a></li>
                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart </a></li>
                 <li >
-                  <a href="#" >
+                  <a href="/my-account" >
                     <i class="fa fa-user"></i>${user.fullName.firstName} ${user.fullName.middleName} ${user.fullName.lastName}
                   </a>
                 </li>

@@ -10,4 +10,5 @@ public interface CustomerDAO extends BaseDAO {
     Customer findCustomerByCart(Cart Cart);
 
     public Boolean create(Customer customer);
+    Boolean update(Customer customer);
 }

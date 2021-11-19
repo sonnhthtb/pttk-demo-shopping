@@ -18,4 +18,10 @@ public class CustomerServiceImpl implements CustomerService {
     public Boolean createNewCustomer(Customer customer) {
        return customerDAO.create(customer);
     }
+
+    @Override
+    public Boolean updateCustomer(Customer customer) {
+        return customerDAO.update(customer);
+    }
+    
 }

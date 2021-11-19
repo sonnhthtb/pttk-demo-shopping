@@ -11,10 +11,10 @@ import pttk.model.order.Cart;
 import pttk.util.impl.CustomerMapper;
 
 import java.util.List;
+import pttk.model.customer.Address;
 import pttk.model.customer.FullName;
 
 public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
-
     private final AccountDAO accountDAO = new AccountDAOImpl();
     private final AddressDAO addressDAO = new AddressDAOImpl();
     private final FullNameDAO fullNameDAO = new FullNameDAOImpl();
@@ -64,9 +64,40 @@ public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
             FullName fullname = customer.getFullName();
             String sqlFullname = "INSERT INTO `fullname` (FirstName, MiddleName, LastName,CustomerID) VALUES ( ?, ?,?,?)";
             long idFullname = fullNameDAO.insert(sqlFullname ,fullname.getFirstName(), fullname.getMiddleName(),fullname.getLastName(),idCustomer);
+            String sqlAddress = "INSERT INTO `address` (NumberHouse, Street, District,City,Nation,CustomerID) VALUES ( ?, ?,?,?,?,?)";
+            long idAdress = addressDAO.insert(sqlAddress,0,"","","","" ,idCustomer);
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public Boolean update(Customer customer) {
+        try {
+            int idCustomer = customer.getId();
+            //update password
+            Account account = customer.getAccount();
+            String sqlAccount = "UPDATE `account` SET Password =? WHERE CustomerID = ? ";
+            accountDAO.update(sqlAccount, account.getPassword(),idCustomer);
+            //update fullname
+            
+            FullName fullname = customer.getFullName();
+            if(fullname.isValid() == true){
+                String sqlFullName = "UPDATE `fullname` SET FirstName =?,MiddleName=?,LastName=? WHERE CustomerID = ? ";
+            fullNameDAO.update(sqlFullName, fullname.getFirstName(),fullname.getMiddleName(),fullname.getLastName(),idCustomer);
+            }
+            
+
+            //update
+            Address address = customer.getAddress();
+                 String sqlAddress = "UPDATE `address` SET NumberHouse =?,Street=?,District=?,City=?,Nation=? WHERE CustomerID = ? ";
+                 fullNameDAO.update(sqlAddress,address.getNumberHouse(),address.getStreet(),address.getDistrict(),address.getCity(),address.getNation() ,idCustomer);
+            System.out.println("pttk.dao.customer.impl.CustomerDAOImpl.update()-------------------");
+             return true;
+        } catch (Exception e) {
+            return false;
+        }
+        
     }
 }

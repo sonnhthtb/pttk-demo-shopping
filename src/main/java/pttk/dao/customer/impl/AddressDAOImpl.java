@@ -11,8 +11,9 @@ public class AddressDAOImpl extends BaseDAOImpl implements AddressDAO {
 
     @Override
     public Address findAddressByCustomerId(int customerId) {
-        String sql = "SELECT * FROM Address WHERE CustomerID = ?";
+        String sql = "SELECT * FROM address WHERE CustomerID = ?";
         List<Address> addressList =  query(sql, new AddressMapper() , customerId);
+        System.out.println("pttk.dao.customer.impl.AddressDAOImpl.findAddressByCustomerId()-------"+addressList.toString());
         return addressList.isEmpty() ? null : addressList.get(0);
     }
 }
