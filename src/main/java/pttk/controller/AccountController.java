@@ -65,7 +65,7 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String serveletPath = request.getServletPath();
-
+        request.setCharacterEncoding("UTF-8");
         try {
             if (serveletPath.equals("/change-password")) {
                 String password = request.getParameter("password");

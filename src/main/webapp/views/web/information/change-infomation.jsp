@@ -9,16 +9,16 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Login | E-Shopper</title>
-        <link href="<c:url value='../../template/css/bootstrap.min.css'/>" rel="stylesheet" >
-        <link href="<c:url value='../../template/css/font-awesome.min.css'/>" rel="stylesheet">
-        <link href="<c:url value='../../template/css/prettyPhoto.css'/>" rel="stylesheet">
-        <link href="<c:url value='../../template/css/price-range.css'/>" rel="stylesheet">
-        <link href="<c:url value='../../template/css/animate.css'/>" rel="stylesheet">
-        <link href="<c:url value='../../template/css/main.css'/>" rel="stylesheet">
-        <link href="<c:url value='../../template/css/responsive.css'/>" rel="stylesheet">
+        <link href="<c:url value='../../../template/css/bootstrap.min.css'/>" rel="stylesheet" >
+        <link href="<c:url value='../../../template/css/font-awesome.min.css'/>" rel="stylesheet">
+        <link href="<c:url value='../../../template/css/prettyPhoto.css'/>" rel="stylesheet">
+        <link href="<c:url value='../../../template/css/price-range.css'/>" rel="stylesheet">
+        <link href="<c:url value='../../../template/css/animate.css'/>" rel="stylesheet">
+        <link href="<c:url value='../../../template/css/main.css'/>" rel="stylesheet">
+        <link href="<c:url value='../../../template/css/responsive.css'/>" rel="stylesheet">
 
         <!--[if lt IE 9]>
-    <script src="<c:url value='../../template/js/html5shiv.js'/>"></script>
+    <script src="<c:url value='../../../template/js/html5shiv.js'/>"></script>
     <![endif]-->
     </head><!--/head-->
 
@@ -93,11 +93,11 @@
         <div style="height: 200px"></div>
         <jsp:include page="/common/web/footer.jsp"/>
 
-        <script src="<c:url value='../../template/js/jquery.js'/>"></script>
-        <script src="<c:url value='../../template/js/bootstrap.min.js'/>"></script>
-        <script src="<c:url value='../../template/js/jquery.scrollUp.min.js'/>"></script>
-        <script src="<c:url value='../../template/js/price-range.js'/>"></script>
-        <script src="<c:url value='../../template/js/jquery.prettyPhoto.js'/>"></script>
-        <script src="<c:url value='../../template/js/main.js'/>"></script>
+        <script src="<c:url value='../../../template/js/jquery.js'/>"></script>
+        <script src="<c:url value='../../../template/js/bootstrap.min.js'/>"></script>
+        <script src="<c:url value='../../../template/js/jquery.scrollUp.min.js'/>"></script>
+        <script src="<c:url value='../../../template/js/price-range.js'/>"></script>
+        <script src="<c:url value='../../../template/js/jquery.prettyPhoto.js'/>"></script>
+        <script src="<c:url value='../../../template/js/main.js'/>"></script>
     </body>
 </html>
