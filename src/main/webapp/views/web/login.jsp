@@ -30,10 +30,10 @@
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
 						<c:if test="${not empty message}">
-							<div class="alert alert-${alert}">
-									${message}
-							</div>
-						</c:if>
+                                                        <div class="alert alert-${alert}">
+                                                                ${message}
+                                                        </div>
+                                                    </c:if>
 						<form action="<c:url value='/login'/>" id="formLogin" method="post">
 							<input type="text" class="form-control" id="username" name="username" value="${username}"
 								   placeholder="Tên đăng nhập">
@@ -41,7 +41,7 @@
 								   placeholder="Mật khẩu">
 							<span>
 								<input type="checkbox" value="1" name="remember"/>
-						<i>Remember me</i>
+								<i>Remember me</i>
 							</span>
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
@@ -53,11 +53,34 @@
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
 						<h2>New User Signup!</h2>
-						<form action="#">
-							<input type="text" placeholder="Name"/>
-							<input type="email" placeholder="Email Address"/>
-							<input type="password" placeholder="Password"/>
-							<button type="submit" class="btn btn-default">Signup</button>
+                                                <c:if test="${not empty message1}">
+                                                        <div class="alert alert-${alert}">
+                                                                ${message1}
+                                                        </div>
+                                                    </c:if>
+						<form action="<c:url value='/signup'/>" id="formSignup" method="post" >
+                                                    <div class="form-group d-flex align-items-center justify-content-around">
+                                                        <input type="text" class="form-control mr-2" id="fullName" name="first-name"
+                                                               placeholder="Họ  ">
+                                                        <input type="text" class="form-control mr-2" id="fullName" name="middle-name"
+                                                               placeholder="Tên đệm">
+                                                        <input type="text" class="form-control" id="fullName" name="last-name"
+                                                               placeholder="Tên *">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="username" name="username"
+                                                               placeholder="Tên đăng nhập *">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" id="password" name="password"
+                                                               placeholder="Mật khẩu *">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" id="re-password" name="re-password"
+                                                               placeholder="Nhập lại mật khẩu *">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary" >Đăng ký</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>

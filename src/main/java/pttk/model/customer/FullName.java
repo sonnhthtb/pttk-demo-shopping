@@ -12,4 +12,7 @@ public class FullName extends BaseEntity {
     private String firstName;
     private String middleName;
     private String lastName;
+    public boolean isValid() {
+        return firstName != null && middleName != null && lastName != null;
+  }
 }

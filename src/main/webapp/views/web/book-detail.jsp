@@ -49,7 +49,7 @@
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOP</h1>
+									<h1><span>E</span>-SHOPPER</h1>
 									<h2>100% Responsive Design</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -62,7 +62,7 @@
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOP</h1>
+									<h1><span>E</span>-SHOPPER</h1>
 									<h2>Free Ecommerce Template</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -117,7 +117,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="/list-itemElectronic">
+										<a data-toggle="collapse" data-parent="#accordian" href="#electronic">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
 											Electronic
 										</a>
@@ -126,8 +126,8 @@
 								<div id="electronic" class="panel-collapse collapse">
 									<div class="panel-body">
 										<ul>
-											<li><a href="list-itemMobile">Mobile</a></li>
-											<li><a href="list-itemComputer">Computer</a></li>
+											<li><a href="#">Mobile</a></li>
+											<li><a href="#">Computer</a></li>
 										</ul>
 									</div>
 								</div>
@@ -144,8 +144,8 @@
 								<div id="shoes" class="panel-collapse collapse">
 									<div class="panel-body">
 										<ul>
-											<li><a href="/item-shoes?type=men">Men</a></li>
-											<li><a href="/item-shoes?type=women">Women</a></li>
+											<li><a href="#">Men</a></li>
+											<li><a href="#">Women</a></li>
 										</ul>
 									</div>
 								</div>
@@ -167,90 +167,34 @@
 				</div>
 				
 				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">List Books</h2>
-						<c:forEach var="item" items="${listItemBook}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemBook?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}"  alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemBook?id=${item.id}">
-													<p>${item.book.title}</p>
-												</a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
-											</div>
-										</form>
-									</div>
-								</div>
+					<div class="product-details"><!--product-details-->
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="${itemBook.imageUrl}" alt="" />
+								<h3>ZOOM</h3>
 							</div>
-						</c:forEach>
-					</div>
-					<div class="features_items">
-						<h2 class="title text-center">List Shoes</h2>
-						<c:forEach var="item" items="${listItemShoes}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemShoes?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemShoes?id=${item.id}"><p>${item.shoes.name}</p></a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<div class="features_items">
-						<h2 class="title text-center">List Clothes</h2>
-						<c:forEach var="item" items="${listItemClothes}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemBook?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemBook?id=${item.id}"><p>${item.clothes.name}</p></a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
-						<c:forEach var="item" items="${listItemElectronic}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemElectronic?id=${item.id}"><img  width="200" height="300" src="${item.imageUrl} alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemElectronic?id=${item.id}"><p>${item.electronic.description}</p></a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div><!--features_items-->
+						</div>
+						<div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<h2>${itemBook.book.title}</h2>
+								<span>
+									<span>${itemBook.price}</span>
+									<label>Quantity:</label>
+									<input type="text" value="1" name="quantity"/>
+									<button type="button" class="btn btn-fefault cart">
+										<i class="fa fa-shopping-cart"></i>
+										Add to cart
+									</button>
+								</span>
+								<p><b>Type:</b> ${itemBook.book.type}</p>
+								<p><b>Author:</b> ${itemBook.book.author.name}</p>
+								<p><b>NXB:</b> ${itemBook.book.publisher.name}</p>
+								<p><b>Kích thước:</b> ${itemBook.book.size}</p>
+								<p><b>Mô tả:</b> ${itemBook.book.description}</p>
+								<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
+							</div><!--/product-information-->
+						</div>
+					</div><!--/product-details-->
 				</div>
 			</div>
 		</div>

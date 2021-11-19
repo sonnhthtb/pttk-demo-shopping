@@ -4,7 +4,6 @@ import pttk.dao.shoes.ItemShoesDAO;
 import pttk.dao.shoes.impl.ItemShoesDAOImpl;
 import pttk.model.shoes.ItemShoes;
 import pttk.service.ItemShoesService;
-import pttk.util.RowMapper;
 
 import java.util.List;
 
@@ -30,6 +29,16 @@ public class ItemShoesServiceImpl implements ItemShoesService {
     @Override
     public List<ItemShoes> findByName(String name) {
         return itemShoesDAO.findByName(name);
+    }
+
+    @Override
+    public List<ItemShoes> getAllShoesForMan() {
+        return itemShoesDAO.getAllShoesForMan();
+    }
+
+    @Override
+    public List<ItemShoes> getAllShoesForWomen() {
+        return null;
     }
 
     @Override
