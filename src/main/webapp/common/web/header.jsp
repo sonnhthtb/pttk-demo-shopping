@@ -42,6 +42,7 @@
                         <ul class="nav navbar-nav">
                             <c:set var="user" value="${sessionScope.customer}"/>
                             <c:if test="${not empty user}">
+
                                 <li><a href="/order-list"><i class="fa fa-user"></i> My orders </a></li>
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart </a></li>
                                 <li>
@@ -49,6 +50,9 @@
                                         <i class="fa fa-user"></i>${user.fullName.firstName} ${user.fullName.middleName} ${user.fullName.lastName}
                                     </a>
                                 </li>
+                                <c:if test="${user.role eq 'ADMIN'}">
+                                    <li><a class="fa fa-user-secret" href="/admin">Quản trị viên</a></li>
+                                </c:if>
                                 <li>
                                     <a href="/logout">
                                         <i class="fa fa-sign-out"></i> Đăng xuất
