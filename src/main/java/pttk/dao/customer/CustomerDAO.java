@@ -8,4 +8,7 @@ import pttk.model.order.Cart;
 public interface CustomerDAO extends BaseDAO {
     Customer findByAccount(Account account);
     Customer findCustomerByCart(Cart Cart);
+
+    public Boolean create(Customer customer);
+    Boolean update(Customer customer);
 }

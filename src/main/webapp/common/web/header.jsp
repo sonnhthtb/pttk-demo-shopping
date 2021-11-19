@@ -28,6 +28,7 @@
         </div>
     </div><!--/header_top-->
 
+
     <div class="header-middle"><!--header-middle-->
         <div class="container">
             <div class="row">
@@ -61,6 +62,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div><!--/header-middle-->
     <div class="header-bottom"><!--header-bottom-->
