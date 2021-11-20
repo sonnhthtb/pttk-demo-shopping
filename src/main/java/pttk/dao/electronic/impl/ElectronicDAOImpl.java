@@ -16,7 +16,7 @@ public class ElectronicDAOImpl extends BaseDAOImpl<Electronic> implements Electr
     final private MobileDAOImpl mobileDAOImpl = new MobileDAOImpl();
     @Override
     public Electronic findElectronicByItemElectronicId(int electronicId) {
-        String sql = "SELECT * FROM Electronic WHERE ItemShoesId = ?";
+        String sql = "SELECT * FROM Electronic WHERE ItemElectronicId = ?";
         List<Electronic> electronicList = query(sql, new ElectronicMapper(), electronicId);
         Electronic electronic =  electronicList.isEmpty() ? null : electronicList.get(0);
         if (electronic != null) {
@@ -27,5 +27,25 @@ public class ElectronicDAOImpl extends BaseDAOImpl<Electronic> implements Electr
         }
         return null;
 
+    }
+
+    @Override
+    public Electronic getMobileByItemElectronicId(int itemElectronicId) {
+        String sql = "SELECT * FROM Electronic WHERE Electronic.ItemElectronicId = ?";
+        List<Electronic> listElectronic = query(sql, new ElectronicMapper(), itemElectronicId);
+        Electronic electronic = listElectronic.isEmpty() ? null : listElectronic.get(0);
+        if(electronic == null) return null;
+        Mobile mobile = mobileDAOImpl.findMobileByElectronicId(electronic);
+        return  mobile;
+    }
+
+    @Override
+    public Electronic getComputerByItemElectronicId(int itemElectronicId) {
+        String sql = "SELECT * FROM Electronic WHERE Electronic.ItemElectronicId = ?";
+        List<Electronic> listElectronic = query(sql, new ElectronicMapper(), itemElectronicId);
+        Electronic electronic = listElectronic.isEmpty() ? null : listElectronic.get(0);
+        if(electronic == null) return null;
+        Computer computer = computerDAOImpl.findComputerByElectronicId(electronic);
+        return  computer;
     }
 }

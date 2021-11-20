@@ -14,6 +14,7 @@ public class ElectronicMapper implements RowMapper<Electronic> {
         try {
             Electronic electronic = new Electronic();
             electronic.setId(rs.getInt("ID"));
+            electronic.setName(rs.getString("name"));
             electronic.setBrand(rs.getString("Brand"));
             electronic.setDiscount(rs.getFloat("Discount"));
             electronic.setOrigin(rs.getString("Origin"));

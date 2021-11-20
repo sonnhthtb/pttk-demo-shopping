@@ -9,6 +9,7 @@ import pttk.model.BaseEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Electronic extends BaseEntity {
+    private String name;
     private String brand;
     private Float price;
     private Float discount;

@@ -3,29 +3,20 @@ package pttk.dao.electronic.impl;
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.electronic.ElectronicDAO;
 import pttk.dao.electronic.ItemElectronicDAO;
+import pttk.model.electronic.Computer;
 import pttk.model.electronic.ItemElectronic;
+import pttk.model.electronic.Mobile;
+import pttk.model.shoes.ItemShoes;
 import pttk.util.impl.ItemElectronicMapper;
+import pttk.util.impl.ItemShoesMapper;
+import pttk.util.impl.MobileMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemElectronicDAOImpl extends BaseDAOImpl<ItemElectronic> implements ItemElectronicDAO {
 
     private final ElectronicDAO electronicDAO = new ElectronicDAOImpl();
-
-    @Override
-    public void update(String sql, Object... parameters) {
-
-    }
-
-    @Override
-    public Long insert(String sql, Object... parameters) {
-        return null;
-    }
-
-    @Override
-    public int count(String sql, Object... parameters) {
-        return 0;
-    }
 
     @Override
     public List<ItemElectronic> findAll() {
@@ -38,7 +29,7 @@ public class ItemElectronicDAOImpl extends BaseDAOImpl<ItemElectronic> implement
     }
 
     @Override
-    public List<ItemElectronic> findAItemElectronics(int limit, int offset) {
+    public List<ItemElectronic> findAllItemElectronics(int limit, int offset) {
         return null;
     }
 
@@ -50,5 +41,30 @@ public class ItemElectronicDAOImpl extends BaseDAOImpl<ItemElectronic> implement
             itemElectronic.setElectronic(electronicDAO.findElectronicByItemElectronicId(itemElectronic.getId()));
         });
         return itemElectronicList.isEmpty() ? null : itemElectronicList.get(0);
+    }
+
+    @Override
+    public List<ItemElectronic> findAllComputer() {
+        String sql = "SELECT * FROM ItemElectronic";
+        List<ItemElectronic> listItemElectronic =  query(sql, new ItemElectronicMapper());
+        listItemElectronic.stream().forEach(itemElectronic -> {
+            itemElectronic.setElectronic(electronicDAO.getComputerByItemElectronicId(itemElectronic.getId()));
+        });
+        return listItemElectronic;
+    }
+
+    @Override
+    public List<ItemElectronic> findAllMobile() {
+        String sql = "SELECT * FROM ItemElectronic";
+        List<ItemElectronic> listItemElectronic =  query(sql, new ItemElectronicMapper());
+        listItemElectronic = listItemElectronic.stream().filter(itemElectronic -> {
+            if(electronicDAO.getMobileByItemElectronicId(itemElectronic.getId()) !=null ) {
+                itemElectronic.setElectronic(electronicDAO.getMobileByItemElectronicId(itemElectronic.getId()));
+                return true;
+            } else {
+                return false;
+            }
+        }).collect(Collectors.toList());
+        return listItemElectronic;
     }
 }

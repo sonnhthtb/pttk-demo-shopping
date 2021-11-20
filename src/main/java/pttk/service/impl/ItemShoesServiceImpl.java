@@ -38,7 +38,7 @@ public class ItemShoesServiceImpl implements ItemShoesService {
 
     @Override
     public List<ItemShoes> getAllShoesForWomen() {
-        return null;
+        return itemShoesDAO.getAllShoesForWomen();
     }
 
     @Override
