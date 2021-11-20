@@ -42,13 +42,17 @@
                         <ul class="nav navbar-nav">
                             <c:set var="user" value="${sessionScope.customer}"/>
                             <c:if test="${not empty user}">
+
                                 <li><a href="/order-list"><i class="fa fa-user"></i> My orders </a></li>
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart </a></li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/my-account">
                                         <i class="fa fa-user"></i>${user.fullName.firstName} ${user.fullName.middleName} ${user.fullName.lastName}
                                     </a>
                                 </li>
+                                <c:if test="${user.role eq 'ADMIN'}">
+                                    <li><a class="fa fa-user-secret" href="/admin">Quản trị viên</a></li>
+                                </c:if>
                                 <li>
                                     <a href="/logout">
                                         <i class="fa fa-sign-out"></i> Đăng xuất
@@ -67,17 +71,7 @@
     </div><!--/header-middle-->
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
-                <div class="search-field col-sm-5">
-                    <form class="form-inline ml-auto" action="/search-product" method="get">
-                        <ul class="nav navbar-nav">
-                            <li> <input  class="form-control"
-                                        type="search" placeholder="Search for products"
-                                        aria-label="Search" value="${name}" name="name"> </li>
 
-                            <li> <button class="btn btn-outline-success" type="submit"> Search</button></li>
-                        </ul>
-                    </form>
-                </div>
         </div>
     </div><!--/header-bottom-->
 </header>

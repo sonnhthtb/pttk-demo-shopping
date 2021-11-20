@@ -65,7 +65,7 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String serveletPath = request.getServletPath();
-
+        request.setCharacterEncoding("UTF-8");
         try {
             if (serveletPath.equals("/change-password")) {
                 String password = request.getParameter("password");
@@ -76,7 +76,7 @@ public class AccountController extends HttpServlet {
                         && !newPassword.trim().isEmpty() && !password.trim().isEmpty() && !rePassword.trim().isEmpty()) {
                     //validate re-password
                     if (!newPassword.equals(rePassword)) {
-                        response.sendRedirect(request.getContextPath() + "/my-account?message=re-password_incorrect");
+                        response.sendRedirect(request.getContextPath() + "/change-password?message=re-password_incorrect");
                     } else {
                         //check username exits or not
                         HttpSession session = request.getSession();

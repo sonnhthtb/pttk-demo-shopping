@@ -50,7 +50,7 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
 
     @Override
     public List<ItemBook> findByName(String name) {
-        name += '%';
+        name = "%" + name + "%";
         String sql = "SELECT * FROM ItemBook, Book WHERE " +
                 "Book.ItemBookID = ItemBookID " +
                 "AND Book.Title like ?";
