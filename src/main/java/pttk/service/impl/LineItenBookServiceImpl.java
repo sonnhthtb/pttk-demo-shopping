@@ -21,4 +21,9 @@ public class LineItenBookServiceImpl implements LineItemBookService {
         return lineItemBookDAO.findByCartId(cartId);
     }
 
+    @Override
+    public void updateQuantity(int quantity, int id) {
+        lineItemBookDAO.updateQuantity(quantity, id);
+    }
+
 }

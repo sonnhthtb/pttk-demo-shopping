@@ -50,9 +50,9 @@ public class AddToCartController extends HttpServlet {
                     ans = lineItemBookService.create(cart.getId(), itemBookId, quantityB);
                     break;
                 case "clothes" :
-                    int itemClothes = Integer.parseInt((String) request.getParameter("id"));
+                    int itemClothesId = Integer.parseInt((String) request.getParameter("id"));
                     int quantityC = Integer.parseInt((String) request.getParameter("quantity"));
-                    ans = lineItemClothesService.create(cart.getId(), itemClothes, quantityC);
+                    ans = lineItemClothesService.create(cart.getId(), itemClothesId, quantityC);
                     break;
                 case "shoes" :
                     int itemShoesId = Integer.parseInt((String) request.getParameter("id"));

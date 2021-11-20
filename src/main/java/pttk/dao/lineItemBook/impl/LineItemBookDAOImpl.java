@@ -25,4 +25,10 @@ public class LineItemBookDAOImpl extends BaseDAOImpl<LineItemBook> implements Li
         return list;
     }
 
+    @Override
+    public void updateQuantity(int quantity, int id) {
+        String sql = "update LineItemBook set quantityB = ? where id = ?";
+        update(sql,quantity, id);
+    }
+
 }

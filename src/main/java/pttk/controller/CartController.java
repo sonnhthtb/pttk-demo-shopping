@@ -2,14 +2,12 @@ package pttk.controller;
 
 import pttk.model.book.ItemBook;
 import pttk.model.book.LineItemBook;
+import pttk.model.clothes.ItemClothes;
+import pttk.model.clothes.LineItemClothes;
 import pttk.model.customer.Customer;
 import pttk.model.order.Cart;
-import pttk.service.CartService;
-import pttk.service.ItemBookService;
-import pttk.service.LineItemBookService;
-import pttk.service.impl.CartServiceimpl;
-import pttk.service.impl.ItemBookServiceImpl;
-import pttk.service.impl.LineItenBookServiceImpl;
+import pttk.service.*;
+import pttk.service.impl.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +25,8 @@ public class CartController extends HttpServlet {
     private final CartService cartService = new CartServiceimpl();
     private final LineItemBookService lineItemBookService = new LineItenBookServiceImpl();
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
+    private final LineItemClothesService lineItemClothesService = new LineItemClothesServiceImpl();
+    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +47,13 @@ public class CartController extends HttpServlet {
         }
         System.out.println(listLineBook.size());
         request.setAttribute("listLineBook", listLineBook);
+        List<LineItemClothes> listLineClothes = lineItemClothesService.findByCartId(cart.getId());
 
+        for ( LineItemClothes lineClothes : listLineClothes ) {
+            ItemClothes itemClothes = itemClothesService.findById(lineClothes.getItemClothes().getId());
+            lineClothes.setItemClothes(itemClothes);
+        }
+        request.setAttribute("listLineClothes", listLineClothes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/cart.jsp");
         dispatcher.forward(request, response);
     }
