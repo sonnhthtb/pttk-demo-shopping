@@ -13,8 +13,6 @@ import java.util.List;
 
 public class CardDAOImpl extends BaseDAOImpl implements CartDAO {
 
-
-
     private List<LineItemBook> getListLineItemBookByCartID(int cartId){
         String sql = "SELECT * FROM lineitembook, cart " +
                 "where cart.ID = lineitembook.CartID " +
@@ -49,8 +47,15 @@ public class CardDAOImpl extends BaseDAOImpl implements CartDAO {
 
     @Override
     public Cart getCartByCustomerId(int customerId) {
-        String sql = "SELECT * FROM cart WHERE CustomerId = ?";
-        List<Cart> cartList = query(sql, new CartMapper(), customerId);
+        String sql = "SELECT * FROM cart WHERE CustomerId = ? and CartStatus = ?";
+        List<Cart> cartList = query(sql, new CartMapper(), customerId, "active");
         return cartList.isEmpty() ? null : cartList.get(0);
+    }
+
+    @Override
+    public Long create(int customerId) {
+        String sql = "insert into cart(customerId, cartStatus, totalPrice) value (?,?,?)";
+        Long ans = insert(sql, customerId,"active",0);
+        return ans;
     }
 }
