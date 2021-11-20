@@ -20,12 +20,6 @@ public class ElectronicMapper implements RowMapper<Electronic> {
             electronic.setOrigin(rs.getString("Origin"));
             electronic.setPrice(rs.getFloat("Price"));
             electronic.setDescription(rs.getString("Description"));
-            Computer computer = new Computer();
-            computer.setId(rs.getInt("Id"));
-            Mobile mobile = new Mobile();
-            mobile.setId(rs.getInt("Id"));
-            electronic.setComputer(computer);
-            electronic.setMobile(mobile);
             return electronic;
         } catch (Exception e) {
             e.printStackTrace();

@@ -15,6 +15,4 @@ public class Electronic extends BaseEntity {
     private Float discount;
     private String origin;
     private String description;
-    private Computer computer;
-    private Mobile mobile;
 }

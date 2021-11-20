@@ -22,8 +22,25 @@ public class ElectronicDAOImpl extends BaseDAOImpl<Electronic> implements Electr
         if (electronic != null) {
             Computer computer = computerDAOImpl.findComputerByElectronicId(electronic);
             Mobile mobile = mobileDAOImpl.findMobileByElectronicId(electronic);
-            if(computer!=null) return computer;
-            if(mobile!=null) return mobile;
+            if(computer!=null) {
+                computer.setName(electronic.getName());
+                computer.setBrand(electronic.getBrand());
+                computer.setPrice(electronic.getPrice());
+                computer.setDescription(electronic.getDescription());
+                computer.setDiscount(electronic.getDiscount());
+                computer.setOrigin(electronic.getOrigin());
+                return computer;
+            }
+            if(mobile!=null){
+                mobile.setName(electronic.getName());
+                mobile.setBrand(electronic.getBrand());
+                mobile.setPrice(electronic.getPrice());
+                mobile.setDescription(electronic.getDescription());
+                mobile.setDiscount(electronic.getDiscount());
+                mobile.setOrigin(electronic.getOrigin());
+                return mobile;
+            }
+
         }
         return null;
 
@@ -36,7 +53,16 @@ public class ElectronicDAOImpl extends BaseDAOImpl<Electronic> implements Electr
         Electronic electronic = listElectronic.isEmpty() ? null : listElectronic.get(0);
         if(electronic == null) return null;
         Mobile mobile = mobileDAOImpl.findMobileByElectronicId(electronic);
-        return  mobile;
+        if(mobile != null) {
+            mobile.setName(electronic.getName());
+            mobile.setBrand(electronic.getBrand());
+            mobile.setPrice(electronic.getPrice());
+            mobile.setDescription(electronic.getDescription());
+            mobile.setDiscount(electronic.getDiscount());
+            mobile.setOrigin(electronic.getOrigin());
+            return mobile;
+        }
+        return null;
     }
 
     @Override
@@ -46,6 +72,15 @@ public class ElectronicDAOImpl extends BaseDAOImpl<Electronic> implements Electr
         Electronic electronic = listElectronic.isEmpty() ? null : listElectronic.get(0);
         if(electronic == null) return null;
         Computer computer = computerDAOImpl.findComputerByElectronicId(electronic);
-        return  computer;
+        if(computer!=null) {
+            computer.setName(electronic.getName());
+            computer.setBrand(electronic.getBrand());
+            computer.setPrice(electronic.getPrice());
+            computer.setDescription(electronic.getDescription());
+            computer.setDiscount(electronic.getDiscount());
+            computer.setOrigin(electronic.getOrigin());
+            return computer;
+        }
+        return null;
     }
 }

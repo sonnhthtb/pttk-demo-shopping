@@ -22,8 +22,26 @@ public class ShoesDAOImpl extends BaseDAOImpl<Shoes> implements ShoesDAO {
         if(shoes == null) return null;
         ShoesForMan shoesForMan = shoesForManImpl.getShoesForManByShoesID(shoes);
         ShoesForWomen shoesForWomen = shoesForWomenImpl.getShoesForWomenByShoesID(shoes);
-        if (shoesForMan != null) return  shoesForMan;
-        if (shoesForWomen != null) return shoesForWomen;
+        if (shoesForMan != null){
+            shoesForMan.setName(shoes.getName());
+            shoesForMan.setBrand(shoes.getBrand());
+            shoesForMan.setPrice(shoes.getPrice());
+            shoesForMan.setDescription(shoes.getDescription());
+            shoesForMan.setOrigin(shoes.getOrigin());
+            shoesForMan.setColor(shoes.getColor());
+            shoesForMan.setType(shoes.getType());
+            return  shoesForMan;
+        }
+        if (shoesForWomen != null){
+            shoesForWomen.setName(shoes.getName());
+            shoesForWomen.setBrand(shoes.getBrand());
+            shoesForWomen.setPrice(shoes.getPrice());
+            shoesForWomen.setDescription(shoes.getDescription());
+            shoesForWomen.setOrigin(shoes.getOrigin());
+            shoesForWomen.setColor(shoes.getColor());
+            shoesForWomen.setType(shoes.getType());
+            return shoesForWomen;
+        }
         return null;
     }
 
@@ -34,7 +52,17 @@ public class ShoesDAOImpl extends BaseDAOImpl<Shoes> implements ShoesDAO {
         Shoes shoes = listShoes.isEmpty() ? null : listShoes.get(0);
         if(shoes == null) return null;
         ShoesForMan shoesForMan = shoesForManImpl.getShoesForManByShoesID(shoes);
-        return  shoesForMan;
+        if (shoesForMan != null) {
+            shoesForMan.setName(shoes.getName());
+            shoesForMan.setBrand(shoes.getBrand());
+            shoesForMan.setPrice(shoes.getPrice());
+            shoesForMan.setDescription(shoes.getDescription());
+            shoesForMan.setOrigin(shoes.getOrigin());
+            shoesForMan.setColor(shoes.getColor());
+            shoesForMan.setType(shoes.getType());
+            return  shoesForMan;
+        }
+        return  null;
     }
 
     @Override
@@ -44,6 +72,16 @@ public class ShoesDAOImpl extends BaseDAOImpl<Shoes> implements ShoesDAO {
         Shoes shoes = listShoes.isEmpty() ? null : listShoes.get(0);
         if(shoes == null) return null;
         ShoesForWomen shoesForWomen = shoesForWomenImpl.getShoesForWomenByShoesID(shoes);
-        return  shoesForWomen;
+        if(shoesForWomen!=null){
+            shoesForWomen.setName(shoes.getName());
+            shoesForWomen.setBrand(shoes.getBrand());
+            shoesForWomen.setPrice(shoes.getPrice());
+            shoesForWomen.setDescription(shoes.getDescription());
+            shoesForWomen.setOrigin(shoes.getOrigin());
+            shoesForWomen.setColor(shoes.getColor());
+            shoesForWomen.setType(shoes.getType());
+            return shoesForWomen;
+        }
+        return  null;
     }
 }

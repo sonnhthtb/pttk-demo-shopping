@@ -47,9 +47,15 @@ public class ItemElectronicDAOImpl extends BaseDAOImpl<ItemElectronic> implement
     public List<ItemElectronic> findAllComputer() {
         String sql = "SELECT * FROM ItemElectronic";
         List<ItemElectronic> listItemElectronic =  query(sql, new ItemElectronicMapper());
-        listItemElectronic.stream().forEach(itemElectronic -> {
-            itemElectronic.setElectronic(electronicDAO.getComputerByItemElectronicId(itemElectronic.getId()));
-        });
+        listItemElectronic = listItemElectronic.stream().filter(itemElectronic -> {
+            if(electronicDAO.getComputerByItemElectronicId(itemElectronic.getId())!=null){
+                itemElectronic.setElectronic(electronicDAO.getComputerByItemElectronicId(itemElectronic.getId()));
+                return true;
+            }
+            else{
+                return false;
+            }
+        }).collect(Collectors.toList());
         return listItemElectronic;
     }
 
