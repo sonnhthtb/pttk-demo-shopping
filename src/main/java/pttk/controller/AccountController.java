@@ -19,7 +19,6 @@ public class AccountController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String serveletPath = request.getServletPath();
 
         if (serveletPath.equals("/change-password")) {
