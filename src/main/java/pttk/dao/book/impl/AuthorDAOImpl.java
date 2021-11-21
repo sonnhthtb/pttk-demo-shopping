@@ -25,4 +25,11 @@ public class AuthorDAOImpl extends BaseDAOImpl<Author> implements AuthorDAO {
         return getAuthorById(Math.toIntExact(id));
     }
 
+    @Override
+    public Author update(Author author) {
+        String sql = "UPDATE Author SET Name = ?, Biography = ?, Nation = ? WHERE ID = ?";
+        update(sql, author.getName(), author.getBiography(), author.getNation(), author.getId());
+        return author;
+    }
+
 }

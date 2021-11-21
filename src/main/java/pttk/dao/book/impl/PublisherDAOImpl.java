@@ -22,4 +22,11 @@ public class PublisherDAOImpl extends BaseDAOImpl<Publisher> implements Publishe
         return getPublisherById(Math.toIntExact(id));
     }
 
+    @Override
+    public Publisher update(Publisher publisher) {
+        String sql = "UPDATE Author SET Name = ?, Address = ? WHERE ID = ?";
+        update(sql, publisher.getName(), publisher.getAddress(), publisher.getId());
+        return publisher;
+    }
+
 }

@@ -5,6 +5,7 @@ import pttk.dao.book.AuthorDAO;
 import pttk.dao.book.BookDAO;
 import pttk.dao.book.ItemBookDAO;
 import pttk.dao.book.PublisherDAO;
+import pttk.model.book.Book;
 import pttk.model.book.ItemBook;
 import pttk.util.impl.ItemBookMapper;
 
@@ -75,7 +76,15 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
 
     @Override
     public ItemBook update(ItemBook itemBook) {
-        return null;
+        String sql = "UPDATE ItemBook SET  Price = ?, ImageUrl = ? WHERE ID = ?";
+        update(sql, itemBook.getPrice(), itemBook.getImageUrl(), itemBook.getId());
+        ItemBook newItemBook = findById(itemBook.getId());
+        Book book = bookDAO.getBookByItemBookId(itemBook.getId());
+        Integer bookId = book.getId();
+        book = itemBook.getBook();
+        book.setId(bookId);
+        newItemBook.setBook(bookDAO.update(book));
+        return newItemBook;
     }
 
 }

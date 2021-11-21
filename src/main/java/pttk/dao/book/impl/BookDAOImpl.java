@@ -40,4 +40,13 @@ public class BookDAOImpl extends BaseDAOImpl<Book> implements BookDAO {
         return newBook;
     }
 
+    @Override
+    public Book update(Book book) {
+        String sql = "UPDATE Book SET Title = ?, Type = ?, Quantity = ?, Size = ?, Description = ? WHERE ID = ?";
+        update(sql, book.getTitle(), book.getType(), book.getQuantity(), book.getSize(), book.getDescription());
+        authorDAO.update(book.getAuthor());
+        publisherDAO.update(book.getPublisher());
+        return book;
+    }
+
 }
