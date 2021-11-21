@@ -9,4 +9,5 @@ public interface LineItemClothesService {
     Long create(int cartId, int itemBookId, int quantityB);
     List<LineItemClothes> findByCartId(int cartId);
     void updateQuantity(int quantity, int id);
+    void deleteLineItemClothes(int id);
 }

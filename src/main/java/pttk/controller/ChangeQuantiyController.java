@@ -34,8 +34,10 @@ public class ChangeQuantiyController extends HttpServlet {
                 switch (type) {
                     case "book" :
                         lineItemBookService.updateQuantity(quantity, id);
+                        break;
                     case "clothes" :
                         lineItemClothesService.updateQuantity(quantity,id);
+                        break;
                 }
             }
             //decrease quantity of item in cart
@@ -44,15 +46,21 @@ public class ChangeQuantiyController extends HttpServlet {
                 switch (type) {
                     case "book" :
                         lineItemBookService.updateQuantity(quantity, id);
+                        break;
                     case "clothes" :
                         lineItemClothesService.updateQuantity(quantity,id);
+                        break;
                 }
             }
             // delete item from cart
             else if (action.equals("del")) {
                 switch (type) {
                     case "book" :
+                        lineItemBookService.deleteLineItemBook(id);
+                        break;
                     case "clothes" :
+                        lineItemClothesService.deleteLineItemClothes(id);
+                        break;
                 }
             }
             response.sendRedirect("/cart");

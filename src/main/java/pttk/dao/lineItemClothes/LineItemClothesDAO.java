@@ -10,4 +10,6 @@ public interface LineItemClothesDAO extends BaseDAO<LineItemClothes> {
     Long create(int cartId, int itemClothesId, int quantityC);
     List<LineItemClothes> findByCartId(int cartId);
     void updateQuantity(int quantity, int id);
+    void deleteLineItemClothes(int id);
+
 }

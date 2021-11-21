@@ -68,7 +68,7 @@
 							<p class="cart_total_price"> ${item.itemBook.price*item.quantity}</p>
 						</td>
 						<td class="cart_delete">
-							<a class="cart_quantity_delete" href="/change-quantity?action=del&id=${item.id}&type=book"><i class="fa fa-times"></i></a>
+							<a class="cart_quantity_delete" href="/change-quantity?action=del&id=${item.id}&type=book&quantity=${item.quantity}"><i class="fa fa-times"></i></a>
 						</td>
 					</tr>
 					</c:forEach>
@@ -96,7 +96,7 @@
 								<p class="cart_total_price"> ${item.itemClothes.price*item.quantity}</p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="/change-quantity?action=del&id=${item.id}&type=clothes&quantity=${item.quantity}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 					</c:forEach>
