@@ -198,6 +198,7 @@
 												</a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
+												<input type="hidden" value="book" name="type">
 												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
 											</div>
 										</form>
@@ -219,6 +220,7 @@
 												<a href="/detailItemShoes?id=${item.id}"><p>${item.shoes.name}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
+												<input type="hidden" value="shoes" name="type">
 												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
 											</div>
 										</form>
@@ -240,6 +242,7 @@
 												<a href="/detailItemBook?id=${item.id}"><p>${item.clothes.name}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
+												<input type="hidden" value="clothes" name="type">
 												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
 											</div>
 										</form>

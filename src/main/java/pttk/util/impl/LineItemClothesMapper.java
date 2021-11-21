@@ -13,7 +13,7 @@ public class LineItemClothesMapper implements RowMapper<LineItemClothes> {
         try{
             LineItemClothes lineItemClothes = new LineItemClothes();
             ItemClothes itemClothes = new ItemClothes();
-            lineItemClothes.setQuantity(rs.getInt("Quantity"));
+            lineItemClothes.setQuantity(rs.getInt("QuantityC"));
             itemClothes.setId(rs.getInt("ItemClothesID"));
             lineItemClothes.setItemClothes(itemClothes);
             return lineItemClothes;
