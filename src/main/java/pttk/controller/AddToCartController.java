@@ -1,15 +1,12 @@
 package pttk.controller;
 
+import pttk.model.book.ItemBook;
+import pttk.model.clothes.ItemClothes;
 import pttk.model.order.Cart;
 import pttk.model.customer.Customer;
-import pttk.service.CartService;
-import pttk.service.LineItemBookService;
-import pttk.service.LineItemClothesService;
-import pttk.service.LineItemShoesService;
-import pttk.service.impl.CartServiceimpl;
-import pttk.service.impl.LineItemClothesServiceImpl;
-import pttk.service.impl.LineItemShoesServiceImpl;
-import pttk.service.impl.LineItenBookServiceImpl;
+import pttk.model.shoes.ItemShoes;
+import pttk.service.*;
+import pttk.service.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +20,10 @@ import java.io.IOException;
 public class AddToCartController extends HttpServlet {
 
     private final CartService cartService = new CartServiceimpl();
+    private final ItemBookService itemBookService = new ItemBookServiceImpl();
+    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
+    private final ItemElectronicService itemElectronicService = new ItemElectronicServiceImpl();
+    private final ItemShoesService itemShoesService = new ItemShoesServiceImpl();
     private final LineItemBookService lineItemBookService = new LineItenBookServiceImpl();
     private final LineItemShoesService lineItemShoesService = new LineItemShoesServiceImpl();
     private final LineItemClothesService lineItemClothesService = new LineItemClothesServiceImpl();
@@ -48,19 +49,25 @@ public class AddToCartController extends HttpServlet {
                     int itemBookId = Integer.parseInt((String) request.getParameter("id"));
                     int quantityB = Integer.parseInt((String) request.getParameter("quantity"));
                     ans = lineItemBookService.create(cart.getId(), itemBookId, quantityB);
+                    ItemBook itemBook = itemBookService.findById(itemBookId);
+                    cart.setTotalPrice(cart.getTotalPrice() + itemBook.getPrice()*quantityB );
                     break;
                 case "clothes" :
                     int itemClothesId = Integer.parseInt((String) request.getParameter("id"));
                     int quantityC = Integer.parseInt((String) request.getParameter("quantity"));
                     ans = lineItemClothesService.create(cart.getId(), itemClothesId, quantityC);
+                    ItemClothes itemClothes = itemClothesService.findById(itemClothesId);
+                    cart.setTotalPrice(cart.getTotalPrice() + itemClothes.getPrice()*quantityC );
                     break;
                 case "shoes" :
                     int itemShoesId = Integer.parseInt((String) request.getParameter("id"));
                     int quantityS = Integer.parseInt((String) request.getParameter("quantity"));
                     ans = lineItemShoesService.create(cart.getId(), itemShoesId, quantityS);
+                    ItemShoes itemShoes = itemShoesService.findShoesById(itemShoesId);
+                    cart.setTotalPrice(cart.getTotalPrice() + itemShoes.getPrice()*quantityS );
                     break;
             }
-
+            cartService.update(cart);
             response.sendRedirect("/cart");
         } catch (Exception e) {
             e.printStackTrace();

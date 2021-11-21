@@ -1,4 +1,4 @@
-package pttk.dao.lineItemShoes;
+package pttk.dao.shoes;
 
 import pttk.dao.BaseDAO;
 import pttk.model.shoes.LineItemShoes;

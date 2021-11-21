@@ -52,6 +52,7 @@ public class CartController extends HttpServlet {
             lineClothes.setItemClothes(itemClothes);
         }
         request.setAttribute("listLineClothes", listLineClothes);
+        request.setAttribute("cart", cart);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/cart.jsp");
         dispatcher.forward(request, response);
     }

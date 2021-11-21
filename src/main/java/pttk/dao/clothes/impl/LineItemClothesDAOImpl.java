@@ -1,7 +1,7 @@
-package pttk.dao.lineItemClothes.impl;
+package pttk.dao.clothes.impl;
 
 import pttk.dao.BaseDAOImpl;
-import pttk.dao.lineItemClothes.LineItemClothesDAO;
+import pttk.dao.clothes.LineItemClothesDAO;
 import pttk.model.clothes.LineItemClothes;
 import pttk.util.impl.LineItemClothesMapper;
 

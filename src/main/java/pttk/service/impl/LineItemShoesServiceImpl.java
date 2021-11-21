@@ -1,7 +1,7 @@
 package pttk.service.impl;
 
-import pttk.dao.lineItemShoes.LineItemShoesDAO;
-import pttk.dao.lineItemShoes.impl.LineItemShoesDAOImpl;
+import pttk.dao.shoes.LineItemShoesDAO;
+import pttk.dao.shoes.impl.LineItemShoesDAOImpl;
 import pttk.service.LineItemShoesService;
 
 public class LineItemShoesServiceImpl implements LineItemShoesService {

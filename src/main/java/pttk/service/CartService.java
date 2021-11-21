@@ -9,4 +9,5 @@ public interface CartService {
     Boolean addBookToCart(ItemBook itemBook);
     Boolean addClothesToCart(ItemBook itemBook);
     Long create(int customerId);
+    Cart update(Cart cart);
 }

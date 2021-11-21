@@ -1,8 +1,7 @@
-package pttk.dao.lineItemBook.impl;
+package pttk.dao.book.impl;
 
 import pttk.dao.BaseDAOImpl;
-import pttk.dao.lineItemBook.LineItemBookDAO;
-import pttk.model.book.ItemBook;
+import pttk.dao.book.LineItemBookDAO;
 import pttk.model.book.LineItemBook;
 import pttk.util.impl.LineItemBookMapper;
 

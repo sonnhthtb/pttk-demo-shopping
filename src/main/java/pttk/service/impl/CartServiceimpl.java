@@ -33,4 +33,9 @@ public class CartServiceimpl implements CartService {
     public Long create(int customerId) {
         return cartDAO.create(customerId);
     }
+
+    @Override
+    public Cart update(Cart cart) {
+        return cartDAO.update(cart);
+    }
 }

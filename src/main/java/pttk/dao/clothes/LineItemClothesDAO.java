@@ -1,4 +1,4 @@
-package pttk.dao.lineItemClothes;
+package pttk.dao.clothes;
 
 import pttk.dao.BaseDAO;
 import pttk.dao.BaseDAOImpl;

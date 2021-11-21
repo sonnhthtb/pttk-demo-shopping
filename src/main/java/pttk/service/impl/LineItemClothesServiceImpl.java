@@ -1,10 +1,8 @@
 package pttk.service.impl;
 
-import pttk.dao.lineItemClothes.LineItemClothesDAO;
-import pttk.dao.lineItemClothes.impl.LineItemClothesDAOImpl;
-import pttk.model.book.LineItemBook;
+import pttk.dao.clothes.LineItemClothesDAO;
+import pttk.dao.clothes.impl.LineItemClothesDAOImpl;
 import pttk.model.clothes.LineItemClothes;
-import pttk.service.LineItemBookService;
 import pttk.service.LineItemClothesService;
 
 import java.util.List;

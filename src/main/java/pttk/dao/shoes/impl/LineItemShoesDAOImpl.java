@@ -1,8 +1,7 @@
-package pttk.dao.lineItemShoes.impl;
+package pttk.dao.shoes.impl;
 
-import pttk.dao.BaseDAO;
 import pttk.dao.BaseDAOImpl;
-import pttk.dao.lineItemShoes.LineItemShoesDAO;
+import pttk.dao.shoes.LineItemShoesDAO;
 import pttk.model.shoes.LineItemShoes;
 
 public class LineItemShoesDAOImpl extends BaseDAOImpl<LineItemShoes> implements LineItemShoesDAO {
