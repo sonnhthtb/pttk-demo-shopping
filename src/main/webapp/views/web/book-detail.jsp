@@ -175,13 +175,16 @@
 							</div>
 						</div>
 						<div class="col-sm-7">
+							<form action="/addToCart" method="post">
 							<div class="product-information"><!--/product-information-->
 								<h2>${itemBook.book.title}</h2>
 								<span>
 									<span>${itemBook.price}</span>
 									<label>Quantity:</label>
 									<input type="text" value="1" name="quantity"/>
-									<button type="button" class="btn btn-fefault cart">
+									<input type="hidden" value="book" name="type"/>
+									<input type="hidden" value="${itemBook.id}" name="id" />
+									<button type="submit" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
@@ -192,6 +195,7 @@
 								<p><b>Kích thước:</b> ${itemBook.book.size}</p>
 								<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
+							</form>
 						</div>
 						<div class="col-sm-12">
 							<p><b></b> ${itemBook.book.description}</p>

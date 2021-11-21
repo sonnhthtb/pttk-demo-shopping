@@ -43,9 +43,7 @@ public class CartController extends HttpServlet {
         for ( LineItemBook lineBook : listLineBook ) {
             ItemBook itemBook = itemBookService.findById(lineBook.getItemBook().getId());
             lineBook.setItemBook(itemBook);
-            System.out.println(lineBook.getItemBook().toString());
         }
-        System.out.println(listLineBook.size());
         request.setAttribute("listLineBook", listLineBook);
         List<LineItemClothes> listLineClothes = lineItemClothesService.findByCartId(cart.getId());
 
