@@ -31,4 +31,10 @@ public class LineItemBookDAOImpl extends BaseDAOImpl<LineItemBook> implements Li
         update(sql,quantity, id);
     }
 
+    @Override
+    public void deleteLineItemBook(int id) {
+        String sql = "delete from lineItemBook where id = ?";
+        update(sql,id);
+    }
+
 }
