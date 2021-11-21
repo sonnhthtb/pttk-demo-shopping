@@ -33,7 +33,7 @@
     <!-- header -->
 
     <div class="main-content">
-        <form action="<c:url value='/'/>" id="formSubmit" method="post">
+        <form action="<c:url value='/admin-delete-book'/>" id="formSubmit" method="post">
             <div class="main-content-inner">
                 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                     <ul class="breadcrumb">

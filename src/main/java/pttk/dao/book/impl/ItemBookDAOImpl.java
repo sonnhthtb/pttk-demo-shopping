@@ -87,4 +87,12 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
         return newItemBook;
     }
 
+    @Override
+    public void delete(Integer id) {
+        Book book = bookDAO.getBookByItemBookId(id);
+        bookDAO.delete(book.getId());
+        String sql = "DELETE FROM ItemBook WHERE id = ?";
+        update(sql, id);
+    }
+
 }

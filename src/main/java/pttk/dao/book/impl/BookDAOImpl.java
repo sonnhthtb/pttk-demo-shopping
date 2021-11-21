@@ -49,4 +49,10 @@ public class BookDAOImpl extends BaseDAOImpl<Book> implements BookDAO {
         return book;
     }
 
+    @Override
+    public void delete(Integer id) {
+        String sql = "DELETE FROM Book WHERE id = ?";
+        update(sql, id);
+    }
+
 }

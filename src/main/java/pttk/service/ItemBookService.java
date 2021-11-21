@@ -12,4 +12,5 @@ public interface ItemBookService {
     int getTotalItem();
     ItemBook save(ItemBook itemBook);
     ItemBook update(ItemBook itemBook);
+    void delete(String[] ids);
 }

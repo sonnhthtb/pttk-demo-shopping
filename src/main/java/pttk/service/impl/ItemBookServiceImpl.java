@@ -17,9 +17,6 @@ import java.util.List;
 public class ItemBookServiceImpl implements ItemBookService {
 
     private final ItemBookDAO itemBookDAO = new ItemBookDAOImpl();
-    private final BookDAO bookDAO = new BookDAOImpl();
-    private final AuthorDAO authorDAO = new AuthorDAOImpl();
-    private final PublisherDAO publisherDAO = new PublisherDAOImpl();
 
     @Override
     public ItemBook findById(int itemBookId) {
@@ -54,5 +51,12 @@ public class ItemBookServiceImpl implements ItemBookService {
     @Override
     public ItemBook update(ItemBook itemBook) {
         return itemBookDAO.update(itemBook);
+    }
+
+    @Override
+    public void delete(String[] ids) {
+        for (String id: ids) {
+            itemBookDAO.delete(Integer.parseInt(id));
+        }
     }
 }
