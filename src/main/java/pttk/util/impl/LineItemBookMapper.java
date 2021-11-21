@@ -17,6 +17,7 @@ public class LineItemBookMapper implements RowMapper<LineItemBook> {
             lineItemBook.setQuantity(rs.getInt("QuantityB"));
             itemBook.setId(rs.getInt("ItemBookID"));
             lineItemBook.setItemBook(itemBook);
+            lineItemBook.setId(rs.getInt("id"));
             return lineItemBook;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

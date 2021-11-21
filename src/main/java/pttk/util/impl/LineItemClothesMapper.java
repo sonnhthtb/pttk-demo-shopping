@@ -16,6 +16,7 @@ public class LineItemClothesMapper implements RowMapper<LineItemClothes> {
             lineItemClothes.setQuantity(rs.getInt("QuantityC"));
             itemClothes.setId(rs.getInt("ItemClothesID"));
             lineItemClothes.setItemClothes(itemClothes);
+            lineItemClothes.setId(rs.getInt("id"));
             return lineItemClothes;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

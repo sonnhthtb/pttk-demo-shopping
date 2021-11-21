@@ -28,4 +28,10 @@ public class LineItemClothesDAOImpl extends BaseDAOImpl<LineItemClothes> impleme
         String sql = "update LineItemClothes set quantityC = ? where id = ?";
         update(sql,quantity, id);
     }
+
+    @Override
+    public void deleteLineItemClothes(int id) {
+        String sql = "delete from lineItemClothes where id = ?";
+        update(sql, id);
+    }
 }

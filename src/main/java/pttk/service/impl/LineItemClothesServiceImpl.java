@@ -27,4 +27,9 @@ public class LineItemClothesServiceImpl implements LineItemClothesService {
     public void updateQuantity(int quantity, int id) {
         lineItemClothesDAO.updateQuantity(quantity,id);
     }
+
+    @Override
+    public void deleteLineItemClothes(int id) {
+        lineItemClothesDAO.deleteLineItemClothes(id);
+    }
 }

@@ -26,4 +26,9 @@ public class LineItenBookServiceImpl implements LineItemBookService {
         lineItemBookDAO.updateQuantity(quantity, id);
     }
 
+    @Override
+    public void deleteLineItemBook(int id) {
+        lineItemBookDAO.deleteLineItemBook(id);
+    }
+
 }
