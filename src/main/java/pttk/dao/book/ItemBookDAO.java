@@ -11,4 +11,7 @@ public interface ItemBookDAO extends BaseDAO<ItemBook> {
     public int getTotalItem();
     ItemBook findById(int id);
     List<ItemBook> findByName(String name);
+    ItemBook save(ItemBook itemBook);
+    ItemBook update(ItemBook itemBook);
+    void delete(Integer id);
 }

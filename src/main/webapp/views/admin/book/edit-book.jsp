@@ -52,37 +52,12 @@
                                         ${messageResponse}
                                 </div>
                             </c:if>
-                            <form id="formSubmit" action="/admin-product" method="post">
+                            <form id="formSubmit" action="/admin-book" method="post">
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Tên sách:</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" id="category" name="category">
-                                            <c:if test="${empty product.category}">
-                                                <option value="">Chọn loại sản phẩm</option>
-                                                <c:forEach var="item" items="${categories}">
-                                                    <option value="${item.id}">${item.name}</option>
-                                                </c:forEach>
-                                            </c:if>
-                                            <c:if test="${not empty product.category}">
-                                                <option value="">Chọn loại sản phẩm</option>
-                                                <c:forEach var="item" items="${categories}">
-                                                    <option value="${item.id}"
-                                                    <c:if test="${item.id == product.category.id}">
-                                                        selected="selected"
-                                                    </c:if> > ${item.name}
-                                                    </option>
-                                                </c:forEach>
-                                            </c:if>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br />
-                                <br />
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Tên sản phẩm</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               value="${product.name}" />
+                                        <input type="text" class="form-control" id="title" name="title"
+                                               value="${itemBook.book.title}" />
                                     </div>
                                 </div>
                                 <br />
@@ -90,8 +65,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right">Link hình ảnh</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="image" name="image"
-                                               value="${product.image}" />
+                                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                                               value="${itemBook.imageUrl}" />
                                     </div>
                                 </div>
                                 <br />
@@ -100,7 +75,79 @@
                                     <label class="col-sm-3 control-label no-padding-right">Giá</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="price"
-                                               name="price" value="${product.price}" />
+                                               name="price" value="${itemBook.price}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="type"
+                                               name="type" value="${itemBook.book.type}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Số lượng</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="quantity"
+                                               name="quantity" value="${itemBook.book.quantity}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Kích thước</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="size"
+                                               name="size" value="${itemBook.book.size}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Nhà xuất bản</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="publisherName"
+                                               name="publisherName" value="${itemBook.book.publisher.name}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Địa chỉ NXB:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="publisherAddress"
+                                               name="publisherAddress" value="${itemBook.book.publisher.address}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Tác giả</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="authorName"
+                                               name="authorName" value="${itemBook.book.author.name}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Biography tác giả</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="authorBiography"
+                                               name="authorBiography" value="${itemBook.book.author.biography}" />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Quốc tịch tác giả</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="authorNation"
+                                               name="authorNation" value="${itemBook.book.author.nation}" />
                                     </div>
                                 </div>
                                 <br />
@@ -109,24 +156,24 @@
                                     <label class="col-sm-3 control-label no-padding-right">Mô tả sản phẩm</label>
                                     <div class="col-sm-9">
                                                 <textarea rows="" cols="" id="description" name="description"
-                                                          style="width: 820px;height: 175px">${product.description}</textarea>
+                                                          style="width: 820px;height: 175px">${itemBook.book.description}</textarea>
                                     </div>
                                 </div>
                                 <br />
                                 <br />
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <c:if test="${not empty product.id}">
+                                        <c:if test="${not empty itemBook.id}">
                                             <button type="submit" class="btn btn-white btn-warning btn-bold"
                                                    id="btnAddOrUpdateNew"> Cập nhật sản phẩm </button>
                                         </c:if>
-                                        <c:if test="${empty product.id}">
+                                        <c:if test="${empty itemBook.id}">
                                             <button type="submit" class="btn btn-white btn-warning btn-bold"
                                                     id="btnAddOrUpdateNew"> Thêm sản phẩm </button>
                                         </c:if>
                                     </div>
                                 </div>
-                                <input type="hidden" value="${product.id}" id="id" name="id" />
+                                <input type="hidden" value="${itemBook.id}" id="id" name="id" />
                             </form>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import pttk.model.shoes.ItemShoes;
 import pttk.util.impl.ItemShoesMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemShoesDAOImpl extends BaseDAOImpl<ItemShoes> implements ItemShoesDAO {
     private final ShoesDAO shoesDAO = new ShoesDAOImpl();
@@ -36,9 +37,14 @@ public class ItemShoesDAOImpl extends BaseDAOImpl<ItemShoes> implements ItemShoe
     public List<ItemShoes> getAllShoesForMan() {
         String sql = "SELECT * FROM ItemShoes";
         List<ItemShoes> listItemShoes =  query(sql, new ItemShoesMapper());
-        listItemShoes.stream().forEach(itemShoes -> {
-            itemShoes.setShoes(shoesDAO.getShoesForManByItemShoesId(itemShoes.getId()));
-        });
+        listItemShoes = listItemShoes.stream().filter(itemShoes -> {
+            if(shoesDAO.getShoesForManByItemShoesId(itemShoes.getId())!=null) {
+                itemShoes.setShoes(shoesDAO.getShoesForManByItemShoesId(itemShoes.getId()));
+                return true;
+            }else{
+                return false;
+            }
+        }).collect(Collectors.toList());
         return listItemShoes;
     }
 
@@ -46,9 +52,14 @@ public class ItemShoesDAOImpl extends BaseDAOImpl<ItemShoes> implements ItemShoe
     public List<ItemShoes> getAllShoesForWomen() {
         String sql = "SELECT * FROM ItemShoes";
         List<ItemShoes> listItemShoes =  query(sql, new ItemShoesMapper());
-        listItemShoes.stream().forEach(itemShoes -> {
-            itemShoes.setShoes(shoesDAO.getShoesForWomenByItemShoesId(itemShoes.getId()));
-        });
+        listItemShoes.stream().filter(itemShoes -> {
+            if(shoesDAO.getShoesForWomenByItemShoesId(itemShoes.getId())!=null) {
+                itemShoes.setShoes(shoesDAO.getShoesForWomenByItemShoesId(itemShoes.getId()));
+                return true;
+            }else{
+                return false;
+            }
+        }).collect(Collectors.toList());
         return listItemShoes;
     }
 

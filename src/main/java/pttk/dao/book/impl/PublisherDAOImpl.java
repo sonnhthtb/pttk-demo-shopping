@@ -15,4 +15,18 @@ public class PublisherDAOImpl extends BaseDAOImpl<Publisher> implements Publishe
         return publisherList.isEmpty() ? null : publisherList.get(0);
     }
 
+    @Override
+    public Publisher save(Publisher publisher) {
+        String sql = "INSERT INTO Publisher( Name, Address) VALUE( ?, ?)";
+        Long id = insert(sql, publisher.getName(), publisher.getAddress());
+        return getPublisherById(Math.toIntExact(id));
+    }
+
+    @Override
+    public Publisher update(Publisher publisher) {
+        String sql = "UPDATE Author SET Name = ?, Address = ? WHERE ID = ?";
+        update(sql, publisher.getName(), publisher.getAddress(), publisher.getId());
+        return publisher;
+    }
+
 }

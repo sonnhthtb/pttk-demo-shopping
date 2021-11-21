@@ -93,6 +93,22 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
+						<h2>Tìm kiếm</h2>
+
+						<div class="search-field">
+							<form class="form-inline ml-auto" action="/search-product" method="get">
+								<ul class="nav navbar-nav">
+									<li> <input  class="form-control"
+												 type="search" placeholder="Search for products"
+												 aria-label="Search" value="${name}" name="name"> </li>
+
+									<li> <button class="btn btn-outline-success" type="submit"> Search</button></li>
+								</ul>
+							</form>
+						</div>
+						<br/>
+						<br/>
+						<br/>
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
@@ -126,8 +142,8 @@
 								<div id="electronic" class="panel-collapse collapse">
 									<div class="panel-body">
 										<ul>
-											<li><a href="#">Mobile</a></li>
-											<li><a href="#">Computer</a></li>
+											<li><a href="/list-itemElectronic?type=mobile">Mobile</a></li>
+											<li><a href="/list-itemElectronic?type=computer">Computer</a></li>
 										</ul>
 									</div>
 								</div>
@@ -182,6 +198,7 @@
 												</a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
+												<input type="hidden" value="book" name="type">
 												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
 											</div>
 										</form>
@@ -203,6 +220,7 @@
 												<a href="/detailItemShoes?id=${item.id}"><p>${item.shoes.name}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
+												<input type="hidden" value="shoes" name="type">
 												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
 											</div>
 										</form>
@@ -224,6 +242,7 @@
 												<a href="/detailItemBook?id=${item.id}"><p>${item.clothes.name}</p></a>
 												<input type="hidden" value="${item.id}" name="id">
 												<input type="hidden" value="1" name="quantity">
+												<input type="hidden" value="clothes" name="type">
 												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
 											</div>
 										</form>
@@ -232,6 +251,29 @@
 							</div>
 						</c:forEach>
 					</div><!--features_items-->
+
+					<div class="features_items">
+						<h2 class="title text-center">List Electronic</h2>
+						<c:forEach var="item" items="${listItemElectronic}">
+							<div class="col-sm-4">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<form action="/addToCart" method="post">
+											<div class="product-info text-center">
+												<a href="/detailItemElectronic?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
+												<h2>${item.price}</h2>
+												<a href="/detailItemElectronic?id=${item.id}"><p>${item.electronic.name}</p></a>
+												<input type="hidden" value="${item.id}" name="id">
+												<input type="hidden" value="1" name="quantity">
+												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div><!--features_items-->
+
 				</div>
 			</div>
 		</div>

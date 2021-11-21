@@ -93,6 +93,22 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="left-sidebar">
+          <h2>Tìm kiếm</h2>
+
+          <div class="search-field">
+            <form class="form-inline ml-auto" action="/search-product" method="get">
+              <ul class="nav navbar-nav">
+                <li> <input  class="form-control"
+                             type="search" placeholder="Search for products"
+                             aria-label="Search" value="${name}" name="name"> </li>
+
+                <li> <button class="btn btn-outline-success" type="submit"> Search</button></li>
+              </ul>
+            </form>
+          </div>
+          <br/>
+          <br/>
+          <br/>
           <h2>Category</h2>
           <div class="panel-group category-products" id="accordian"><!--category-productsr-->
             <div class="panel panel-default">

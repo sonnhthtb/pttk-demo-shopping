@@ -32,6 +32,11 @@ public class ItemClothesServiceImpl implements ItemClothesService {
     }
 
     @Override
+    public ItemClothes findById(int id) {
+        return itemClothesDAO.findById(id);
+    }
+
+    @Override
     public int getTotalItem() {
         return itemClothesDAO.getTotalItem();
     }

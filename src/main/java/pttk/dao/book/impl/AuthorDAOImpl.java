@@ -18,10 +18,18 @@ public class AuthorDAOImpl extends BaseDAOImpl<Author> implements AuthorDAO {
         return authorList.isEmpty() ? null : authorList.get(0);
     }
 
-    private Publisher getPublisherById(int publisherId) {
-        String sql = "SELECT * FROM Publisher WHERE ID = ?";
-        List<Publisher> publisherList =  query(sql, new PublisherMapper(), publisherId);
-        return publisherList.isEmpty() ? null : publisherList.get(0);
+    @Override
+    public Author save(Author author) {
+        String sql = "INSERT INTO Author( Name, Biography, Nation) VALUE( ?, ?, ?)";
+        Long id = insert(sql, author.getName(), author.getBiography(), author.getNation());
+        return getAuthorById(Math.toIntExact(id));
+    }
+
+    @Override
+    public Author update(Author author) {
+        String sql = "UPDATE Author SET Name = ?, Biography = ?, Nation = ? WHERE ID = ?";
+        update(sql, author.getName(), author.getBiography(), author.getNation(), author.getId());
+        return author;
     }
 
 }

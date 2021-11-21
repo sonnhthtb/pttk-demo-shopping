@@ -4,5 +4,7 @@ import pttk.dao.BaseDAO;
 import pttk.model.electronic.Electronic;
 
 public interface ElectronicDAO extends BaseDAO<Electronic> {
-    Electronic findElectronicById(int ElectronicId);
+    Electronic findElectronicByItemElectronicId(int ItemElectronicId);
+    Electronic getMobileByItemElectronicId(int itemElectronicId);
+    Electronic getComputerByItemElectronicId(int itemElectronicId);
 }

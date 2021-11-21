@@ -5,4 +5,5 @@ import pttk.model.order.Cart;
 
 public interface CartDAO extends BaseDAO {
     Cart getCartByCustomerId(int customerId);
+    Long create(int customerId);
 }

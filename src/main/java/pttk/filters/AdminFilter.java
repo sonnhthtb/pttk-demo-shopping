@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/admin", "/admin-home.jsp", "/admin-product","/list-product.jsp"})
+@WebFilter(urlPatterns = {"/admin", "/admin-home.jsp", "/admin-product","/list-product.jsp", "/admin-delete-book"})
 public class AdminFilter implements Filter{
 
     private ServletContext context;
