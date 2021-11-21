@@ -4,7 +4,9 @@ import pttk.dao.BaseDAOImpl;
 import pttk.dao.book.AuthorDAO;
 import pttk.dao.book.BookDAO;
 import pttk.dao.book.PublisherDAO;
+import pttk.model.book.Author;
 import pttk.model.book.Book;
+import pttk.model.book.Publisher;
 import pttk.util.impl.BookMapper;
 
 import java.util.List;
@@ -24,6 +26,18 @@ public class BookDAOImpl extends BaseDAOImpl<Book> implements BookDAO {
             book.setPublisher(publisherDAO.getPublisherById(book.getPublisher().getId()));
         }
         return book;
+    }
+
+    @Override
+    public Book save(Book book, Integer itemBookId) {
+        Author author = authorDAO.save(book.getAuthor());
+        Publisher publisher = publisherDAO.save(book.getPublisher());
+        String sql = "INSERT INTO Book(AuthorID, PublisherID, ItemBookID, Title, Type, Quantity, Size, Description) VALUE(?, ?, ?, ?, ?, ?, ?, ?)";
+        Long id = insert(sql, author.getId(), publisher.getId(), itemBookId, book.getTitle(), book.getType(), book.getQuantity(), book.getSize(), book.getDescription());
+        Book newBook = getBookByItemBookId(itemBookId);
+        newBook.setAuthor(author);
+        newBook.setPublisher(publisher);
+        return newBook;
     }
 
 }

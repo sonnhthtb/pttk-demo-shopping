@@ -1,6 +1,9 @@
 package pttk.controller;
 
+import pttk.model.book.Author;
+import pttk.model.book.Book;
 import pttk.model.book.ItemBook;
+import pttk.model.book.Publisher;
 import pttk.service.ItemBookService;
 import pttk.service.impl.ItemBookServiceImpl;
 
@@ -52,7 +55,7 @@ public class AdminBookController extends HttpServlet {
                     ItemBook itemBook = itemBookService.findById(Integer.parseInt(id));
                     request.setAttribute("itemBook", itemBook);
                 }
-                view = "views/admin/product/edit-product.jsp";
+                view = "views/admin/book/edit-book.jsp";
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher(view);
             dispatcher.forward(request, response);
@@ -64,7 +67,71 @@ public class AdminBookController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        request.setCharacterEncoding("UTF-8");
+        String view = "views/admin/book/edit-book.jsp";
+        try {
+            String id = request.getParameter("id");
+            String title = request.getParameter("title");
+            String imageUrl = request.getParameter("imageUrl");
+            String price = request.getParameter("price");
+            String type = request.getParameter("type");
+            String quantity = request.getParameter("quantity");
+            String size = request.getParameter("size");
+            String publisherName = request.getParameter("publisherName");
+            String publisherAddress = request.getParameter("publisherAddress");
+            String authorName = request.getParameter("authorName");
+            String authorBiography = request.getParameter("authorBiography");
+            String authorNation = request.getParameter("authorNation");
+            String description = request.getParameter("description");
+            // validate input
+            if (title.isEmpty() || imageUrl.isEmpty() || price.isEmpty() ||
+                    type.isEmpty() || quantity.isEmpty() || size.isEmpty() || publisherName.isEmpty() ||
+                    authorName.isEmpty() || description.isEmpty() ) {
+                request.setAttribute("messageResponse", "Bạn cần nhập đầy đủ thông tin");
+                request.setAttribute("alert", "danger");
+            } else {
+                ItemBook itemBook = new ItemBook();
+                itemBook.setImageUrl(imageUrl);
+                itemBook.setPrice(Float.parseFloat(price));
+                Book book = new Book();
+                book.setTitle(title);
+                book.setType(type);
+                book.setQuantity(Integer.parseInt(quantity));
+                book.setSize(size);
+                Publisher publisher = new Publisher();
+                publisher.setName(publisherName);
+                publisher.setAddress(publisherAddress);
+                book.setPublisher(publisher);
+                Author author = new Author();
+                author.setName(authorName);
+                author.setBiography(authorBiography);
+                author.setNation(authorNation);
+                book.setAuthor(author);
+                book.setDescription(description);
+                itemBook.setBook(book);
+                // update product if find id
+                if (!id.isEmpty() && id != null) {
+                    itemBook.setId(Integer.parseInt(id));
+                    itemBook = itemBookService.update(itemBook);
+                    request.setAttribute("messageResponse", "Cập nhật sản phẩm thành công");
+                    request.setAttribute("alert", "success");
+                }
+                //create product if not find id
+                else {
+                    itemBook = itemBookService.save(itemBook);
+                    request.setAttribute("messageResponse", "Thêm sản phẩm thành công");
+                    request.setAttribute("alert", "success");
+                    request.setAttribute("id", itemBook.getId());
+                }
+                request.setAttribute("itemBook", itemBook);
+            }
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+            dispatcher.forward(request, response);
+        }catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("/error");
+        }
     }
 
 }

@@ -5,4 +5,5 @@ import pttk.model.book.Publisher;
 
 public interface PublisherDAO extends BaseDAO<Publisher> {
     Publisher getPublisherById(int publisherId);
+    Publisher save(Publisher publisher);
 }

@@ -1,8 +1,10 @@
 package pttk.dao.book.impl;
 
 import pttk.dao.BaseDAOImpl;
+import pttk.dao.book.AuthorDAO;
 import pttk.dao.book.BookDAO;
 import pttk.dao.book.ItemBookDAO;
+import pttk.dao.book.PublisherDAO;
 import pttk.model.book.ItemBook;
 import pttk.util.impl.ItemBookMapper;
 
@@ -60,6 +62,20 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
             itemBook.setBook(bookDAO.getBookByItemBookId(itemBook.getId()));
         });
         return itemBookList;
+    }
+
+    @Override
+    public ItemBook save(ItemBook itemBook) {
+        String sql = "INSERT INTO Itembook( Price, ImageUrl) VALUE( ?, ?)";
+        Long id = insert(sql, itemBook.getPrice(), itemBook.getImageUrl());
+        ItemBook newItemBook = findById(Math.toIntExact(id));
+        newItemBook.setBook(bookDAO.save(itemBook.getBook(), newItemBook.getId()));
+        return newItemBook;
+    }
+
+    @Override
+    public ItemBook update(ItemBook itemBook) {
+        return null;
     }
 
 }

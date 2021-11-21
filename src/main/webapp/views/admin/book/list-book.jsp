@@ -60,7 +60,7 @@
                                         <div class="dt-buttons btn-overlap btn-group">
                                             <a flag="info"
                                                class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
-                                               title='Thêm sản phẩm' href='<c:url value="/admin-product?type=edit"/>'>
+                                               title='Thêm sản phẩm' href='<c:url value="/admin-book?type=edit"/>'>
                                                 <span>
                                                     <i class="fa fa-plus-circle bigger-110 purple"></i>
                                                 </span>
@@ -81,7 +81,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Bạn có chắc chắc muốn xoá sản phẩm này ra khỏi giỏ hàng?
+                                                            Bạn có chắc chắc muốn xoá sản phẩm?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
