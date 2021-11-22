@@ -40,4 +40,21 @@ public class ItemClothesServiceImpl implements ItemClothesService {
     public int getTotalItem() {
         return itemClothesDAO.getTotalItem();
     }
+
+    @Override
+    public ItemClothes update(ItemClothes itemClothes) {
+         return itemClothesDAO.update(itemClothes);
+    }
+
+    @Override
+    public ItemClothes save(ItemClothes itemClothes) {
+        return itemClothesDAO.save(itemClothes);
+    }
+
+    @Override
+    public void delete(String[] ids) {
+        for(String id : ids){
+            itemClothesDAO.delete(Integer.parseInt(id));
+        }
+    }
 }

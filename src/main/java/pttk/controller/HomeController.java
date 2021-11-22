@@ -24,12 +24,12 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet {
-
+    
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
     private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
     private final ItemShoesService itemShoesService = new ItemShoesServiceImpl();
     private final ItemElectronicService itemElectronicService = new ItemElectronicServiceImpl();
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -41,7 +41,7 @@ public class HomeController extends HttpServlet {
             request.setAttribute("listItemShoes", listItemShoes);
             List<ItemElectronic> listItemElectronic = itemElectronicService.findAll();
             request.setAttribute("listItemElectronic", listItemElectronic);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/home.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/web/home.jsp");
             dispatcher.forward(request, response);
         }catch (Exception e) {
             e.printStackTrace();
