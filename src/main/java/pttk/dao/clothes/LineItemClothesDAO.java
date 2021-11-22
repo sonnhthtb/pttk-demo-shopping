@@ -11,5 +11,5 @@ public interface LineItemClothesDAO extends BaseDAO<LineItemClothes> {
     List<LineItemClothes> findByCartId(int cartId);
     void updateQuantity(int quantity, int id);
     void deleteLineItemClothes(int id);
-
+    LineItemClothes findById(int id);
 }

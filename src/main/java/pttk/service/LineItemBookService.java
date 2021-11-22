@@ -10,4 +10,5 @@ public interface LineItemBookService {
     List<LineItemBook> findByCartId(int cartId);
     void updateQuantity(int quantity, int id);
     void deleteLineItemBook(int id);
+    LineItemBook findById(int id);
 }

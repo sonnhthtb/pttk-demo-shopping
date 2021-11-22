@@ -2,7 +2,9 @@ package pttk.dao.clothes.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.clothes.LineItemClothesDAO;
+import pttk.model.book.LineItemBook;
 import pttk.model.clothes.LineItemClothes;
+import pttk.util.impl.LineItemBookMapper;
 import pttk.util.impl.LineItemClothesMapper;
 
 import java.util.List;
@@ -33,5 +35,13 @@ public class LineItemClothesDAOImpl extends BaseDAOImpl<LineItemClothes> impleme
     public void deleteLineItemClothes(int id) {
         String sql = "delete from lineItemClothes where id = ?";
         update(sql, id);
+    }
+
+    @Override
+    public LineItemClothes findById(int id) {
+
+        String sql = "SELECT * FROM lineItemClothes WHERE id = ?";
+        List<LineItemClothes> lineItemClothesList =  query(sql, new LineItemClothesMapper(), id);
+        return lineItemClothesList.isEmpty() ? null : lineItemClothesList.get(0);
     }
 }

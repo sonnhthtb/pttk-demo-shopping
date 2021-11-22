@@ -2,7 +2,9 @@ package pttk.dao.book.impl;
 
 import pttk.dao.BaseDAOImpl;
 import pttk.dao.book.LineItemBookDAO;
+import pttk.model.book.ItemBook;
 import pttk.model.book.LineItemBook;
+import pttk.util.impl.ItemBookMapper;
 import pttk.util.impl.LineItemBookMapper;
 
 import java.util.List;
@@ -34,6 +36,13 @@ public class LineItemBookDAOImpl extends BaseDAOImpl<LineItemBook> implements Li
     public void deleteLineItemBook(int id) {
         String sql = "delete from lineItemBook where id = ?";
         update(sql,id);
+    }
+
+    @Override
+    public LineItemBook findById(int id) {
+        String sql = "SELECT * FROM lineItemBook WHERE id = ?";
+        List<LineItemBook> lineItemBookList =  query(sql, new LineItemBookMapper(), id);
+        return lineItemBookList.isEmpty() ? null : lineItemBookList.get(0);
     }
 
 }

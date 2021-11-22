@@ -30,4 +30,10 @@ public class LineItemClothesServiceImpl implements LineItemClothesService {
     public void deleteLineItemClothes(int id) {
         lineItemClothesDAO.deleteLineItemClothes(id);
     }
+
+    @Override
+    public LineItemClothes findById(int id) {
+
+        return lineItemClothesDAO.findById(id);
+    }
 }

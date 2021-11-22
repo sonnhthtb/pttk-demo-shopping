@@ -30,4 +30,10 @@ public class LineItenBookServiceImpl implements LineItemBookService {
         lineItemBookDAO.deleteLineItemBook(id);
     }
 
+    @Override
+    public LineItemBook findById(int id) {
+
+        return lineItemBookDAO.findById(id);
+    }
+
 }
