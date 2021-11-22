@@ -15,4 +15,5 @@ public class Customer extends BaseEntity {
     private FullName fullName;
     private String role;
     private Cart cart;
+    
 }

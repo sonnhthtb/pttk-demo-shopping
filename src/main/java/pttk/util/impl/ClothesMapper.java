@@ -8,12 +8,14 @@ import pttk.util.RowMapper;
 import java.sql.ResultSet;
 
 public class ClothesMapper implements RowMapper<Clothes> {
+
     @Override
     public Clothes mapRow(ResultSet rs) {
         try {
             Clothes clothes = new Clothes();
             clothes.setId(rs.getInt("ID"));
             clothes.setName(rs.getString("Name"));
+            clothes.setBarcode(rs.getString("Barcode"));
             clothes.setType(rs.getString("Type"));
             clothes.setPrice(rs.getFloat("Price"));
             clothes.setYearOfManufacture(rs.getInt("YearOfManufacture"));

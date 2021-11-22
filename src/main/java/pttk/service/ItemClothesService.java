@@ -11,4 +11,10 @@ public interface ItemClothesService {
     List<ItemClothes> findByName(String name);
     ItemClothes findById(int id);
     int getTotalItem();
+
+    public ItemClothes update(ItemClothes itemClothes);
+
+    public ItemClothes save(ItemClothes itemClothes);
+
+    public void delete(String[] ids);
 }

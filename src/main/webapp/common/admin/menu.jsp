@@ -65,7 +65,7 @@
                     <b class="arrow"></b>
                 </li>
                 <li>
-                    <a href='<c:url value="/admin-clothes"/>'>
+                    <a href="/admin-clothes?type=list">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Quản lý quần áo
                     </a>

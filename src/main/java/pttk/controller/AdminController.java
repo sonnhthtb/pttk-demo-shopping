@@ -14,7 +14,6 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/admin-home.jsp");
         dispatcher.forward(request, response);
     }
