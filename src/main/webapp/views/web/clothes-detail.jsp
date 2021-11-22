@@ -49,7 +49,7 @@
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOP</h1>
+									<h1><span>E</span>-SHOPPER</h1>
 									<h2>100% Responsive Design</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -62,7 +62,7 @@
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOP</h1>
+									<h1><span>E</span>-SHOPPER</h1>
 									<h2>Free Ecommerce Template</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -93,28 +93,12 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Tìm kiếm</h2>
-
-						<div class="search-field">
-							<form class="form-inline ml-auto" action="/search-product" method="get">
-								<ul class="nav navbar-nav">
-									<li> <input  class="form-control"
-												 type="search" placeholder="Search for products"
-												 aria-label="Search" value="${name}" name="name"> </li>
-
-									<li> <button class="btn btn-outline-success" type="submit"> Search</button></li>
-								</ul>
-							</form>
-						</div>
-						<br/>
-						<br/>
-						<br/>
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="/list-itemBook">
+										<a data-toggle="collapse" data-parent="#accordian">
 											Book
 										</a>
 									</h4>
@@ -123,7 +107,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="/list-itemClothes">
+										<a data-toggle="collapse" data-parent="#accordian">
 											Clothes
 										</a>
 									</h4>
@@ -183,97 +167,39 @@
 				</div>
 				
 				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">List Books</h2>
-						<c:forEach var="item" items="${listItemBook}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemBook?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}"  alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemBook?id=${item.id}">
-													<p>${item.book.title}</p>
-												</a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="hidden" value="book" name="type">
-												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
-											</div>
-										</form>
-									</div>
-								</div>
+					<div class="product-details"><!--product-details-->
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="${itemClothes.imageUrl}" alt="" />
+								<h3>ZOOM</h3>
 							</div>
-						</c:forEach>
-					</div>
-					<div class="features_items">
-						<h2 class="title text-center">List Shoes</h2>
-						<c:forEach var="item" items="${listItemShoes}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemShoes?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemShoes?id=${item.id}"><p>${item.shoes.name}</p></a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="hidden" value="shoes" name="type">
-												<input type="submit" class="btn btn-cart add-to-cart" value=" Add to cart" >
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<div class="features_items">
-						<h2 class="title text-center">List Clothes</h2>
-						<c:forEach var="item" items="${listItemClothes}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemClothes?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemClothes?id=${item.id}"><p>${item.clothes.name}</p></a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="hidden" value="clothes" name="type">
-												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div><!--features_items-->
-
-					<div class="features_items">
-						<h2 class="title text-center">List Electronic</h2>
-						<c:forEach var="item" items="${listItemElectronic}">
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<form action="/addToCart" method="post">
-											<div class="product-info text-center">
-												<a href="/detailItemElectronic?id=${item.id}"><img  width="250" height="300" src="${item.imageUrl}" alt=""/></a>
-												<h2>${item.price}</h2>
-												<a href="/detailItemElectronic?id=${item.id}"><p>${item.electronic.name}</p></a>
-												<input type="hidden" value="${item.id}" name="id">
-												<input type="hidden" value="1" name="quantity">
-												<input type="submit" class="btn btn-default add-to-cart" value="Add to cart">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div><!--features_items-->
-
+						</div>
+						<div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<h2>${itemClothes.clothes.name}</h2>
+								<span>
+									<span>${itemClothes.price}</span>
+									<label>Quantity:</label>
+									<input type="text" value="1" name="quantity"/>
+									<button type="button" class="btn btn-fefault cart">
+										<i class="fa fa-shopping-cart"></i>
+										Add to cart
+									</button>
+								</span>
+								<p><b>Type:</b> ${itemClothes.clothes.type}</p>
+								<p><b>Size:</b> ${itemClothes.clothes.size}</p>
+								<p><b>Color:</b> ${itemClothes.clothes.color}</p>
+								<p><b>Material:</b> ${itemClothes.clothes.material}</p>
+								<p><b>Year Of Manufacture:</b> ${itemClothes.clothes.yearOfManufacture}</p>
+								<p><b>Trademark:</b> ${itemClothes.clothes.trademark.name}</p>
+								<p><b>Origin:</b> ${itemClothes.clothes.origin.nation}</p>
+								<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
+							</div><!--/product-information-->
+						</div>
+						<div class="col-sm-12">
+							<p><b></b> ${itemClothes.clothes.description}</p>
+						</div>
+					</div><!--/product-details-->
 				</div>
 			</div>
 		</div>

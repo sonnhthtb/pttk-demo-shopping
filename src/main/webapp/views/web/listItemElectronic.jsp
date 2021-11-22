@@ -98,7 +98,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="/list-itemBook">
                                         Book
                                     </a>
                                 </h4>
@@ -107,7 +107,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="/list-itemClothes">
                                         Clothes
                                     </a>
                                 </h4>
