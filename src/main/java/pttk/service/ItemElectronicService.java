@@ -13,4 +13,6 @@ public interface ItemElectronicService {
     List<ItemElectronic> findAllItemElectronic(int limit, int offset);
     List<ItemElectronic> findAllComputer();
     List<ItemElectronic> findAllMobile();
+    Mobile findMobile(int itemElectronicId);
+    Computer findComputer(int itemElectronicId);
 }

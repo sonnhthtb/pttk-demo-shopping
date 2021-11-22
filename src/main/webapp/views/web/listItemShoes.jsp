@@ -114,7 +114,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordian">
+                  <a data-toggle="collapse" data-parent="#accordian" href="/list-itemBook">
                     Book
                   </a>
                 </h4>
@@ -123,7 +123,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordian">
+                  <a data-toggle="collapse" data-parent="#accordian" href="/list-itemClothes">
                     Clothes
                   </a>
                 </h4>
@@ -142,8 +142,8 @@
               <div id="electronic" class="panel-collapse collapse">
                 <div class="panel-body">
                   <ul>
-                    <li><a href="#">Mobile</a></li>
-                    <li><a href="#">Computer</a></li>
+                    <li><a href="/list-itemElectronic?type=mobile">Mobile</a></li>
+                    <li><a href="/list-itemElectronic?type=computer">Computer</a></li>
                   </ul>
                 </div>
               </div>

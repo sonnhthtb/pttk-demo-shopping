@@ -23,7 +23,7 @@ public class ItemClothesController extends HttpServlet {
                try {
                    ItemClothes itemClothes = itemClothesService.findClothesById(Integer.parseInt(id));
                    request.setAttribute("itemClothes", itemClothes);
-                   RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/clothesDetail.jsp");
+                   RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/clothes-detail.jsp");
                    dispatcher.forward(request, response);
                } catch (Exception e) {
                    e.printStackTrace();
