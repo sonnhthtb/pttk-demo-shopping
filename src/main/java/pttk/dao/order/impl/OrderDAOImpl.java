@@ -35,6 +35,19 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
     }
 
     @Override
+    public List<Order> findAllByCustomerId(int customerId) {
+        String sql = "SELECT * FROM `Order` WHERE CustomerID = ?";
+        List<Order> orderList = query(sql, new OrderMapper(), customerId);
+        orderList.forEach(order -> {
+            order.setCustomer(customerDAO.findById(order.getCustomer().getId()));
+            order.setCart(cartDAO.findById(order.getCart().getId()));
+            order.setPayment(paymentDAO.findByOrderId(order.getId()));
+            order.setShipment(shipmentDAO.findByOrderId(order.getId()));
+        });
+        return orderList;
+    }
+
+    @Override
     public Order findById(int id) {
         return null;
     }

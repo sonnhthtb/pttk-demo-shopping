@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface OrderDAO extends BaseDAO {
     List<Order> findAll();
+    List<Order> findAllByCustomerId(int customerId);
     Order findById(int id);
     void save(Order order);
     Order update(Order order);

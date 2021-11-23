@@ -35,7 +35,9 @@ public class OrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String view = "views/web/list-order.jsp";
-        List<Order> orderList = orderDAO.findAll();
+        HttpSession session = request.getSession();
+        Customer customer = (Customer) session.getAttribute("customer");
+        List<Order> orderList = orderDAO.findAllByCustomerId(customer.getId());
         if (orderList.isEmpty()) {
             request.setAttribute("message", "Bạn chưa có đơn hàng nào cả");
         }
@@ -52,7 +54,7 @@ public class OrderController extends HttpServlet {
             Order order = new Order();
             HttpSession session = request.getSession();
             Customer customer = (Customer) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId());
+            Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             cart.setCartStatus("not active");
             order.setCart(cart);
             order.setCustomer(customer);

@@ -39,11 +39,11 @@ public class CheckoutController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             HttpSession session = request.getSession();
             Customer customer = (Customer) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId());
+            Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             if (cart == null) {
                cartService.create(customer.getId());
             }
-            cart = cartService.getCartByCustomerId(customer.getId());
+            cart = cartService.getCartByCustomerId(customer.getId(), "active");
             List<LineItemBook> listLineBook = lineItemBookService.findByCartId(cart.getId());
 
             for (LineItemBook lineBook : listLineBook) {
