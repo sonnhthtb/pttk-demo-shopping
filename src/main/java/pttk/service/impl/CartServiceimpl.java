@@ -15,8 +15,8 @@ public class CartServiceimpl implements CartService {
     }
 
     @Override
-    public Cart getCartByCustomerId(int customerId) {
-        return cartDAO.getCartByCustomerId(customerId);
+    public Cart getCartByCustomerId(int customerId, String status) {
+        return cartDAO.getCartByCustomerId(customerId, status);
     }
 
     @Override

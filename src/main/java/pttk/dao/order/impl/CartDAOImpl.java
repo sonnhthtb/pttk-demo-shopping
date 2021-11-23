@@ -24,9 +24,9 @@ public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
     private final LineItemShoesDAO lineItemShoesDAO = new LineItemShoesDAOImpl();
 
     @Override
-    public Cart getCartByCustomerId(int customerId) {
+    public Cart getCartByCustomerId(int customerId, String status) {
         String sql = "SELECT * FROM cart WHERE CustomerId = ? and CartStatus = ?";
-        List<Cart> cartList = query(sql, new CartMapper(), customerId, "active");
+        List<Cart> cartList = query(sql, new CartMapper(), customerId, status);
         if (!cartList.isEmpty()) {
             return findById(cartList.get(0).getId());
         }

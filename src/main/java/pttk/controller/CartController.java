@@ -38,11 +38,11 @@ public class CartController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             Customer customer = (Customer) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId());
+            Cart cart = cartService.getCartByCustomerId(customer.getId(),"active");
             if (cart == null) {
                 Long ans = cartService.create(customer.getId());
             }
-            cart = cartService.getCartByCustomerId(customer.getId());
+            cart = cartService.getCartByCustomerId(customer.getId(),"active");
             List<LineItemBook> listLineBook = lineItemBookService.findByCartId(cart.getId());
 
             for (LineItemBook lineBook : listLineBook) {
