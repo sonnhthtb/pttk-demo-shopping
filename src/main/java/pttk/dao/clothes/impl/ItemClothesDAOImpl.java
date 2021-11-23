@@ -97,6 +97,7 @@ public class ItemClothesDAOImpl extends BaseDAOImpl<ItemClothes> implements Item
         clothes = itemClothes.getClothes();
         clothes.setId(clothesID);
         newItemClothes.setClothes(clothes);
+        clothesDAO.update(clothes);
         return newItemClothes;
     }
 

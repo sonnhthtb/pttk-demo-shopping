@@ -47,8 +47,8 @@ public class ClothesDAOImpl extends BaseDAOImpl<Clothes> implements ClothesDAO{
 
     @Override
     public Clothes update(Clothes clothes) {
-        String sql = "UPDATE clothes SET Barcode = ?, Name = ?, Type = ?, Price = ?, YearOfManufacture = ?,Size = ?,Color = ?,Description = ?,Material = ?,  WHERE ID = ?";
-        update(sql, clothes.getBarcode(),clothes.getName(),clothes.getType(),clothes.getPrice(),clothes.getYearOfManufacture(),clothes.getSize(),clothes.getSize(),clothes.getColor(),clothes.getDescription(),clothes.getMaterial(),clothes.getId());
+        String sql = "UPDATE clothes SET Barcode = ?, Name = ?, Type = ?, Price = ?, YearOfManufacture = ?,Size = ?,Color = ?,Description = ?,Material = ?  WHERE ID = ?";
+        update(sql, clothes.getBarcode(),clothes.getName(),clothes.getType(),clothes.getPrice(),clothes.getYearOfManufacture(),clothes.getSize(),clothes.getColor(),clothes.getDescription(),clothes.getMaterial(),clothes.getId());
         originDAO.update(clothes.getOrigin());
         tradeMarkDAO.update(clothes.getTrademark());
         return clothes;
