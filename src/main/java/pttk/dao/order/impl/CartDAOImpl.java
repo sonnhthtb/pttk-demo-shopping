@@ -27,7 +27,10 @@ public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
     public Cart getCartByCustomerId(int customerId) {
         String sql = "SELECT * FROM cart WHERE CustomerId = ? and CartStatus = ?";
         List<Cart> cartList = query(sql, new CartMapper(), customerId, "active");
-        return findById(cartList.get(0).getId());
+        if (!cartList.isEmpty()) {
+            return findById(cartList.get(0).getId());
+        }
+        return null;
     }
 
     @Override
