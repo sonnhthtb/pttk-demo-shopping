@@ -49,7 +49,9 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
 
     @Override
     public Order findById(int id) {
-        return null;
+        String sql = "Select * from order where id = ?";
+        List<Order> orderList = query(sql, new OrderMapper(), id);
+        return orderList.isEmpty() ? null : orderList.get(0);
     }
 
     @Override
@@ -62,7 +64,8 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
     }
 
     @Override
-    public Order update(Order order) {
-        return null;
+    public void update( String status,int id) {
+        String sql = "update order set status = ? where id = ?";
+        update(sql, status, id);
     }
 }

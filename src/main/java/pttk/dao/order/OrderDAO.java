@@ -10,5 +10,5 @@ public interface OrderDAO extends BaseDAO {
     List<Order> findAllByCustomerId(int customerId);
     Order findById(int id);
     void save(Order order);
-    Order update(Order order);
+    void update(String status, int id);
 }

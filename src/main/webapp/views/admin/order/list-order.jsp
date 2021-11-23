@@ -73,44 +73,44 @@
                                             <form action="<c:url value='/admin-order'/>" id="formSubmit" method="post">
                                                 <tr>
                                                     <td> ${item.id} </td>
-                                                    <td> ${item.user.username}</td>
-                                                    <td>
-                                                        <ul>
-                                                        <c:forEach var="orderItem" items="${item.orderItems}">
-                                                            <li>${orderItem.product.name}</li>
-                                                        </c:forEach>
-                                                        </ul>
-                                                    </td>
+                                                    <td> ${item.customer.fullName}</td>
                                                     <td>${item.totalAmount}</td>
                                                     <td>${item.totalPrice}</td>
                                                     <td>
                                                         <select class="form-control" id="category" name="status">
                                                             <option value="Đang xử lý"
-                                                                    <c:if test="${item.status == 'Đang xử lý'}">
+                                                                    <c:if test="${item.status == 'Đang xác nhận'}">
                                                                         selected="selected"
                                                                     </c:if>
-                                                            >
-                                                                Đang xử lý
+                                                            <
+                                                                Đang xác nhận
+                                                            </option>
+                                                            <option value="Hủy đơn hàng"
+                                                            <c:if test="${item.status == 'Hủy đơn hàng'}">
+                                                                    selected="selected"
+                                                            </c:if>
+                                                            <
+                                                                Hủy đơn hàng
                                                             </option>
                                                             <option value="Đã giao cho đơn vị vận chuyển"
                                                                     <c:if test="${item.status == 'Đã giao cho đơn vị vận chuyển'}">
                                                                         selected="selected"
                                                                     </c:if>
-                                                            >
+                                                            <
                                                                 Đã giao cho đơn vị vận chuyển
                                                             </option>
                                                             <option value="Đang giao hàng"
                                                                     <c:if test="${item.status == 'Đang giao hàng'}">
                                                                         selected="selected"
                                                                     </c:if>
-                                                            >
+                                                            <
                                                                 Đang giao hàng
                                                             </option>
                                                             <option value="Thành công"
                                                                     <c:if test="${item.status == 'Thành công'}">
                                                                         selected="selected"
                                                                     </c:if>
-                                                            >
+                                                            <
                                                                 Thành công
                                                             </option>
                                                         </select>
