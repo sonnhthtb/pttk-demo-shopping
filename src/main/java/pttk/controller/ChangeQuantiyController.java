@@ -30,7 +30,7 @@ public class ChangeQuantiyController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             Customer customer = (Customer) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId());
+            Cart cart = cartService.getCartByCustomerId(customer.getId(),"active");
             String action = request.getParameter("action");
             int id = Integer.parseInt(request.getParameter("id"));
             String type = request.getParameter("type");
