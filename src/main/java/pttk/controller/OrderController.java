@@ -57,7 +57,7 @@ public class OrderController extends HttpServlet {
             order.setCart(cart);
             order.setCustomer(customer);
             order.setDate(new Date());
-            order.setStatus("");
+            order.setStatus("Đang xác nhận");
             Shipment shipment = new Shipment();
             String shipmentServiceId = request.getParameter("shipmentService");
             ShipmentService shipmentService = shipmentServiceDAO.findById(Integer.parseInt(shipmentServiceId));

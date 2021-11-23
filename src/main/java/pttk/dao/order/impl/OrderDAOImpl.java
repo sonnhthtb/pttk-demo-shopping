@@ -41,7 +41,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
 
     @Override
     public void save(Order order) {
-        String sql = "INSERT INTO `Order`(CustomerID, CartID) VALUES(?,?)";
+        String sql = "INSERT INTO `Order`(CustomerID, Status, CartID) VALUES(?, ? ,?)";
         Long id  = insert(sql, order.getCustomer().getId(), order.getCart().getId());
         cartDAO.update(order.getCart());
         shipmentDAO.save(order.getShipment(), Math.toIntExact(id));
