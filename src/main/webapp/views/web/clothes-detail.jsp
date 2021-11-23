@@ -175,26 +175,30 @@
 							</div>
 						</div>
 						<div class="col-sm-7">
-							<div class="product-information"><!--/product-information-->
-								<h2>${itemClothes.clothes.name}</h2>
-								<span>
+							<form action="/addToCart" method="post">
+								<div class="product-information"><!--/product-information-->
+									<h2>${itemClothes.clothes.name}</h2>
+									<span>
 									<span>${itemClothes.price}</span>
 									<label>Quantity:</label>
-									<input type="text" value="1" name="quantity"/>
-									<button type="button" class="btn btn-fefault cart">
+										<input type="text" value="1" name="quantity"/>
+										<input type="hidden" value="clothes" name="type"/>
+									<input type="hidden" value="${itemClothes.id}" name="id" />
+									<button type="submit" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
 								</span>
-								<p><b>Type:</b> ${itemClothes.clothes.type}</p>
-								<p><b>Size:</b> ${itemClothes.clothes.size}</p>
-								<p><b>Color:</b> ${itemClothes.clothes.color}</p>
-								<p><b>Material:</b> ${itemClothes.clothes.material}</p>
-								<p><b>Year Of Manufacture:</b> ${itemClothes.clothes.yearOfManufacture}</p>
-								<p><b>Trademark:</b> ${itemClothes.clothes.trademark.name}</p>
-								<p><b>Origin:</b> ${itemClothes.clothes.origin.nation}</p>
-								<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
-							</div><!--/product-information-->
+									<p><b>Type:</b> ${itemClothes.clothes.type}</p>
+									<p><b>Size:</b> ${itemClothes.clothes.size}</p>
+									<p><b>Color:</b> ${itemClothes.clothes.color}</p>
+									<p><b>Material:</b> ${itemClothes.clothes.material}</p>
+									<p><b>Year Of Manufacture:</b> ${itemClothes.clothes.yearOfManufacture}</p>
+									<p><b>Trademark:</b> ${itemClothes.clothes.trademark.name}</p>
+									<p><b>Origin:</b> ${itemClothes.clothes.origin.nation}</p>
+									<a href=""><img src="<<c:url value='../../template/images/product-details/share.png'/>" class="share img-responsive"  alt="" /></a>
+								</div><!--/product-information-->
+							</form>
 						</div>
 						<div class="col-sm-12">
 							<p><b></b> ${itemClothes.clothes.description}</p>
