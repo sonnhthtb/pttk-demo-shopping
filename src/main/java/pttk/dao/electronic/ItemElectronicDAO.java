@@ -3,6 +3,7 @@ package pttk.dao.electronic;
 
 import pttk.dao.BaseDAO;
 import pttk.model.electronic.Computer;
+import pttk.model.electronic.Electronic;
 import pttk.model.electronic.ItemElectronic;
 import pttk.model.electronic.Mobile;
 
@@ -14,5 +15,9 @@ public interface ItemElectronicDAO extends BaseDAO<ItemElectronic> {
     ItemElectronic findItemElectronicById(int ItemElectronicId);
     List<ItemElectronic> findAllComputer();
     List<ItemElectronic> findAllMobile();
+    ItemElectronic updateItemElectronic(ItemElectronic itemElectronic);
+    void deleteItemElectronic(int id);
+
+    public int getTotalItem();
 
 }

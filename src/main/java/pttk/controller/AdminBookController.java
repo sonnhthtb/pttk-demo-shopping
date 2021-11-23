@@ -73,7 +73,7 @@ public class AdminBookController extends HttpServlet {
         String serveletPath = request.getServletPath();
         if (serveletPath.equals("/admin-book")) {
             try {
-                String view = "views/admin/book/edit-book.jsp";
+                String view = "views/admin/book/edit-electronic.jsp";
                 String id = request.getParameter("id");
                 String title = request.getParameter("title");
                 String imageUrl = request.getParameter("imageUrl");

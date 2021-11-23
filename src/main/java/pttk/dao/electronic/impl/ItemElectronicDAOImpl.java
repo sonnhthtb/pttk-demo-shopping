@@ -4,6 +4,7 @@ import pttk.dao.BaseDAOImpl;
 import pttk.dao.electronic.ElectronicDAO;
 import pttk.dao.electronic.ItemElectronicDAO;
 import pttk.model.electronic.Computer;
+import pttk.model.electronic.Electronic;
 import pttk.model.electronic.ItemElectronic;
 import pttk.model.electronic.Mobile;
 import pttk.model.shoes.ItemShoes;
@@ -30,7 +31,12 @@ public class ItemElectronicDAOImpl extends BaseDAOImpl<ItemElectronic> implement
 
     @Override
     public List<ItemElectronic> findAllItemElectronics(int limit, int offset) {
-        return null;
+        String sql = "SELECT * FROM ItemElectronic LIMIT ?, ?";
+        List<ItemElectronic> listItemElectronic =  query(sql, new ItemElectronicMapper(), offset, limit);
+        listItemElectronic.stream().forEach(itemElectronic -> {
+            itemElectronic.setElectronic(electronicDAO.findElectronicByItemElectronicId(itemElectronic.getId()));
+        });
+        return listItemElectronic;
     }
 
     @Override
@@ -72,5 +78,23 @@ public class ItemElectronicDAOImpl extends BaseDAOImpl<ItemElectronic> implement
             }
         }).collect(Collectors.toList());
         return listItemElectronic;
+    }
+
+    @Override
+    public ItemElectronic updateItemElectronic(ItemElectronic itemElectronic) {
+        String sql = "UPDATE Electronic SET Price = ?, ImageUrl = ? WHERE ID = ?";
+        update(sql, itemElectronic.getPrice(), itemElectronic.getImageUrl(), itemElectronic.getId());
+        return itemElectronic;
+    }
+
+    @Override
+    public void deleteItemElectronic(int id) {
+        String sql = "DELETE FROM ItemElectronic WHERE Id = ?";
+        update(sql, id);
+    }
+    @Override
+    public int getTotalItem() {
+        String sql = "SELECT count(*) FROM ItemElectronic";
+        return count(sql);
     }
 }
