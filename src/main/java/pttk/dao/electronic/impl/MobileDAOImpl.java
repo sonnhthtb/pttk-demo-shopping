@@ -29,4 +29,17 @@ public class MobileDAOImpl extends BaseDAOImpl<Mobile> implements MobileDAO {
             return mobile;
         }
     }
+
+    @Override
+    public Mobile updateMobile(Mobile mobile) {
+        String sql = "UPDATE Mobile SET Chip = ?, Camera = ?, Accessory = ?, Ram = ?, Power = ?, Rom = ?, Resolution = ? WHERE Id = ?";
+        update(sql, mobile.getChip(), mobile.getCamera(), mobile.getAccessory(), mobile.getRam(), mobile.getPower(), mobile.getRom(), mobile.getResolution(), mobile.getId());
+        return mobile;
+    }
+
+    @Override
+    public void deleteMobile(int electronicId) {
+        String sql = "DELETE FROM Mobile WHERE ElectronicId = ?";
+        update(sql, electronicId);
+    }
 }

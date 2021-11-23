@@ -51,7 +51,7 @@
                     <b class="arrow"></b>
                 </li>
                 <li>
-                    <a href='<c:url value="/admin-electronic"/>'>
+                    <a href='<c:url value="/admin-electronic?type=list"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         Quản lý đồ điện tử
                     </a>
