@@ -73,6 +73,24 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"></span>
+                Quản lý đơn hàng
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href='<c:url value="/admin-order"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Cập nhật trạng thái đơn hàng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+            <b class="arrow"></b>
+        </li>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">
         <i class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
