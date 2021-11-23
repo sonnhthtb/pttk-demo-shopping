@@ -122,10 +122,10 @@ public class AdminBookController extends HttpServlet {
                     }
                     //create product if not find id
                     else {
-                       // itemBook = itemBookService.save(itemBook);
-                       // request.setAttribute("messageResponse", "Thêm sản phẩm thành công");
-                       // request.setAttribute("alert", "success");
-                      //  request.setAttribute("id", itemBook.getId());
+                        itemBook = itemBookService.save(itemBook);
+                        request.setAttribute("messageResponse", "Thêm sản phẩm thành công");
+                        request.setAttribute("alert", "success");
+                        request.setAttribute("id", itemBook.getId());
                     }
                     request.setAttribute("itemBook", itemBook);
                 }
