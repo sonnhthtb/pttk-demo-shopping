@@ -4,6 +4,7 @@ import pttk.dao.BaseDAOImpl;
 import pttk.dao.electronic.ElectronicDAO;
 import pttk.dao.electronic.ItemElectronicDAO;
 import pttk.model.electronic.Computer;
+import pttk.model.electronic.Electronic;
 import pttk.model.electronic.ItemElectronic;
 import pttk.model.electronic.Mobile;
 import pttk.model.shoes.ItemShoes;

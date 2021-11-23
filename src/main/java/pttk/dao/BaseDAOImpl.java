@@ -78,6 +78,8 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
                     statement.setTimestamp(index, (Timestamp) parameter);
                 } else if (parameter instanceof Float) {
                     statement.setFloat(index, (Float) parameter);
+                } else if(parameter instanceof Date) {
+                    statement.setDate(index, (Date) parameter);
                 }
             }
         } catch (SQLException e) {

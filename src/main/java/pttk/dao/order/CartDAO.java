@@ -1,4 +1,4 @@
-package pttk.dao.cart;
+package pttk.dao.order;
 
 import pttk.dao.BaseDAO;
 import pttk.model.order.Cart;

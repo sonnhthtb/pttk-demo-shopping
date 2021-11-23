@@ -1,6 +1,7 @@
 package pttk.dao.clothes.impl;
 
 import pttk.dao.BaseDAOImpl;
+import pttk.dao.clothes.ItemClothesDAO;
 import pttk.dao.clothes.LineItemClothesDAO;
 import pttk.model.book.LineItemBook;
 import pttk.model.clothes.LineItemClothes;
@@ -10,6 +11,8 @@ import pttk.util.impl.LineItemClothesMapper;
 import java.util.List;
 
 public class LineItemClothesDAOImpl extends BaseDAOImpl<LineItemClothes> implements LineItemClothesDAO {
+
+    private final ItemClothesDAO itemClothesDAO = new ItemClothesDAOImpl();
 
     @Override
     public Long create(int cartId, int itemClothesId, int quantity) {
@@ -22,6 +25,9 @@ public class LineItemClothesDAOImpl extends BaseDAOImpl<LineItemClothes> impleme
     public List<LineItemClothes> findByCartId(int cartId) {
         String sql = "select * from lineItemClothes where cartId = ?";
         List<LineItemClothes> list = query(sql, new LineItemClothesMapper(), cartId);
+        list.forEach(lineItemClothes -> {
+            lineItemClothes.setItemClothes(itemClothesDAO.findById(lineItemClothes.getItemClothes().getId()));
+        });
         return list;
     }
 

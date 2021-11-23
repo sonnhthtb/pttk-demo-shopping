@@ -54,6 +54,20 @@ public class CustomerDAOImpl extends BaseDAOImpl implements CustomerDAO{
     }
 
     @Override
+    public Customer findById(int id) {
+        String sql = "SELECT * FROM Customer WHERE id = ?";
+        List<Customer> customers = query(sql, new CustomerMapper(), id);
+        Customer customer = customers.isEmpty() ? null : customers.get(0);
+        if(customer != null) {
+            int customerId = customer.getId();
+            customer.setAccount(accountDAO.findAccountByCustomerId(customerId));
+            customer.setAddress(addressDAO.findAddressByCustomerId(customerId));
+            customer.setFullName(fullNameDAO.findFullNameByCustomerID(customerId));
+        }
+        return customer;
+    }
+
+    @Override
     public Boolean create(Customer customer) {
          try {
             String sqlCustomer = "INSERT INTO `customer` (Role) VALUES (?)";

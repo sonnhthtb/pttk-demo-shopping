@@ -60,7 +60,7 @@
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
 								<a class="cart_quantity_up" href="/change-quantity?action=inc&id=${item.id}&type=book&quantity=${item.quantity}"> + </a>
-								<input class="cart_quantity_input" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
+								<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
 								<a class="cart_quantity_down" href="/change-quantity?action=dec&id=${item.id}&type=book&quantity=${item.quantity}"> - </a>
 							</div>
 						</td>
@@ -88,7 +88,7 @@
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
 									<a class="cart_quantity_up" href="/change-quantity?action=inc&id=${item.id}&type=clothes&quantity=${item.quantity}"> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
+									<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
 									<a class="cart_quantity_down" href="/change-quantity?action=dec&id=${item.id}&type=clothes&quantity=${item.quantity}"> - </a>
 								</div>
 							</td>
@@ -113,72 +113,65 @@
 				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
 			</div>
 			<div class="row">
+				<form action="/checkout" method="post">
 				<div class="col-sm-6">
 					<div class="chose_area">
-						<ul class="user_option">
-							<li>
-								<input type="checkbox">
-								<label>Use Coupon Code</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Use Gift Voucher</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Estimate Shipping & Taxes</label>
-							</li>
-						</ul>
-						<ul class="user_info">
-							<li class="single_field">
-								<label>Country:</label>
-								<select>
-									<option>United States</option>
-									<option>Bangladesh</option>
-									<option>UK</option>
-									<option>India</option>
-									<option>Pakistan</option>
-									<option>Ucrane</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
 
-							</li>
-							<li class="single_field">
-								<label>Region / State:</label>
-								<select>
-									<option>Select</option>
-									<option>Dhaka</option>
-									<option>London</option>
-									<option>Dillih</option>
-									<option>Lahore</option>
-									<option>Alaska</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
+							<ul class="user_info">
+								<li class="col-sm-12">
+									<label>Chọn hình thức thanh toán:</label>
+									<select name="payment">
+										<option value="Cash"
+											<c:if test="${payment == 'Cash'}">
+												selected="selected"
+											</c:if> >
+											Cash
+										</option>
+										<option value="Credit"
+											<c:if test="${payment == 'Credit'}">
+												selected="selected"
+											</c:if> >
+											Credit
+										</option>
+									</select>
 
-							</li>
-							<li class="single_field zip-field">
-								<label>Zip Code:</label>
-								<input type="text">
-							</li>
-						</ul>
-						<a class="btn btn-default update" href="">Get Quotes</a>
-						<a class="btn btn-default check_out" href="">Continue</a>
+								</li>
+								<li class="col-sm-12">
+									<label>Chọn đơn vị vận chuyển</label>
+									<select name="shipmentServiceId">>
+										<c:forEach var="shipment" items="${shipmentServices}">
+											<option value="${shipment.id}"
+												<c:if test="${shipment.id == shipmentService.id}">
+													selected="selected"
+												</c:if> >
+													${shipment.shipUnit}
+											</option>
+										</c:forEach>
+									</select>
+								</li>
+								<li class="col-sm-12">
+									<label>Địa chỉ giao hàng</label>
+									<input name="address" type="text" style="width: 100%">
+								</li>
+							</ul>
 					</div>
 				</div>
 				<div class="col-sm-6">
+					<div class="col-sm-12"></div>
 					<div class="total_area">
 						<ul>
-							<li>Cart Sub Total <span>${cart.totalPrice}</span></li>
-							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>${cart.totalPrice}</span></li>
+							<li>Sub Total <span>${cart.totalPrice}</span></li>
 						</ul>
-							<a class="btn btn-default update" href="">Update</a>
-							<a class="btn btn-default check_out" href="">Check Out</a>
+					</div>
+					<div class="col-sm-4">
+					</div>
+					<div class="col-sm-8">
+						<button type="submit" class="btn btn-default check_out">Check Out</button>
 					</div>
 				</div>
+				</form>
 			</div>
+
 		</div>
 	</section><!--/#do_action-->
 

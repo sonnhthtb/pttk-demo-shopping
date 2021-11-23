@@ -116,12 +116,12 @@ public class AdminClothesController extends HttpServlet {
                     if (!id.isEmpty() && id != null) {
                         itemClothes.setId(Integer.parseInt(id));
                         itemClothes = itemClothesService.update(itemClothes);
-                        request.setAttribute("messageResponse", "C?p nh?t s?n ph?m th‡nh cÙng!");
+                        request.setAttribute("messageResponse", "C·∫≠p nh·∫≠t s·∫£n ph·∫©m th√†nh c√¥ng!");
                         request.setAttribute("alert", "success");
                     } //create product if not find id
                     else {
                          itemClothes = itemClothesService.save(itemClothes);
-                         request.setAttribute("messageResponse", "ThÍm s?n ph?m th‡nh cÙng !");
+                         request.setAttribute("messageResponse", "Th√™m s·∫£n ph·∫©m th√†nh c√¥ng !");
                          request.setAttribute("alert", "success");
                          request.setAttribute("id", itemClothes.getId());
                     }
@@ -138,7 +138,7 @@ public class AdminClothesController extends HttpServlet {
                 String[] ids = request.getParameterValues("checkbox");
                 itemClothesService.delete(ids);
                 String view = "views/admin/clothes/list-clothes.jsp";
-                request.setAttribute("messageResponse", "XÛa th‡nh cÙng");
+                request.setAttribute("messageResponse", "Xo√° th√†nh c√¥ng");
                 request.setAttribute("alert", "success");
                 int totalItem = itemClothesService.getTotalItem();
                 // number of item in a page

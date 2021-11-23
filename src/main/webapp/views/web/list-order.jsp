@@ -1,3 +1,4 @@
+<%@ page import="pttk.model.order.Cash" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -31,54 +32,56 @@
 				  <li class="active">Check out</li>
 				</ol>
 			</div>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
+			${message}
+			<c:forEach var="order" items="${orderList}">
+				<div class="table-responsive cart_info">
+					<table class="table table-condensed">
+						<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="name" style="text-align: center">Name</td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
-							<td></td>
+							<td class="image">STT</td>
+							<td class="name" style="text-align: center">Tên khách hàng:</td>
+							<td class="price">Thời gian đặt</td>
+							<td class="quantity">Trạng thái</td>
 						</tr>
-					</thead>
-					<tbody>
-					<c:forEach var="item" items="${listLineBook}">
-					<tr>
-						<td class="cart_product">
-							<img  width="100" height="120" src="${item.itemBook.imageUrl}" alt=""/>
-						</td>
-						<td class="name">
-							<p style="font-size:x-large; text-align: center">
-								${item.itemBook.book.title}
-							</p>
-						</td>
-						<td class="cart_price">
-							<p>${item.itemBook.price}</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
-							</div>
-						</td>
-						<td class="cart_total">
-							<p class="cart_total_price"> ${item.itemBook.price*item.quantity}</p>
-						</td>
-					</tr>
-					</c:forEach>
-					<c:forEach var="item" items="${listLineClothes}">
+						</thead>
+						<tbody>
+							<tr>
+								<td class="cart_product">
+									<p style="font-size:x-large; text-align: center">
+									</p>
+								</td>
+								<td class="name">
+									<p style="font-size:x-large; text-align: center">
+											${order.customer.fullName.firstName} ${order.customer.fullName.middleName} ${order.customer.fullName.lastName}
+									</p>
+								</td>
+								<td class="cart_price">
+									<p style="font-size:x-large; text-align: center">
+										${order.date}
+									</p>
+								</td>
+								<td class="cart_price">
+									<p style="font-size:x-large; text-align: center">
+											${order.status}
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-condensed">
+						<tbody>
+						<c:forEach var="item" items="${order.cart.lineItemBooks}">
 						<tr>
 							<td class="cart_product">
-								<img  width="100" height="120" src="${item.itemClothes.imageUrl}" alt=""/>
+								<img  width="100" height="120" src="${item.itemBook.imageUrl}" alt=""/>
 							</td>
 							<td class="name">
 								<p style="font-size:x-large; text-align: center">
-										${item.itemClothes.clothes.name}
+									${item.itemBook.book.title}
 								</p>
 							</td>
 							<td class="cart_price">
-								<p>${item.itemClothes.price}</p>
+								<p>${item.itemBook.price}</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -86,13 +89,37 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price"> ${item.itemClothes.price*item.quantity}</p>
+								<p class="cart_total_price"> ${item.itemBook.price*item.quantity}</p>
 							</td>
 						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-			</div>
+						</c:forEach>
+						<c:forEach var="item" items="${order.cart.lineItemClothes}">
+							<tr>
+								<td class="cart_product">
+									<img  width="100" height="120" src="${item.itemClothes.imageUrl}" alt=""/>
+								</td>
+								<td class="name">
+									<p style="font-size:x-large; text-align: center">
+											${item.itemClothes.clothes.name}
+									</p>
+								</td>
+								<td class="cart_price">
+									<p>${item.itemClothes.price}</p>
+								</td>
+								<td class="cart_quantity">
+									<div class="cart_quantity_button">
+										<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
+									</div>
+								</td>
+								<td class="cart_total">
+									<p class="cart_total_price"> ${item.itemClothes.price*item.quantity}</p>
+								</td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:forEach>
 		</div>
 	</section> <!--/#cart_items-->
 
@@ -103,40 +130,38 @@
 				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
 			</div>
 			<div class="row">
-				<form action="/order" method="post">
 				<div class="col-sm-6">
 					<div class="chose_area">
+						<form action="/cart" method="post">
 							<ul class="user_info">
 								<li class="col-sm-12">
-									<label>Chọn hình thức thanh toán:</label>
-									<input id="payment" name="payment" type="text" style="width: 100%" value="${payment}">
-									<c:if test="${payment == 'Credit'}">
-										<label>Tên chủ thẻ:</label>
-										<input name="creditName" type="text" style="width: 100%">
-										<label>Số thẻ:</label>
-										<input name="creditId" type="text" style="width: 100%">
-									</c:if>
+									<label>Hình thức thanh toán:</label>
+									<p style="font-size:x-large; text-align: center">
+										<c:if test="${order.payment['class'].simpleName eq 'Cash'}">Cash</c:if>
+										<c:if test="${order.payment['class'].simpleName eq 'Credit'}">Credit</c:if>
+									</p>
+
 								</li>
 								<li class="col-sm-12">
 									<label>Chọn đơn vị vận chuyển</label>
-									<input type="text" style="width: 100%" value="${shipmentService.shipUnit}">
+									<input name="shipmentService" type="text" style="width: 100%" value="${shipmentService.shipUnit}">
 									<input name="shipmentService" type="hidden" style="width: 100%" value="${shipmentService.id}">
 								</li>
 								<li class="col-sm-12">
 									<label>Địa chỉ giao hàng</label>
-									<input name="address" type="text" style="width: 100%" value="${address}">
+									<input type="text" style="width: 100%" value="${address}">
 								</li>
 							</ul>
-
+						<form action="/cart" type="get">
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="col-sm-12"></div>
 					<div class="total_area">
 						<ul>
-							<li>Sub Total <span>${cart.totalPrice}</span></li>
-							<li>Shipping Cost <span>${shipmentService.shipPrice}</span></li>
-							<li>Total Price<span>${cart.totalPrice + shipmentService.shipPrice}</span></li>
+							<li>Sub Total <span>${order.cart.totalPrice}</span></li>
+							<li>Shipping Cost <span>${order.shipment.shipmentService.shipPrice}</span></li>
+							<li>Total Price<span>${order.cart.totalPrice + order.shipment.shipmentService.shipPrice}</span></li>
 						</ul>
 					</div>
 					<div class="col-sm-4">
@@ -145,7 +170,7 @@
 						<button type="submit" class="btn btn-default check_out">Hoàn tất</button>
 					</div>
 				</div>
-				</form>
+
 			</div>
 
 		</div>

@@ -1732,7 +1732,7 @@ h2.title {
 }
 
 .user_info .single_field {
-  width: 31%
+  width: 50%
 }
 
 .user_info .single_field.zip-field input {
@@ -1774,6 +1774,7 @@ h2.title {
   margin-top: 18px;
   border: none;
   padding: 5px 15px;
+  margin-left: 200px;
 }
 .update{
     margin-left: 40px;
