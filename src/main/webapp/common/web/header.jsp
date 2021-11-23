@@ -43,7 +43,7 @@
                             <c:set var="user" value="${sessionScope.customer}"/>
                             <c:if test="${not empty user}">
 
-                                <li><a href="/order-list"><i class="fa fa-user"></i> My orders </a></li>
+                                <li><a href="/order"><i class="fa fa-user"></i> My orders </a></li>
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart </a></li>
                                 <li>
                                     <a href="/my-account">
