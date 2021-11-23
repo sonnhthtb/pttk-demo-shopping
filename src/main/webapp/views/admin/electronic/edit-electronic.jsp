@@ -213,8 +213,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right">Description</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="description"
-                                               name="description" value="${itemElectronic.electronic.description}" />
+                                        <textarea rows="" cols="" id="description" name="description"
+                                                  style="width: 820px;height: 175px">${itemElectronic.electronic.description}</textarea>
                                     </div>
                                 </div>
                                 <br />
