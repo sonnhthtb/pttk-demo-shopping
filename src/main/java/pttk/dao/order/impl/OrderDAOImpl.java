@@ -65,7 +65,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
 
     @Override
     public void update( String status,int id) {
-        String sql = "update order set status = ? where id = ?";
+        String sql = "update `order` set status = ? where id = ?";
         update(sql, status, id);
     }
 }
