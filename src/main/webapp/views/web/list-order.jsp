@@ -31,7 +31,7 @@
 				<li class="active">Check out</li>
 			</ol>
 		</div>
-		<c:forEach var="order" items="${orderList}">
+		<c:forEach var="order" items="${orderList}" varStatus="loop">
 		<section id="cart_items">
 			<div class="container">
 				${message}
@@ -49,6 +49,7 @@
 								<tr>
 									<td class="cart_product">
 										<p style="font-size:x-large; text-align: center">
+											${loop.index + 1}
 										</p>
 									</td>
 									<td class="name">
@@ -136,11 +137,7 @@
 								<ul class="user_info">
 									<li class="col-sm-12">
 										<label>Hình thức thanh toán:</label>
-										<p style="font-size:x-large; text-align: center">
-											<c:if test="${order.payment['class'].simpleName eq 'Cash'}">Cash</c:if>
-											<c:if test="${order.payment['class'].simpleName eq 'Credit'}">Credit</c:if>
-										</p>
-
+										<input name="shipmentService" type="text" style="width: 100%" value="${listPayment.get(loop.index)}">
 									</li>
 									<li class="col-sm-12">
 										<label>Chọn đơn vị vận chuyển</label>

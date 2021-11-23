@@ -38,6 +38,15 @@ public class OrderController extends HttpServlet {
         HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
         List<Order> orderList = orderDAO.findAllByCustomerId(customer.getId());
+        List<String> listPayment = new ArrayList<>();
+        orderList.forEach( order -> {
+            if(order.getPayment() instanceof Cash) {
+                listPayment.add("Cash");
+            } else {
+                listPayment.add("Credit");
+            }
+        });
+        request.setAttribute("listPayment", listPayment);
         if (orderList.isEmpty()) {
             request.setAttribute("message", "Bạn chưa có đơn hàng nào cả");
         }

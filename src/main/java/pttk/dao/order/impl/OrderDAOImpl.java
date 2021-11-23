@@ -36,7 +36,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
 
     @Override
     public List<Order> findAllByCustomerId(int customerId) {
-        String sql = "SELECT * FROM `Order` WHERE CustomerID = ?";
+        String sql = "SELECT * FROM `Order` WHERE CustomerID = ? ORDER BY Date DESC";
         List<Order> orderList = query(sql, new OrderMapper(), customerId);
         orderList.forEach(order -> {
             order.setCustomer(customerDAO.findById(order.getCustomer().getId()));

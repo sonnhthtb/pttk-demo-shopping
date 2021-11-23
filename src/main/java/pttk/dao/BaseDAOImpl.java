@@ -51,7 +51,6 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
             statement = connection.prepareStatement(sql);
             setParameter(statement, parameters);
             resultSet = statement.executeQuery();
-            System.out.println(statement.toString());
             while (resultSet.next()) {
                 results.add(rowMapper.mapRow(resultSet));
             }
