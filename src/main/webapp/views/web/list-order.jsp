@@ -24,87 +24,65 @@
 
 <body>
 	<jsp:include page="../../common/web/header.jsp"/>
-	<section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Check out</li>
-				</ol>
-			</div>
-			${message}
-			<c:forEach var="order" items="${orderList}">
-				<div class="table-responsive cart_info">
-					<table class="table table-condensed">
-						<thead>
-						<tr class="cart_menu">
-							<td class="image">STT</td>
-							<td class="name" style="text-align: center">Tên khách hàng:</td>
-							<td class="price">Thời gian đặt</td>
-							<td class="quantity">Trạng thái</td>
-						</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="cart_product">
-									<p style="font-size:x-large; text-align: center">
-									</p>
-								</td>
-								<td class="name">
-									<p style="font-size:x-large; text-align: center">
-											${order.customer.fullName.firstName} ${order.customer.fullName.middleName} ${order.customer.fullName.lastName}
-									</p>
-								</td>
-								<td class="cart_price">
-									<p style="font-size:x-large; text-align: center">
-										${order.date}
-									</p>
-								</td>
-								<td class="cart_price">
-									<p style="font-size:x-large; text-align: center">
-											${order.status}
-									</p>
-								</td>
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li class="active">Check out</li>
+			</ol>
+		</div>
+		<c:forEach var="order" items="${orderList}">
+		<section id="cart_items">
+			<div class="container">
+				${message}
+					<div class="table-responsive cart_info">
+						<table class="table table-condensed">
+							<thead>
+							<tr class="cart_menu">
+								<td class="image" style="text-align: center">STT</td>
+								<td class="name" style="text-align: center">Tên khách hàng:</td>
+								<td class="price" style="text-align: center">Thời gian đặt</td>
+								<td class="quantity" style="text-align: center">Trạng thái</td>
 							</tr>
-						</tbody>
-					</table>
-					<table class="table table-condensed">
-						<tbody>
-						<c:forEach var="item" items="${order.cart.lineItemBooks}">
-						<tr>
-							<td class="cart_product">
-								<img  width="100" height="120" src="${item.itemBook.imageUrl}" alt=""/>
-							</td>
-							<td class="name">
-								<p style="font-size:x-large; text-align: center">
-									${item.itemBook.book.title}
-								</p>
-							</td>
-							<td class="cart_price">
-								<p>${item.itemBook.price}</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price"> ${item.itemBook.price*item.quantity}</p>
-							</td>
-						</tr>
-						</c:forEach>
-						<c:forEach var="item" items="${order.cart.lineItemClothes}">
+							</thead>
+							<tbody>
+								<tr>
+									<td class="cart_product">
+										<p style="font-size:x-large; text-align: center">
+										</p>
+									</td>
+									<td class="name">
+										<p style="font-size:x-large; text-align: center">
+												${order.customer.fullName.firstName} ${order.customer.fullName.middleName} ${order.customer.fullName.lastName}
+										</p>
+									</td>
+									<td class="cart_price">
+										<p style="font-size:x-large; text-align: center">
+											${order.date}
+										</p>
+									</td>
+									<td class="cart_price">
+										<p style="font-size:x-large; text-align: center">
+												${order.status}
+										</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-condensed">
+							<tbody>
+							<c:forEach var="item" items="${order.cart.lineItemBooks}">
 							<tr>
 								<td class="cart_product">
-									<img  width="100" height="120" src="${item.itemClothes.imageUrl}" alt=""/>
+									<img  width="100" height="120" src="${item.itemBook.imageUrl}" alt=""/>
 								</td>
 								<td class="name">
 									<p style="font-size:x-large; text-align: center">
-											${item.itemClothes.clothes.name}
+										${item.itemBook.book.title}
 									</p>
 								</td>
 								<td class="cart_price">
-									<p>${item.itemClothes.price}</p>
+									<p>${item.itemBook.price}</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -112,69 +90,91 @@
 									</div>
 								</td>
 								<td class="cart_total">
-									<p class="cart_total_price"> ${item.itemClothes.price*item.quantity}</p>
+									<p class="cart_total_price"> ${item.itemBook.price*item.quantity}</p>
 								</td>
 							</tr>
-						</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</c:forEach>
-		</div>
-	</section> <!--/#cart_items-->
-
-	<section id="do_action">
-		<div class="container">
-			<div class="heading">
-				<h3>What would you like to do next?</h3>
-				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+							</c:forEach>
+							<c:forEach var="item" items="${order.cart.lineItemClothes}">
+								<tr>
+									<td class="cart_product">
+										<img  width="100" height="120" src="${item.itemClothes.imageUrl}" alt=""/>
+									</td>
+									<td class="name">
+										<p style="font-size:x-large; text-align: center">
+												${item.itemClothes.clothes.name}
+										</p>
+									</td>
+									<td class="cart_price">
+										<p>${item.itemClothes.price}</p>
+									</td>
+									<td class="cart_quantity">
+										<div class="cart_quantity_button">
+											<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
+										</div>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price"> ${item.itemClothes.price*item.quantity}</p>
+									</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="chose_area">
-						<form action="/cart" method="post">
-							<ul class="user_info">
-								<li class="col-sm-12">
-									<label>Hình thức thanh toán:</label>
-									<p style="font-size:x-large; text-align: center">
-										<c:if test="${order.payment['class'].simpleName eq 'Cash'}">Cash</c:if>
-										<c:if test="${order.payment['class'].simpleName eq 'Credit'}">Credit</c:if>
-									</p>
+		</section> <!--/#cart_items-->
 
-								</li>
-								<li class="col-sm-12">
-									<label>Chọn đơn vị vận chuyển</label>
-									<input name="shipmentService" type="text" style="width: 100%" value="${shipmentService.shipUnit}">
-									<input name="shipmentService" type="hidden" style="width: 100%" value="${shipmentService.id}">
-								</li>
-								<li class="col-sm-12">
-									<label>Địa chỉ giao hàng</label>
-									<input type="text" style="width: 100%" value="${address}">
-								</li>
+		<section id="do_action">
+			<div class="container">
+				<div class="heading">
+					<h3>What would you like to do next?</h3>
+					<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="chose_area">
+							<form action="/cart" method="post">
+								<ul class="user_info">
+									<li class="col-sm-12">
+										<label>Hình thức thanh toán:</label>
+										<p style="font-size:x-large; text-align: center">
+											<c:if test="${order.payment['class'].simpleName eq 'Cash'}">Cash</c:if>
+											<c:if test="${order.payment['class'].simpleName eq 'Credit'}">Credit</c:if>
+										</p>
+
+									</li>
+									<li class="col-sm-12">
+										<label>Chọn đơn vị vận chuyển</label>
+										<input name="shipmentService" type="text" style="width: 100%" value="${order.shipment.shipmentService.shipUnit}">
+									</li>
+									<li class="col-sm-12">
+										<label>Địa chỉ giao hàng</label>
+										<input type="text" style="width: 100%" value="${order.shipment.addressReceive}">
+									</li>
+								</ul>
+							<form action="/cart" type="get">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="col-sm-12"></div>
+						<div class="total_area">
+							<ul>
+								<li>Sub Total <span>${order.cart.totalPrice}</span></li>
+								<li>Shipping Cost <span>${order.shipment.shipmentService.shipPrice}</span></li>
+								<li>Total Price<span>${order.cart.totalPrice + order.shipment.shipmentService.shipPrice}</span></li>
 							</ul>
-						<form action="/cart" type="get">
+						</div>
+						<div class="col-sm-4">
+						</div>
+						<div class="col-sm-8">
+						</div>
 					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="col-sm-12"></div>
-					<div class="total_area">
-						<ul>
-							<li>Sub Total <span>${order.cart.totalPrice}</span></li>
-							<li>Shipping Cost <span>${order.shipment.shipmentService.shipPrice}</span></li>
-							<li>Total Price<span>${order.cart.totalPrice + order.shipment.shipmentService.shipPrice}</span></li>
-						</ul>
-					</div>
-					<div class="col-sm-4">
-					</div>
-					<div class="col-sm-8">
-						<button type="submit" class="btn btn-default check_out">Hoàn tất</button>
-					</div>
+
 				</div>
 
 			</div>
-
-		</div>
-	</section><!--/#do_action-->
+		</section><!--/#do_action-->
+		</c:forEach>
+	</div>
 
 	<jsp:include page="../../common/web/footer.jsp"/>
 

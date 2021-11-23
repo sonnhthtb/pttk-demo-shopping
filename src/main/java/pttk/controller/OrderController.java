@@ -53,7 +53,7 @@ public class OrderController extends HttpServlet {
             HttpSession session = request.getSession();
             Customer customer = (Customer) session.getAttribute("customer");
             Cart cart = cartService.getCartByCustomerId(customer.getId());
-            cart.setCartStatus(null);
+            cart.setCartStatus("not active");
             order.setCart(cart);
             order.setCustomer(customer);
             order.setDate(new Date());

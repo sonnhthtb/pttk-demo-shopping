@@ -50,8 +50,8 @@ public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
 
     @Override
     public Cart update(Cart cart) {
-        String sql = "UPDATE Cart SET TotalPrice = ?, CartStatus = ?";
-        update(sql, cart.getTotalPrice(), cart.getCartStatus());
+        String sql = "UPDATE Cart SET TotalPrice = ?, CartStatus = ? WHERE id = ?";
+        update(sql, cart.getTotalPrice(), cart.getCartStatus(), cart.getId());
         return cart;
     }
 }
