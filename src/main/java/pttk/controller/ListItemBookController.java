@@ -16,9 +16,10 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/list-itemBook"})
 public class ListItemBookController extends HttpServlet {
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
+        try {
             try {
 
                 try {
@@ -31,11 +32,11 @@ public class ListItemBookController extends HttpServlet {
                     String view = "views/web/home.jsp";
                     response.sendRedirect(view);
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("/error");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -44,6 +45,6 @@ public class ListItemBookController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
 }

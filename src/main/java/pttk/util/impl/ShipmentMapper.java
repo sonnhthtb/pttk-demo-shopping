@@ -1,8 +1,5 @@
 package pttk.util.impl;
 
-import pttk.model.customer.Customer;
-import pttk.model.order.Cart;
-import pttk.model.order.Order;
 import pttk.model.order.Shipment;
 import pttk.model.order.ShipmentService;
 import pttk.util.RowMapper;

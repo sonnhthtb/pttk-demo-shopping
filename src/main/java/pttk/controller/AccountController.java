@@ -1,16 +1,16 @@
 package pttk.controller;
 
+import pttk.model.customer.Address;
 import pttk.model.customer.Customer;
+import pttk.model.customer.FullName;
+import pttk.service.CustomerService;
+import pttk.service.impl.CustomerServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import pttk.model.customer.Address;
-import pttk.model.customer.FullName;
-import pttk.service.CustomerService;
-import pttk.service.impl.CustomerServiceImpl;
 
 @WebServlet(urlPatterns = {"/change-password", "/my-account"})
 public class AccountController extends HttpServlet {
@@ -125,12 +125,12 @@ public class AccountController extends HttpServlet {
                 Address address = new Address(numberHouse, street, district, city, nation);
                 HttpSession session = request.getSession();
                 Customer customer = (Customer) session.getAttribute("customer");
-                Customer newCustomer = new Customer(customer.getAccount(), address, fullName, "customer",customer.getCart());
+                Customer newCustomer = new Customer(customer.getAccount(), address, fullName, "customer", customer.getCart());
                 newCustomer.setId(customer.getId());
                 System.out.println("pttk.controller.AccountController.doPost()------------");
                 Boolean isUpdated = customerService.updateCustomer(newCustomer);
-                System.out.println("pttk.controller.AccountController.doPost()------------"+isUpdated+"----");
-                
+                System.out.println("pttk.controller.AccountController.doPost()------------" + isUpdated + "----");
+
                 if (isUpdated == true) {
                     session.setAttribute("customer", newCustomer);
                     request.setAttribute("message", "Update Success !");

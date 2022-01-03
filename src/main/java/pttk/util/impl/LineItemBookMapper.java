@@ -11,7 +11,7 @@ public class LineItemBookMapper implements RowMapper<LineItemBook> {
 
     @Override
     public LineItemBook mapRow(ResultSet rs) {
-        try{
+        try {
             LineItemBook lineItemBook = new LineItemBook();
             ItemBook itemBook = new ItemBook();
             lineItemBook.setQuantity(rs.getInt("QuantityB"));

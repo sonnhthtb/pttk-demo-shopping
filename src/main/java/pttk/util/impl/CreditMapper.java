@@ -1,6 +1,5 @@
 package pttk.util.impl;
 
-import pttk.model.order.Cash;
 import pttk.model.order.Credit;
 import pttk.util.RowMapper;
 

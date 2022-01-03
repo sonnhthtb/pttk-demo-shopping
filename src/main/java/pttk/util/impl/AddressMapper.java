@@ -1,7 +1,7 @@
 package pttk.util.impl;
 
-import pttk.util.RowMapper;
 import pttk.model.customer.Address;
+import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
 

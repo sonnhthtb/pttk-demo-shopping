@@ -1,7 +1,6 @@
 package pttk.util.impl;
 
 import pttk.model.customer.Customer;
-import pttk.model.electronic.Mobile;
 import pttk.model.order.Cart;
 import pttk.model.order.Order;
 import pttk.util.RowMapper;

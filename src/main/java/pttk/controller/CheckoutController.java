@@ -1,16 +1,18 @@
 package pttk.controller;
 
-import pttk.dao.order.ShipmentServiceDAO;
-import pttk.dao.order.impl.ShipmentServiceDAOImpl;
+import pttk.logic.application.orderDAO.ShipmentServiceDAO;
+import pttk.logic.application.orderDAO.impl.ShipmentServiceDAOImpl;
 import pttk.model.book.ItemBook;
 import pttk.model.book.LineItemBook;
-import pttk.model.clothes.ItemClothes;
-import pttk.model.clothes.LineItemClothes;
 import pttk.model.customer.Customer;
 import pttk.model.order.Cart;
 import pttk.model.order.ShipmentService;
-import pttk.service.*;
-import pttk.service.impl.*;
+import pttk.service.CartService;
+import pttk.service.ItemBookService;
+import pttk.service.LineItemBookService;
+import pttk.service.impl.CartServiceimpl;
+import pttk.service.impl.ItemBookServiceImpl;
+import pttk.service.impl.LineItenBookServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,8 +30,6 @@ public class CheckoutController extends HttpServlet {
     private final CartService cartService = new CartServiceimpl();
     private final LineItemBookService lineItemBookService = new LineItenBookServiceImpl();
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
-    private final LineItemClothesService lineItemClothesService = new LineItemClothesServiceImpl();
-    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
     private final ShipmentServiceDAO shipmentServiceDAO = new ShipmentServiceDAOImpl();
 
     @Override
@@ -41,7 +41,7 @@ public class CheckoutController extends HttpServlet {
             Customer customer = (Customer) session.getAttribute("customer");
             Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             if (cart == null) {
-               cartService.create(customer.getId());
+                cartService.create(customer.getId());
             }
             cart = cartService.getCartByCustomerId(customer.getId(), "active");
             List<LineItemBook> listLineBook = lineItemBookService.findByCartId(cart.getId());
@@ -51,13 +51,6 @@ public class CheckoutController extends HttpServlet {
                 lineBook.setItemBook(itemBook);
             }
             request.setAttribute("listLineBook", listLineBook);
-            List<LineItemClothes> listLineClothes = lineItemClothesService.findByCartId(cart.getId());
-
-            for (LineItemClothes lineClothes : listLineClothes) {
-                ItemClothes itemClothes = itemClothesService.findById(lineClothes.getItemClothes().getId());
-                lineClothes.setItemClothes(itemClothes);
-            }
-            request.setAttribute("listLineClothes", listLineClothes);
             request.setAttribute("cart", cart);
             String payment = request.getParameter("payment");
             request.setAttribute("payment", payment);
@@ -76,7 +69,7 @@ public class CheckoutController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
 
 

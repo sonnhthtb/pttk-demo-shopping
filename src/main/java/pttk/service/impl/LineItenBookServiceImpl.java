@@ -1,7 +1,7 @@
 package pttk.service.impl;
 
-import pttk.dao.book.LineItemBookDAO;
-import pttk.dao.book.impl.LineItemBookDAOImpl;
+import pttk.logic.application.bookDAO.LineItemBookDAO;
+import pttk.logic.application.bookDAO.impl.LineItemBookDAOImpl;
 import pttk.model.book.LineItemBook;
 import pttk.service.LineItemBookService;
 
@@ -12,7 +12,7 @@ public class LineItenBookServiceImpl implements LineItemBookService {
 
     @Override
     public Long create(int cartId, int itemBookId, int quantityB) {
-        return lineItemBookDAO.create(cartId,itemBookId,quantityB);
+        return lineItemBookDAO.create(cartId, itemBookId, quantityB);
     }
 
     @Override

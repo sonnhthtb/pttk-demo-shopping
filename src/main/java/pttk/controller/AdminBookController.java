@@ -19,12 +19,12 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/admin-book", "/admin-delete-book"})
 public class AdminBookController extends HttpServlet {
 
-    private ItemBookService itemBookService = new ItemBookServiceImpl();
+    private final ItemBookService itemBookService = new ItemBookServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String type = request.getParameter("type");
-        System.out.println("pttk.controller.AdminBookController.doGet()---"+type);
+        System.out.println("pttk.controller.AdminBookController.doGet()---" + type);
         String view = "views/admin/admin-book.jsp";
         try {
             //show list product
@@ -164,7 +164,7 @@ public class AdminBookController extends HttpServlet {
                 request.setAttribute("currentPage", currentPage);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(view);
                 dispatcher.forward(request, response);
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("/error");
             }

@@ -3,14 +3,8 @@ package pttk.controller;
 
 import pttk.constant.SystemConstant;
 import pttk.model.book.ItemBook;
-import pttk.model.clothes.ItemClothes;
-import pttk.model.shoes.ItemShoes;
 import pttk.service.ItemBookService;
-import pttk.service.ItemClothesService;
-import pttk.service.ItemShoesService;
 import pttk.service.impl.ItemBookServiceImpl;
-import pttk.service.impl.ItemClothesServiceImpl;
-import pttk.service.impl.ItemShoesServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,15 +19,12 @@ import java.util.List;
 public class SearchProductController extends HttpServlet {
 
     private final ItemBookService itemBookService = new ItemBookServiceImpl();
-    private final ItemClothesService itemClothesService = new ItemClothesServiceImpl();
-    private final ItemShoesService itemShoesService = new ItemShoesServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String name = request.getParameter("name");
             List<ItemBook> listItemBook = itemBookService.findByName(name);
-            List<ItemClothes> listItemClothes = itemClothesService.findByName(name);
-            List<ItemShoes> listItemShoes = itemShoesService.findByName(name);
             int totalItem = 1;
 
             // number of item in a page
@@ -48,16 +39,14 @@ public class SearchProductController extends HttpServlet {
             } else {
                 int offset = (currentPage - 1) * SystemConstant.DEFAULT_MAX_ITEM_IN_PAGE;
 
-                request.setAttribute("listItemClothes",listItemClothes);
                 request.setAttribute("listItemBook", listItemBook);
-                request.setAttribute("listItemShoes", listItemShoes);
                 request.setAttribute("totalPage", totalPage);
                 request.setAttribute("currentPage", currentPage);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/home.jsp");
                 dispatcher.forward(request, response);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("/error");
         }
@@ -65,6 +54,6 @@ public class SearchProductController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
 }

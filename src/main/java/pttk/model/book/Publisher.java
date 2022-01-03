@@ -1,15 +1,31 @@
 package pttk.model.book;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import pttk.model.BaseEntity;
-import pttk.model.electronic.Electronic;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Publisher extends BaseEntity {
+public class Publisher {
+    private Integer id;
     private String name;
     private String address;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

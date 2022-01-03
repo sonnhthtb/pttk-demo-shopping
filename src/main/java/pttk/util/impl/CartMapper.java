@@ -1,7 +1,7 @@
 package pttk.util.impl;
 
-import pttk.model.order.Cart;
 import pttk.model.customer.Customer;
+import pttk.model.order.Cart;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ public class CartMapper implements RowMapper<Cart> {
 
     @Override
     public Cart mapRow(ResultSet rs) {
-        try{
+        try {
             Cart cart = new Cart();
             Customer customer = new Customer();
             customer.setId(rs.getInt("CustomerID"));

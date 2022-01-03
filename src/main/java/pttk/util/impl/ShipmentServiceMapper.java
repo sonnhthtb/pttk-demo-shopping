@@ -1,6 +1,5 @@
 package pttk.util.impl;
 
-import pttk.model.book.Publisher;
 import pttk.model.order.ShipmentService;
 import pttk.util.RowMapper;
 

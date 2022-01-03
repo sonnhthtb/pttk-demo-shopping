@@ -1,15 +1,41 @@
 package pttk.model.book;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import pttk.model.BaseEntity;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class ItemBook extends BaseEntity {
+public class ItemBook {
+    private Integer id;
     private Float price;
     private String imageUrl;
     private Book book;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

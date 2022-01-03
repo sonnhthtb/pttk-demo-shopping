@@ -1,15 +1,11 @@
 package pttk.controller;
 
-import pttk.dao.order.OrderDAO;
-import pttk.dao.order.PaymentDAO;
-import pttk.dao.order.ShipmentServiceDAO;
-import pttk.dao.order.impl.OrderDAOImpl;
-import pttk.dao.order.impl.PaymentDAOImpl;
-import pttk.dao.order.impl.ShipmentServiceDAOImpl;
-import pttk.model.book.ItemBook;
-import pttk.model.book.LineItemBook;
-import pttk.model.clothes.ItemClothes;
-import pttk.model.clothes.LineItemClothes;
+import pttk.logic.application.orderDAO.OrderDAO;
+import pttk.logic.application.orderDAO.PaymentDAO;
+import pttk.logic.application.orderDAO.ShipmentServiceDAO;
+import pttk.logic.application.orderDAO.impl.OrderDAOImpl;
+import pttk.logic.application.orderDAO.impl.PaymentDAOImpl;
+import pttk.logic.application.orderDAO.impl.ShipmentServiceDAOImpl;
 import pttk.model.customer.Customer;
 import pttk.model.order.*;
 import pttk.service.CartService;
@@ -18,7 +14,10 @@ import pttk.service.impl.CartServiceimpl;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,8 +38,8 @@ public class OrderController extends HttpServlet {
         Customer customer = (Customer) session.getAttribute("customer");
         List<Order> orderList = orderDAO.findAllByCustomerId(customer.getId());
         List<String> listPayment = new ArrayList<>();
-        orderList.forEach( order -> {
-            if(order.getPayment() instanceof Cash) {
+        orderList.forEach(order -> {
+            if (order.getPayment() instanceof Cash) {
                 listPayment.add("Cash");
             } else {
                 listPayment.add("Credit");
@@ -80,8 +79,7 @@ public class OrderController extends HttpServlet {
             String paymentType = request.getParameter("payment");
             if (paymentType.equals("Cash")) {
                 payment = new Cash();
-            }
-            else {
+            } else {
                 String creditName = request.getParameter("creditName");
                 String creditId = request.getParameter("creditId");
                 payment = new Credit(creditId, creditName);

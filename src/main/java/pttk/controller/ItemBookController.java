@@ -19,7 +19,7 @@ public class ItemBookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
+        try {
             try {
                 String id = request.getParameter("id");
                 try {
@@ -31,11 +31,11 @@ public class ItemBookController extends HttpServlet {
                     e.printStackTrace();
                     response.sendRedirect("/list-itemBook");
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("/error");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -43,6 +43,6 @@ public class ItemBookController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
 }
