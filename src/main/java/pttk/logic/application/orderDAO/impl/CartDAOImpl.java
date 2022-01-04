@@ -1,9 +1,5 @@
 package pttk.logic.application.orderDAO.impl;
 
-import pttk.dao.clothes.LineItemClothesDAO;
-import pttk.dao.clothes.impl.LineItemClothesDAOImpl;
-import pttk.dao.shoes.LineItemShoesDAO;
-import pttk.dao.shoes.impl.LineItemShoesDAOImpl;
 import pttk.logic.application.BaseDAOImpl;
 import pttk.logic.application.bookDAO.LineItemBookDAO;
 import pttk.logic.application.bookDAO.impl.LineItemBookDAOImpl;
@@ -16,8 +12,6 @@ import java.util.List;
 public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
 
     private final LineItemBookDAO lineItemBookDAO = new LineItemBookDAOImpl();
-    private final LineItemClothesDAO lineItemClothesDAO = new LineItemClothesDAOImpl();
-    private final LineItemShoesDAO lineItemShoesDAO = new LineItemShoesDAOImpl();
 
     @Override
     public Cart getCartByCustomerId(int customerId, String status) {
@@ -35,7 +29,6 @@ public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
         List<Cart> cartList = query(sql, new CartMapper(), id);
         cartList.forEach(cart -> {
             cart.setLineItemBooks(lineItemBookDAO.findByCartId(cart.getId()));
-            cart.setLineItemClothes(lineItemClothesDAO.findByCartId(cart.getId()));
         });
         return cartList.isEmpty() ? null : cartList.get(0);
     }
