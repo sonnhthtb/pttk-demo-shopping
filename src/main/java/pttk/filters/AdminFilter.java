@@ -1,6 +1,6 @@
 package pttk.filters;
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/admin", "/admin-home.jsp", "/admin-product","/list-product.jsp", "/admin-delete-book"})
+@WebFilter(urlPatterns = {"/admin", "/admin-home.jsp", "/admin-product","/list-product.jsp", "/admin-delete-book", "/admin-book-item"})
 public class AdminFilter implements Filter{
 
     private ServletContext context;
@@ -27,7 +27,7 @@ public class AdminFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        Customer model = (Customer) session.getAttribute("customer");
+        User model = (User) session.getAttribute("customer");
         if (model != null) {
             if(model.getRole().equals("ADMIN")){
                 filterChain.doFilter(servletRequest, servletResponse);

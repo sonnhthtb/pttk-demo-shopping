@@ -5,6 +5,8 @@ public class ItemBook {
     private Integer id;
     private Float price;
     private String imageUrl;
+    private String type;
+    private String barcode;
     private Book book;
 
     public Integer getId() {
@@ -13,6 +15,22 @@ public class ItemBook {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
     public Float getPrice() {

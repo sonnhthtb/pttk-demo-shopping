@@ -50,11 +50,6 @@
                                 <div > 
                                     <div style="display: flex; align-items: center; justify-content: space-between">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="username" name="nation"
-                                                   placeholder="Quốc Gia" value="${customer.getAddress().getNation()}">
-                                        </div>
-
-                                        <div class="form-group">
                                             <input type="text" class="form-control" id="password" name="city"
                                                    placeholder="Thành phố" value="${customer.getAddress().getCity()}">
                                         </div>

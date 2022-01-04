@@ -1,7 +1,7 @@
 package pttk.controller;
 
 import pttk.model.book.ItemBook;
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.model.order.Cart;
 import pttk.service.CartService;
 import pttk.service.ItemBookService;
@@ -33,12 +33,12 @@ public class AddToCartController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            Customer customer = (Customer) session.getAttribute("customer");
+            User customer = (User) session.getAttribute("customer");
             Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             if (cart == null) {
                 Long ans = cartService.create(customer.getId());
+                cart = cartService.getCartByCustomerId(customer.getId(), "active");
             }
-            cart = cartService.getCartByCustomerId(customer.getId(), "active");
             String type = request.getParameter("type");
             Long ans = 0L;
             switch (type) {
@@ -52,7 +52,7 @@ public class AddToCartController extends HttpServlet {
                     break;
             }
             cartService.update(cart);
-            response.sendRedirect("/cart");
+//            response.sendRedirect("/cart");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/error");

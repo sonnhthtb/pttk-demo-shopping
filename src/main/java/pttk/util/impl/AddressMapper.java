@@ -1,6 +1,6 @@
 package pttk.util.impl;
 
-import pttk.model.customer.Address;
+import pttk.model.user.Address;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
@@ -12,11 +12,10 @@ public class AddressMapper implements RowMapper<Address> {
         try {
             Address address = new Address();
             address.setId(rs.getInt("ID"));
-            address.setNumberHouse(rs.getString("NumberHouse"));
+            address.setNumberHouse(rs.getString("Number"));
             address.setStreet(rs.getString("Street"));
             address.setDistrict(rs.getString("District"));
             address.setCity(rs.getString("City"));
-            address.setNation(rs.getString("Nation"));
             return address;
         } catch (Exception e) {
             e.printStackTrace();

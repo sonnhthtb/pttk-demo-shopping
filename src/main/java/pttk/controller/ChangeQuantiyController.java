@@ -2,7 +2,7 @@ package pttk.controller;
 
 import pttk.model.book.ItemBook;
 import pttk.model.book.LineItemBook;
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.model.order.Cart;
 import pttk.service.CartService;
 import pttk.service.ItemBookService;
@@ -31,7 +31,7 @@ public class ChangeQuantiyController extends HttpServlet {
 
         try {
             HttpSession session = request.getSession();
-            Customer customer = (Customer) session.getAttribute("customer");
+            User customer = (User) session.getAttribute("customer");
             Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             String action = request.getParameter("action");
             int id = Integer.parseInt(request.getParameter("id"));

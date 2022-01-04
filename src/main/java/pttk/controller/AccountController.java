@@ -1,8 +1,8 @@
 package pttk.controller;
 
-import pttk.model.customer.Address;
-import pttk.model.customer.Customer;
-import pttk.model.customer.FullName;
+import pttk.model.user.Address;
+import pttk.model.user.User;
+import pttk.model.user.FullName;
 import pttk.service.CustomerService;
 import pttk.service.impl.CustomerServiceImpl;
 
@@ -46,7 +46,7 @@ public class AccountController extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             HttpSession session = request.getSession();
-            Customer customer = (Customer) session.getAttribute("customer");
+            User customer = (User) session.getAttribute("customer");
             request.setAttribute("customer", customer);
             String message = request.getParameter("message");
             if (message != null) {
@@ -79,7 +79,7 @@ public class AccountController extends HttpServlet {
                     } else {
                         //check username exits or not
                         HttpSession session = request.getSession();
-                        Customer customer = (Customer) session.getAttribute("customer");
+                        User customer = (User) session.getAttribute("customer");
 
                         //check password
                         if (customer.getAccount().getPassword().equals(password)) {
@@ -122,10 +122,10 @@ public class AccountController extends HttpServlet {
                 String street = request.getParameter("street");
                 String numberHouse = request.getParameter("number-house");
                 FullName fullName = new FullName(firstName, middleName, lastName);
-                Address address = new Address(numberHouse, street, district, city, nation);
+                Address address = new Address(numberHouse, street, district, city);
                 HttpSession session = request.getSession();
-                Customer customer = (Customer) session.getAttribute("customer");
-                Customer newCustomer = new Customer(customer.getAccount(), address, fullName, "customer", customer.getCart());
+                User customer = (User) session.getAttribute("customer");
+                User newCustomer = new User(customer.getAccount(), address, fullName, "customer", customer.getCart());
                 newCustomer.setId(customer.getId());
                 System.out.println("pttk.controller.AccountController.doPost()------------");
                 Boolean isUpdated = customerService.updateCustomer(newCustomer);

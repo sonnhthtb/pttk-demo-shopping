@@ -1,6 +1,6 @@
 package pttk.util.impl;
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.model.order.Cart;
 import pttk.util.RowMapper;
 
@@ -13,7 +13,7 @@ public class CartMapper implements RowMapper<Cart> {
     public Cart mapRow(ResultSet rs) {
         try {
             Cart cart = new Cart();
-            Customer customer = new Customer();
+            User customer = new User();
             customer.setId(rs.getInt("CustomerID"));
             cart.setCustomer(customer);
             cart.setId(rs.getInt("ID"));

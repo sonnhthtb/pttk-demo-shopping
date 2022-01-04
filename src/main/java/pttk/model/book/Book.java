@@ -1,12 +1,17 @@
 package pttk.model.book;
 
 
+import java.util.Date;
+
 public class Book {
     private Integer id;
     private String title;
     private String type;
+    private Integer pageNumber;
     private Integer quantity;
     private String size;
+    private String language;
+    private Date publicationDate;
     private String description;
     private Publisher publisher;
     private Author author;
@@ -14,15 +19,28 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String type, Integer quantity, String size, String description, Publisher publisher, Author author) {
-        this.id = id;
-        this.title = title;
-        this.type = type;
-        this.quantity = quantity;
-        this.size = size;
-        this.description = description;
-        this.publisher = publisher;
-        this.author = author;
+    public Integer getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
     }
 
     public Integer getId() {

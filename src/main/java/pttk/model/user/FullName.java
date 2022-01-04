@@ -1,4 +1,4 @@
-package pttk.model.customer;
+package pttk.model.user;
 
 public class FullName {
     private Integer id;

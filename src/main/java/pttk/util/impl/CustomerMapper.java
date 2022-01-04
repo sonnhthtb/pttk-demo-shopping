@@ -1,16 +1,16 @@
 package pttk.util.impl;
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
 
-public class CustomerMapper implements RowMapper<Customer> {
+public class CustomerMapper implements RowMapper<User> {
 
     @Override
-    public Customer mapRow(ResultSet rs) {
+    public User mapRow(ResultSet rs) {
         try {
-            Customer customer = new Customer();
+            User customer = new User();
             customer.setId(rs.getInt("ID"));
             customer.setRole(rs.getString("Role"));
             return customer;

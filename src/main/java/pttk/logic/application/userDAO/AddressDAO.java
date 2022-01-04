@@ -1,7 +1,7 @@
-package pttk.logic.application.customerDAO;
+package pttk.logic.application.userDAO;
 
 import pttk.logic.application.BaseDAO;
-import pttk.model.customer.Address;
+import pttk.model.user.Address;
 
 public interface AddressDAO extends BaseDAO {
     Address findAddressByCustomerId(int customerId);

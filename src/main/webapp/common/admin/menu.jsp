@@ -46,31 +46,18 @@
                 <li>
                     <a href='<c:url value="/admin-book?type=list"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
+                        Quản lý kho sách
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href='<c:url value="/admin-book-item?type=list"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
                         Quản lý sách
                     </a>
                     <b class="arrow"></b>
                 </li>
-                <li>
-                    <a href='<c:url value="/admin-electronic?type=list"/>'>
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Quản lý đồ điện tử
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <li>
-                    <a href='<c:url value="/admin-shoes"/>'>
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Quản lý giày
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <li>
-                    <a href="/admin-clothes?type=list">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Quản lý quần áo
-                    </a>
-                    <b class="arrow"></b>
-                </li>
+
             </ul>
         </li>
         <li>

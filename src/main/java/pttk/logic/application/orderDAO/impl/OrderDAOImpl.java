@@ -1,8 +1,8 @@
 package pttk.logic.application.orderDAO.impl;
 
 import pttk.logic.application.BaseDAOImpl;
-import pttk.logic.application.customerDAO.CustomerDAO;
-import pttk.logic.application.customerDAO.impl.CustomerDAOImpl;
+import pttk.logic.application.userDAO.UserDAO;
+import pttk.logic.application.userDAO.impl.UserDAOImpl;
 import pttk.logic.application.orderDAO.CartDAO;
 import pttk.logic.application.orderDAO.OrderDAO;
 import pttk.logic.application.orderDAO.PaymentDAO;
@@ -13,7 +13,7 @@ import pttk.util.impl.OrderMapper;
 import java.util.List;
 
 public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
-    private final CustomerDAO customerDAO = new CustomerDAOImpl();
+    private final UserDAO userDAO = new UserDAOImpl();
     private final CartDAO cartDAO = new CartDAOImpl();
     private final ShipmentDAO shipmentDAO = new ShipmentDAOImpl();
     private final PaymentDAO paymentDAO = new PaymentDAOImpl();
@@ -23,7 +23,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
         String sql = "SELECT * FROM `Order`";
         List<Order> orderList = query(sql, new OrderMapper());
         orderList.forEach(order -> {
-            order.setCustomer(customerDAO.findById(order.getCustomer().getId()));
+            order.setCustomer(userDAO.findById(order.getCustomer().getId()));
             order.setCart(cartDAO.findById(order.getCart().getId()));
             order.setPayment(paymentDAO.findByOrderId(order.getId()));
             order.setShipment(shipmentDAO.findByOrderId(order.getId()));
@@ -36,7 +36,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
         String sql = "SELECT * FROM `Order` WHERE CustomerID = ? ORDER BY Date DESC";
         List<Order> orderList = query(sql, new OrderMapper(), customerId);
         orderList.forEach(order -> {
-            order.setCustomer(customerDAO.findById(order.getCustomer().getId()));
+            order.setCustomer(userDAO.findById(order.getCustomer().getId()));
             order.setCart(cartDAO.findById(order.getCart().getId()));
             order.setPayment(paymentDAO.findByOrderId(order.getId()));
             order.setShipment(shipmentDAO.findByOrderId(order.getId()));

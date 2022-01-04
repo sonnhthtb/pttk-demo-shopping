@@ -1,11 +1,11 @@
 package pttk.service;
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 
 public interface CustomerService {
-    Customer findByUserNameAndPassword(String username, String password);
+    User findByUserNameAndPassword(String username, String password);
 
-    Boolean createNewCustomer(Customer customer);
+    Boolean createNewCustomer(User customer);
 
-    Boolean updateCustomer(Customer customer);
+    Boolean updateCustomer(User customer);
 }

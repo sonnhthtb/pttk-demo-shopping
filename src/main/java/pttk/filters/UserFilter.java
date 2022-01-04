@@ -1,6 +1,6 @@
 package pttk.filters;
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -14,7 +14,7 @@ public class UserFilter implements Filter{
 
     private ServletContext context;
 
-    private final Customer userService = new Customer();
+    private final User userService = new User();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -28,7 +28,7 @@ public class UserFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        Customer model = (Customer) session.getAttribute("customer");
+        User model = (User) session.getAttribute("customer");
         if (model != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {

@@ -6,7 +6,7 @@ import pttk.logic.application.orderDAO.ShipmentServiceDAO;
 import pttk.logic.application.orderDAO.impl.OrderDAOImpl;
 import pttk.logic.application.orderDAO.impl.PaymentDAOImpl;
 import pttk.logic.application.orderDAO.impl.ShipmentServiceDAOImpl;
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.model.order.*;
 import pttk.service.CartService;
 import pttk.service.impl.CartServiceimpl;
@@ -35,7 +35,7 @@ public class OrderController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String view = "views/web/list-order.jsp";
         HttpSession session = request.getSession();
-        Customer customer = (Customer) session.getAttribute("customer");
+        User customer = (User) session.getAttribute("customer");
         List<Order> orderList = orderDAO.findAllByCustomerId(customer.getId());
         List<String> listPayment = new ArrayList<>();
         orderList.forEach(order -> {
@@ -61,7 +61,7 @@ public class OrderController extends HttpServlet {
 
             Order order = new Order();
             HttpSession session = request.getSession();
-            Customer customer = (Customer) session.getAttribute("customer");
+            User customer = (User) session.getAttribute("customer");
             Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             cart.setCartStatus("not active");
             order.setCart(cart);

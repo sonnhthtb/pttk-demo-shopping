@@ -1,8 +1,8 @@
-package pttk.logic.application.customerDAO.impl;
+package pttk.logic.application.userDAO.impl;
 
 import pttk.logic.application.BaseDAOImpl;
-import pttk.logic.application.customerDAO.AccountDAO;
-import pttk.model.customer.Account;
+import pttk.logic.application.userDAO.AccountDAO;
+import pttk.model.user.Account;
 import pttk.util.impl.AccountMapper;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
     @Override
     public Account findAccountByCustomerId(int customerId) {
-        String sql = "SELECT * FROM account WHERE CustomerID = ?";
+        String sql = "SELECT * FROM account WHERE UserID  = ?";
         List<Account> accountList = query(sql, new AccountMapper(), customerId);
         return accountList.isEmpty() ? null : accountList.get(0);
     }

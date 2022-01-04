@@ -1,4 +1,4 @@
-package pttk.model.customer;
+package pttk.model.user;
 
 
 public class Address {
@@ -7,14 +7,12 @@ public class Address {
     private String street;
     private String district;
     private String city;
-    private String nation;
 
-    public Address(String numberHouse, String street, String district, String city, String nation) {
+    public Address(String numberHouse, String street, String district, String city) {
         this.numberHouse = numberHouse;
         this.street = street;
         this.district = district;
         this.city = city;
-        this.nation = nation;
     }
 
     public Address() {
@@ -60,15 +58,7 @@ public class Address {
         this.city = city;
     }
 
-    public String getNation() {
-        return nation;
-    }
-
-    public void setNation(String nation) {
-        this.nation = nation;
-    }
-
     public boolean isValid() {
-        return numberHouse != null && street != null && district != null && city != null && nation != null;
+        return numberHouse != null && street != null && district != null && city != null;
     }
 }

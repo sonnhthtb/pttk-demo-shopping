@@ -1,9 +1,9 @@
-package pttk.model.customer;
+package pttk.model.user;
 
 import pttk.model.order.Cart;
 
 
-public class Customer {
+public class User {
     private Integer id;
     private Account account;
     private Address address;
@@ -11,7 +11,7 @@ public class Customer {
     private String role;
     private Cart cart;
 
-    public Customer(Account account, Address address, FullName fullName, String role, Cart cart) {
+    public User(Account account, Address address, FullName fullName, String role, Cart cart) {
         this.account = account;
         this.address = address;
         this.fullName = fullName;
@@ -19,7 +19,7 @@ public class Customer {
         this.cart = cart;
     }
 
-    public Customer() {
+    public User() {
     }
 
     public Integer getId() {

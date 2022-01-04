@@ -4,7 +4,7 @@ import pttk.logic.application.orderDAO.ShipmentServiceDAO;
 import pttk.logic.application.orderDAO.impl.ShipmentServiceDAOImpl;
 import pttk.model.book.ItemBook;
 import pttk.model.book.LineItemBook;
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.model.order.Cart;
 import pttk.model.order.ShipmentService;
 import pttk.service.CartService;
@@ -38,7 +38,7 @@ public class CheckoutController extends HttpServlet {
         try {
             request.setCharacterEncoding("UTF-8");
             HttpSession session = request.getSession();
-            Customer customer = (Customer) session.getAttribute("customer");
+            User customer = (User) session.getAttribute("customer");
             Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
             if (cart == null) {
                 cartService.create(customer.getId());

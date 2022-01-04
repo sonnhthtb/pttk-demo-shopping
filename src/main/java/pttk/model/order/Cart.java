@@ -1,7 +1,7 @@
 package pttk.model.order;
 
 import pttk.model.book.LineItemBook;
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class Cart {
     private String cartStatus;
     private Float totalPrice;
     private List<LineItemBook> lineItemBooks;
-    private Customer customer;
+    private User customer;
 
     public Integer getId() {
         return id;
@@ -44,11 +44,11 @@ public class Cart {
         this.lineItemBooks = lineItemBooks;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 }

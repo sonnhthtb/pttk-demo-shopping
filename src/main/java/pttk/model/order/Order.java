@@ -1,6 +1,6 @@
 package pttk.model.order;
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 
 import java.util.Date;
 
@@ -8,12 +8,12 @@ public class Order {
     private Integer id;
     private Date date;
     private String status;
-    private Customer customer;
+    private User customer;
     private Shipment shipment;
     private Payment payment;
     private Cart cart;
 
-    public Order(Date date, String status, Customer customer, Shipment shipment, Payment payment, Cart cart) {
+    public Order(Date date, String status, User customer, Shipment shipment, Payment payment, Cart cart) {
         this.date = date;
         this.status = status;
         this.customer = customer;
@@ -49,11 +49,11 @@ public class Order {
         this.status = status;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 

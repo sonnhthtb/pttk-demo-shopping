@@ -2,7 +2,7 @@ package pttk.filters;
 
 
 
-import pttk.model.customer.Customer;
+import pttk.model.user.User;
 import pttk.service.CustomerService;
 import pttk.service.impl.CustomerServiceImpl;
 
@@ -34,7 +34,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        Customer model = (Customer) session.getAttribute("customer");
+        User model = (User) session.getAttribute("customer");
 
         //check logged in
         if (model != null) {
@@ -61,7 +61,7 @@ public class AuthenticationFilter implements Filter {
                 //check cookie for log in
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
 
-                    Customer customer = customerService.findByUserNameAndPassword(username, password);
+                    User customer = customerService.findByUserNameAndPassword(username, password);
                     if (customer != null) {
                         session.setAttribute("customer", customer);
                         response.sendRedirect("/home");
