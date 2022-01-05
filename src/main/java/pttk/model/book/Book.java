@@ -7,9 +7,9 @@ public class Book {
     private Integer id;
     private String title;
     private String type;
+    private Integer price;
     private Integer pageNumber;
     private Integer quantity;
-    private String size;
     private String language;
     private Date publicationDate;
     private String description;
@@ -17,6 +17,14 @@ public class Book {
     private Author author;
 
     public Book() {
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public Integer getPageNumber() {
@@ -75,13 +83,6 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
 
     public String getDescription() {
         return description;

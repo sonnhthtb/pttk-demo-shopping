@@ -57,16 +57,16 @@
                                     <label class="col-sm-3 control-label no-padding-right">Tên sách:</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="title" name="title"
-                                               value="${itemBook.book.title}" />
+                                               value="${book.title}" />
                                     </div>
                                 </div>
                                 <br />
                                 <br />
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Link hình ảnh</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
-                                               value="${itemBook.imageUrl}" />
+                                        <input type="text" class="form-control" id="type" name="type"
+                                               value="${book.type}" />
                                     </div>
                                 </div>
                                 <br />
@@ -75,16 +75,16 @@
                                     <label class="col-sm-3 control-label no-padding-right">Giá</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="price"
-                                               name="price" value="${itemBook.price}" />
+                                               name="price" value="${book.price }" />
                                     </div>
                                 </div>
                                 <br />
                                 <br />
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Ngôn ngữ</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="type"
-                                               name="type" value="${itemBook.book.type}" />
+                                        <input type="text" class="form-control" id="language"
+                                               name="language" value="${book.language}" />
                                     </div>
                                 </div>
                                 <br />
@@ -93,16 +93,16 @@
                                     <label class="col-sm-3 control-label no-padding-right">Số lượng</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="quantity"
-                                               name="quantity" value="${itemBook.book.quantity}" />
+                                               name="quantity" value="${book.quantity}" />
                                     </div>
                                 </div>
                                 <br />
                                 <br />
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Kích thước</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Số trang</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="size"
-                                               name="size" value="${itemBook.book.size}" />
+                                        <input type="text" class="form-control" id="pageNumber"
+                                               name="pageNumber" value="${book.pageNumber}" />
                                     </div>
                                 </div>
                                 <br />
@@ -111,16 +111,27 @@
                                     <label class="col-sm-3 control-label no-padding-right">Nhà xuất bản</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="publisherName"
-                                               name="publisherName" value="${itemBook.book.publisher.name}" />
+                                               name="publisherName" value="${book.publisher.name}" />
                                     </div>
                                 </div>
                                 <br />
+
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">Ngày xuất bản</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="publicationDate"
+                                               name="publicationDate" value="${book.publicationDate}" />
+                                    </div>
+                                </div>
+                                <br />
+
                                 <br />
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right">Địa chỉ NXB:</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="publisherAddress"
-                                               name="publisherAddress" value="${itemBook.book.publisher.address}" />
+                                               name="publisherAddress" value="${book.publisher.address}" />
                                     </div>
                                 </div>
                                 <br />
@@ -129,7 +140,7 @@
                                     <label class="col-sm-3 control-label no-padding-right">Tác giả</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="authorName"
-                                               name="authorName" value="${itemBook.book.author.name}" />
+                                               name="authorName" value="${book.author.name}" />
                                     </div>
                                 </div>
                                 <br />
@@ -138,7 +149,7 @@
                                     <label class="col-sm-3 control-label no-padding-right">Biography tác giả</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="authorBiography"
-                                               name="authorBiography" value="${itemBook.book.author.biography}" />
+                                               name="authorBiography" value="${book.author.biography}" />
                                     </div>
                                 </div>
                                 <br />
@@ -147,7 +158,7 @@
                                     <label class="col-sm-3 control-label no-padding-right">Quốc tịch tác giả</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="authorNation"
-                                               name="authorNation" value="${itemBook.book.author.nation}" />
+                                               name="authorNation" value="${book.author.nation}" />
                                     </div>
                                 </div>
                                 <br />
@@ -156,24 +167,24 @@
                                     <label class="col-sm-3 control-label no-padding-right">Mô tả sản phẩm</label>
                                     <div class="col-sm-9">
                                                 <textarea rows="" cols="" id="description" name="description"
-                                                          style="width: 820px;height: 175px">${itemBook.book.description}</textarea>
+                                                          style="width: 820px;height: 175px">${book.description}</textarea>
                                     </div>
                                 </div>
                                 <br />
                                 <br />
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <c:if test="${not empty itemBook.id}">
+                                        <c:if test="${not empty book.id}">
                                             <button type="submit" class="btn btn-white btn-warning btn-bold"
-                                                   id="btnAddOrUpdateNew"> Cập nhật sản phẩm </button>
+                                                   id="btnAddOrUpdateNew"> Cập nhật sản phẩm== </button>
                                         </c:if>
-                                        <c:if test="${empty itemBook.id}">
+                                        <c:if test="${empty book.id}">
                                             <button type="submit" class="btn btn-white btn-warning btn-bold"
                                                     id="btnAddOrUpdateNew"> Thêm sản phẩm </button>
                                         </c:if>
                                     </div>
                                 </div>
-                                <input type="hidden" value="${itemBook.id}" id="id" name="id" />
+                                <input type="hidden" value="${book.id}" id="id" name="id" />
                             </form>
                         </div>
                     </div>

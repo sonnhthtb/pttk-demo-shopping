@@ -29,21 +29,19 @@ public class BookDAOImpl extends BaseDAOImpl<Book> implements BookDAO {
     }
 
     @Override
-    public Book save(Book book, Integer itemBookId) {
+    public Book save(Book book) {
         Author author = authorDAO.save(book.getAuthor());
         Publisher publisher = publisherDAO.save(book.getPublisher());
-        String sql = "INSERT INTO Book(AuthorID, PublisherID, ItemBookID, Title, Type, Quantity, Size, Description) VALUE(?, ?, ?, ?, ?, ?, ?, ?)";
-        Long id = insert(sql, author.getId(), publisher.getId(), itemBookId, book.getTitle(), book.getType(), book.getQuantity(), book.getSize(), book.getDescription());
-        Book newBook = getBookByItemBookId(itemBookId);
-        newBook.setAuthor(author);
-        newBook.setPublisher(publisher);
-        return newBook;
+        String sql = "INSERT INTO Book(AuthorID, PublisherID, Title, Type, Quantity, PageNumber, PublicationDate, Price, Language, Description) VALUE(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Long id = insert(sql, author.getId(), publisher.getId(), book.getTitle(), book.getType(), book.getQuantity(), book.getPageNumber(), book.getPublicationDate(), book.getPrice(), book.getLanguage(), book.getDescription());
+        book.setId(Math.toIntExact(id));
+        return book;
     }
 
     @Override
     public Book update(Book book) {
-        String sql = "UPDATE Book SET Title = ?, Type = ?, Quantity = ?, Size = ?, Description = ? WHERE ID = ?";
-        update(sql, book.getTitle(), book.getType(), book.getQuantity(), book.getSize(), book.getDescription());
+        String sql = "UPDATE Book SET Title = ?, Type = ?, Quantity = ?, Language = ?, PageNumber = ?, PublicationDate = ?, Price = ? , Description = ? WHERE ID = ?";
+        update(sql, book.getTitle(), book.getType(), book.getQuantity(), book.getLanguage(), book.getPageNumber(), book.getPublicationDate(), book.getPrice(), book.getDescription());
         authorDAO.update(book.getAuthor());
         publisherDAO.update(book.getPublisher());
         return book;

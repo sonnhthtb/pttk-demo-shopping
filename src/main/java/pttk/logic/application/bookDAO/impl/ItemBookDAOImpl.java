@@ -68,7 +68,7 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
         String sql = "INSERT INTO Itembook( Price, ImageUrl) VALUE( ?, ?)";
         Long id = insert(sql, itemBook.getPrice(), itemBook.getImageUrl());
         ItemBook newItemBook = findById(Math.toIntExact(id));
-        newItemBook.setBook(bookDAO.save(itemBook.getBook(), newItemBook.getId()));
+//        newItemBook.setBook(bookDAO.save(itemBook.getBook(), newItemBook.getId()));
         return newItemBook;
     }
 
