@@ -53,7 +53,7 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
     public List<ItemBook> findByName(String name) {
         name = "%" + name + "%";
         String sql = "SELECT * FROM ItemBook, Book WHERE " +
-                "Book.ItemBookID = ItemBookID " +
+                "ItemBook.BookID = Book.ID " +
                 "AND Book.Title like ?";
 
         List<ItemBook> itemBookList = query(sql, new ItemBookMapper(), name);
@@ -65,24 +65,16 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
 
     @Override
     public ItemBook save(ItemBook itemBook) {
-        String sql = "INSERT INTO Itembook( Price, ImageUrl) VALUE( ?, ?)";
-        Long id = insert(sql, itemBook.getPrice(), itemBook.getImageUrl());
-        ItemBook newItemBook = findById(Math.toIntExact(id));
-//        newItemBook.setBook(bookDAO.save(itemBook.getBook(), newItemBook.getId()));
-        return newItemBook;
+        String sql = "INSERT INTO Itembook(BookID, Price, ImageUrl, Barcode) VALUE( ?, ?, ?, ?)";
+        Long id = insert(sql, itemBook.getBook().getId(), itemBook.getPrice(), itemBook.getImageUrl(), itemBook.getBarcode());
+        return findById(Math.toIntExact(id));
     }
 
     @Override
     public ItemBook update(ItemBook itemBook) {
-        String sql = "UPDATE ItemBook SET  Price = ?, ImageUrl = ? WHERE ID = ?";
-        update(sql, itemBook.getPrice(), itemBook.getImageUrl(), itemBook.getId());
-        ItemBook newItemBook = findById(itemBook.getId());
-        Book book = bookDAO.getBookByItemBookId(itemBook.getId());
-        Integer bookId = book.getId();
-        book = itemBook.getBook();
-        book.setId(bookId);
-        newItemBook.setBook(bookDAO.update(book));
-        return newItemBook;
+        String sql = "UPDATE ItemBook SET  Price = ?, ImageUrl = ?, Barcode = ? WHERE ID = ?";
+        update(sql, itemBook.getPrice(), itemBook.getImageUrl(), itemBook.getBarcode(), itemBook.getId());
+        return findById(itemBook.getId());
     }
 
     @Override
@@ -91,6 +83,16 @@ public class ItemBookDAOImpl extends BaseDAOImpl<ItemBook> implements ItemBookDA
         bookDAO.delete(book.getId());
         String sql = "DELETE FROM ItemBook WHERE id = ?";
         update(sql, id);
+    }
+
+    @Override
+    public ItemBook findByBookId(Integer bookId) {
+        String sql = "SELECT * FROM ItemBook WHERE BookID = ?";
+        List<ItemBook> itemBookList = query(sql, new ItemBookMapper(), bookId);
+        itemBookList.stream().forEach(itemBook -> {
+            itemBook.setBook(bookDAO.getBookByItemBookId(itemBook.getId()));
+        });
+        return itemBookList.isEmpty() ? null : itemBookList.get(0);
     }
 
 }

@@ -21,4 +21,6 @@ public interface ItemBookDAO extends BaseDAO<ItemBook> {
     ItemBook update(ItemBook itemBook);
 
     void delete(Integer id);
+
+    ItemBook findByBookId(Integer bookId);
 }

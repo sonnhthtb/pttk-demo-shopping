@@ -120,52 +120,6 @@
 									</h4>
 								</div>
 							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="/list-itemClothes">
-											Clothes
-										</a>
-									</h4>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#electronic">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Electronic
-										</a>
-									</h4>
-								</div>
-								<div id="electronic" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="/list-itemElectronic?type=mobile">Mobile</a></li>
-											<li><a href="/list-itemElectronic?type=computer">Computer</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#shoes">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Shoes
-										</a>
-									</h4>
-								</div>
-								<div id="shoes" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="/item-shoes?type=men">Men</a></li>
-											<li><a href="/item-shoes?type=women">Women</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 						</div><!--/category-products-->
 						<div class="price-range"><!--price-range-->
 							<h2>Price Range</h2>

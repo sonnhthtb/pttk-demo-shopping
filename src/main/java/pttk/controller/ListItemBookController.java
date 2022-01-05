@@ -1,8 +1,8 @@
 package pttk.controller;
 
+import pttk.logic.application.bookDAO.ItemBookDAO;
+import pttk.logic.application.bookDAO.impl.ItemBookDAOImpl;
 import pttk.model.book.ItemBook;
-import pttk.service.ItemBookService;
-import pttk.service.impl.ItemBookServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/list-itemBook"})
 public class ListItemBookController extends HttpServlet {
-    private final ItemBookService itemBookService = new ItemBookServiceImpl();
+    private final ItemBookDAO itemBookDAO = new ItemBookDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class ListItemBookController extends HttpServlet {
             try {
 
                 try {
-                    List<ItemBook> listItemBook = itemBookService.findAll();
+                    List<ItemBook> listItemBook = itemBookDAO.findAll();
                     request.setAttribute("listItemBook", listItemBook);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/listItemBook.jsp");
                     dispatcher.forward(request, response);

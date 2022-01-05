@@ -1,7 +1,7 @@
 package pttk.util.impl;
 
-import pttk.model.user.User;
 import pttk.model.order.Cart;
+import pttk.model.user.User;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
@@ -14,10 +14,10 @@ public class CartMapper implements RowMapper<Cart> {
         try {
             Cart cart = new Cart();
             User customer = new User();
-            customer.setId(rs.getInt("CustomerID"));
+            customer.setId(rs.getInt("UserID"));
             cart.setCustomer(customer);
             cart.setId(rs.getInt("ID"));
-            cart.setCartStatus(rs.getString("CartStatus"));
+            cart.setStatus(rs.getString("Status"));
             cart.setTotalPrice(rs.getFloat("TotalPrice"));
             return cart;
         } catch (SQLException throwables) {

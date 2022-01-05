@@ -1,15 +1,15 @@
 package pttk.controller;
 
+import pttk.logic.application.orderDAO.CartDAO;
 import pttk.logic.application.orderDAO.OrderDAO;
 import pttk.logic.application.orderDAO.PaymentDAO;
 import pttk.logic.application.orderDAO.ShipmentServiceDAO;
+import pttk.logic.application.orderDAO.impl.CartDAOImpl;
 import pttk.logic.application.orderDAO.impl.OrderDAOImpl;
 import pttk.logic.application.orderDAO.impl.PaymentDAOImpl;
 import pttk.logic.application.orderDAO.impl.ShipmentServiceDAOImpl;
-import pttk.model.user.User;
 import pttk.model.order.*;
-import pttk.service.CartService;
-import pttk.service.impl.CartServiceimpl;
+import pttk.model.user.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +26,7 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/order"})
 public class OrderController extends HttpServlet {
 
-    private final CartService cartService = new CartServiceimpl();
+    private final CartDAO cartDAO = new CartDAOImpl();
     private final OrderDAO orderDAO = new OrderDAOImpl();
     private final ShipmentServiceDAO shipmentServiceDAO = new ShipmentServiceDAOImpl();
     private final PaymentDAO paymentDAO = new PaymentDAOImpl();
@@ -62,8 +62,8 @@ public class OrderController extends HttpServlet {
             Order order = new Order();
             HttpSession session = request.getSession();
             User customer = (User) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
-            cart.setCartStatus("not active");
+            Cart cart = cartDAO.getCartByCustomerId(customer.getId(), "active");
+            cart.setStatus("not active");
             order.setCart(cart);
             order.setCustomer(customer);
             order.setDate(new Date());

@@ -14,7 +14,7 @@ public class LineItemBookDAOImpl extends BaseDAOImpl<LineItemBook> implements Li
 
     @Override
     public Long create(int cardId, int itemBookId, int quantity) {
-        String sql = "INSERT INTO LineItemBook (cartID, itemBookId, quantityB) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO LineItemBook (cartID, itemBookId, quantity) VALUES (?, ?, ?)";
         Long ans = insert(sql, cardId, itemBookId, quantity);
         return ans;
     }
@@ -31,7 +31,7 @@ public class LineItemBookDAOImpl extends BaseDAOImpl<LineItemBook> implements Li
 
     @Override
     public void updateQuantity(int quantity, int id) {
-        String sql = "update LineItemBook set quantityB = ? where id = ?";
+        String sql = "update LineItemBook set quantity = ? where id = ?";
         update(sql, quantity, id);
     }
 
@@ -45,6 +45,17 @@ public class LineItemBookDAOImpl extends BaseDAOImpl<LineItemBook> implements Li
     public LineItemBook findById(int id) {
         String sql = "SELECT * FROM lineItemBook WHERE id = ?";
         List<LineItemBook> lineItemBookList = query(sql, new LineItemBookMapper(), id);
+        return lineItemBookList.isEmpty() ? null : lineItemBookList.get(0);
+    }
+
+    @Override
+    public LineItemBook findByCartIdAndItemBookId(int cartId, int itemBookId) {
+        String sql = "select lineitembook.* from lineitembook,cart " +
+                "where cart.id = lineitembook.cartID " +
+                "AND cart.status = 'active' " +
+                "AND cart.id = ? " +
+                "AND lineitembook.itembookid = ?";
+        List<LineItemBook> lineItemBookList = query(sql, new LineItemBookMapper(), cartId, itemBookId);
         return lineItemBookList.isEmpty() ? null : lineItemBookList.get(0);
     }
 

@@ -1,16 +1,17 @@
 package pttk.controller;
 
+import pttk.logic.application.bookDAO.ItemBookDAO;
+import pttk.logic.application.bookDAO.LineItemBookDAO;
+import pttk.logic.application.bookDAO.impl.ItemBookDAOImpl;
+import pttk.logic.application.bookDAO.impl.LineItemBookDAOImpl;
+import pttk.logic.application.orderDAO.CartDAO;
+import pttk.logic.application.orderDAO.impl.CartDAOImpl;
 import pttk.model.book.ItemBook;
 import pttk.model.book.LineItemBook;
-import pttk.model.user.User;
 import pttk.model.order.Cart;
-import pttk.service.CartService;
-import pttk.service.ItemBookService;
-import pttk.service.LineItemBookService;
-import pttk.service.impl.CartServiceimpl;
-import pttk.service.impl.ItemBookServiceImpl;
-import pttk.service.impl.LineItenBookServiceImpl;
+import pttk.model.user.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +23,9 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/change-quantity"})
 public class ChangeQuantiyController extends HttpServlet {
 
-    private final LineItemBookService lineItemBookService = new LineItenBookServiceImpl();
-    private final ItemBookService itemBookService = new ItemBookServiceImpl();
-    private final CartService cartService = new CartServiceimpl();
+    private final LineItemBookDAO lineItemBookDAO = new LineItemBookDAOImpl();
+    private final ItemBookDAO itemBookDAO = new ItemBookDAOImpl();
+    private final CartDAO cartDAO = new CartDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,24 +33,28 @@ public class ChangeQuantiyController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             User customer = (User) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
+            Cart cart = cartDAO.getCartByCustomerId(customer.getId(), "active");
             String action = request.getParameter("action");
             int id = Integer.parseInt(request.getParameter("id"));
             String type = request.getParameter("type");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+
             // increase quantity of item in cart
             if (action.equals("inc")) {
-                quantity++;
-                switch (type) {
-                    case "book":
-                        lineItemBookService.updateQuantity(quantity, id);
-                        LineItemBook lineItemBook = lineItemBookService.findById(id);
-                        ItemBook itemBook = itemBookService.findById(lineItemBook.getItemBook().getId());
-                        cart.setTotalPrice(cart.getTotalPrice() + itemBook.getPrice());
-                        cartService.update(cart);
-                        break;
-                    default:
-                        break;
+                LineItemBook lineItemBook = lineItemBookDAO.findById(id);
+                ItemBook itemBook = itemBookDAO.findById(lineItemBook.getItemBook().getId());
+                if (quantity >= itemBook.getBook().getQuantity()) {
+                    request.setAttribute("messageResponse", "Kho không đủ hàng");
+                    request.setAttribute("alert", "danger");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/cart");
+                    dispatcher.forward(request, response);
+                    return;
+                } else {
+                    quantity++;
+                    lineItemBookDAO.updateQuantity(quantity, id);
+                    cart.setTotalPrice(cart.getTotalPrice() + itemBook.getPrice());
+                    cartDAO.update(cart);
                 }
             }
             //decrease quantity of item in cart
@@ -57,14 +62,14 @@ public class ChangeQuantiyController extends HttpServlet {
                 quantity--;
                 switch (type) {
                     case "book":
-                        LineItemBook lineItemBook = lineItemBookService.findById(id);
-                        ItemBook itemBook = itemBookService.findById(lineItemBook.getItemBook().getId());
+                        LineItemBook lineItemBook = lineItemBookDAO.findById(id);
+                        ItemBook itemBook = itemBookDAO.findById(lineItemBook.getItemBook().getId());
                         cart.setTotalPrice(cart.getTotalPrice() - itemBook.getPrice());
-                        cartService.update(cart);
+                        cartDAO.update(cart);
                         if (quantity == 0) {
-                            lineItemBookService.deleteLineItemBook(id);
+                            lineItemBookDAO.deleteLineItemBook(id);
                         } else {
-                            lineItemBookService.updateQuantity(quantity, id);
+                            lineItemBookDAO.updateQuantity(quantity, id);
                         }
                         break;
                     default:
@@ -75,11 +80,11 @@ public class ChangeQuantiyController extends HttpServlet {
             else if (action.equals("del")) {
                 switch (type) {
                     case "book":
-                        LineItemBook lineItemBook = lineItemBookService.findById(id);
-                        ItemBook itemBook = itemBookService.findById(lineItemBook.getItemBook().getId());
+                        LineItemBook lineItemBook = lineItemBookDAO.findById(id);
+                        ItemBook itemBook = itemBookDAO.findById(lineItemBook.getItemBook().getId());
                         cart.setTotalPrice(cart.getTotalPrice() - quantity * itemBook.getPrice());
-                        cartService.update(cart);
-                        lineItemBookService.deleteLineItemBook(id);
+                        cartDAO.update(cart);
+                        lineItemBookDAO.deleteLineItemBook(id);
                         break;
                     default:
                         break;

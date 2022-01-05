@@ -40,7 +40,7 @@
                             <a href="/admin">Trang chủ</a>
                         </li>
                         <li>
-                            <a href="/admin-product?type=list">Danh sách sản phẩm</a>
+                            <a href="/admin-book-item?type=list">Danh sách sản phẩm</a>
                         </li>
                     </ul>
                 </div>
@@ -52,37 +52,23 @@
                                         ${messageResponse}
                                 </div>
                             </c:if>
-                            <form id="formSubmit" action="/admin-product" method="post">
+                            <form id="formSubmit" action="/admin-book-item" method="post">
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Sách</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" id="category" name="category">
-                                            <c:if test="${empty product.category}">
-                                                <option value="">Chọn loại sản phẩm</option>
-                                                <c:forEach var="item" items="${categories}">
-                                                    <option value="${item.id}">${item.name}</option>
-                                                </c:forEach>
-                                            </c:if>
-                                            <c:if test="${not empty product.category}">
-                                                <option value="">Chọn loại sản phẩm</option>
-                                                <c:forEach var="item" items="${categories}">
-                                                    <option value="${item.id}"
-                                                    <c:if test="${item.id == product.category.id}">
-                                                        selected="selected"
-                                                    </c:if> > ${item.name}
+                                        <c:if test="${empty itemBook.id}">
+                                            <select name="bookId">
+                                                <c:forEach items="${listBook}" var="book">
+                                                    <option value="${book.id}">
+                                                            ${book.title}
                                                     </option>
                                                 </c:forEach>
-                                            </c:if>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br />
-                                <br />
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Tên sản phẩm</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               value="${product.name}" />
+                                            </select>
+                                        </c:if>
+
+                                        <c:if test="${not empty itemBook.id}">
+                                            <a> ${itemBook.book.title} </a>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <br />
@@ -90,8 +76,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right">Link hình ảnh</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="image" name="image"
-                                               value="${product.image}" />
+                                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                                               value="${itemBook.imageUrl}" />
                                     </div>
                                 </div>
                                 <br />
@@ -100,33 +86,34 @@
                                     <label class="col-sm-3 control-label no-padding-right">Giá</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="price"
-                                               name="price" value="${product.price}" />
+                                               name="price" value="${itemBook.price}" />
                                     </div>
                                 </div>
                                 <br />
                                 <br />
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Mô tả sản phẩm</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Barcode</label>
                                     <div class="col-sm-9">
-                                                <textarea rows="" cols="" id="description" name="description"
-                                                          style="width: 820px;height: 175px">${product.description}</textarea>
+                                        <input type="text" class="form-control" id="barcode"
+                                               name="barcode" value="${itemBook.barcode}" />
                                     </div>
                                 </div>
                                 <br />
+
                                 <br />
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <c:if test="${not empty product.id}">
+                                        <c:if test="${not empty itemBook.id}">
                                             <button type="submit" class="btn btn-white btn-warning btn-bold"
                                                    id="btnAddOrUpdateNew"> Cập nhật sản phẩm </button>
                                         </c:if>
-                                        <c:if test="${empty product.id}">
+                                        <c:if test="${empty itemBook.id}">
                                             <button type="submit" class="btn btn-white btn-warning btn-bold"
                                                     id="btnAddOrUpdateNew"> Thêm sản phẩm </button>
                                         </c:if>
                                     </div>
                                 </div>
-                                <input type="hidden" value="${product.id}" id="id" name="id" />
+                                <input type="hidden" value="${itemBook.id}" id="id" name="id" />
                             </form>
                         </div>
                     </div>

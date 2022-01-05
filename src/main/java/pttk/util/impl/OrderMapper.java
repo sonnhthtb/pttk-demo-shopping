@@ -1,8 +1,8 @@
 package pttk.util.impl;
 
-import pttk.model.user.User;
 import pttk.model.order.Cart;
 import pttk.model.order.Order;
+import pttk.model.user.User;
 import pttk.util.RowMapper;
 
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ public class OrderMapper implements RowMapper<Order> {
             cart.setId(rs.getInt("CartID"));
             order.setCart(cart);
             User customer = new User();
-            customer.setId(rs.getInt("CustomerID"));
+            customer.setId(rs.getInt("UserID"));
             order.setCustomer(customer);
             return order;
         } catch (Exception e) {

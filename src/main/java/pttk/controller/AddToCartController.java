@@ -1,15 +1,17 @@
 package pttk.controller;
 
+import pttk.logic.application.bookDAO.ItemBookDAO;
+import pttk.logic.application.bookDAO.LineItemBookDAO;
+import pttk.logic.application.bookDAO.impl.ItemBookDAOImpl;
+import pttk.logic.application.bookDAO.impl.LineItemBookDAOImpl;
+import pttk.logic.application.orderDAO.CartDAO;
+import pttk.logic.application.orderDAO.impl.CartDAOImpl;
 import pttk.model.book.ItemBook;
-import pttk.model.user.User;
+import pttk.model.book.LineItemBook;
 import pttk.model.order.Cart;
-import pttk.service.CartService;
-import pttk.service.ItemBookService;
-import pttk.service.LineItemBookService;
-import pttk.service.impl.CartServiceimpl;
-import pttk.service.impl.ItemBookServiceImpl;
-import pttk.service.impl.LineItenBookServiceImpl;
+import pttk.model.user.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +23,10 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/addToCart"})
 public class AddToCartController extends HttpServlet {
 
-    private final CartService cartService = new CartServiceimpl();
-    private final ItemBookService itemBookService = new ItemBookServiceImpl();
-    private final LineItemBookService lineItemBookService = new LineItenBookServiceImpl();
+
+    private final ItemBookDAO itemBookDAO = new ItemBookDAOImpl();
+    private final CartDAO cartDAO = new CartDAOImpl();
+    private final LineItemBookDAO lineItemBookDAO = new LineItemBookDAOImpl();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -34,25 +37,39 @@ public class AddToCartController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             User customer = (User) session.getAttribute("customer");
-            Cart cart = cartService.getCartByCustomerId(customer.getId(), "active");
+            if (customer == null) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("views/web/home.jsp");
+                dispatcher.forward(request, response);
+            }
+            Cart cart = cartDAO.getCartByCustomerId(customer.getId(), "active");
             if (cart == null) {
-                Long ans = cartService.create(customer.getId());
-                cart = cartService.getCartByCustomerId(customer.getId(), "active");
+                Long ans = cartDAO.create(customer.getId());
+                cart = cartDAO.getCartByCustomerId(customer.getId(), "active");
             }
-            String type = request.getParameter("type");
-            Long ans = 0L;
-            switch (type) {
-                case "book":
-                    int itemBookId = Integer.parseInt(request.getParameter("id"));
-                    int quantityB = Integer.parseInt(request.getParameter("quantity"));
-                    ans = lineItemBookService.create(cart.getId(), itemBookId, quantityB);
-                    ItemBook itemBook = itemBookService.findById(itemBookId);
-                    cart.setTotalPrice(cart.getTotalPrice() + itemBook.getPrice() * quantityB);
-                default:
-                    break;
+            int itemBookId = Integer.parseInt(request.getParameter("id"));
+            ItemBook itemBook = itemBookDAO.findById(itemBookId);
+
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            LineItemBook lineItemBook = lineItemBookDAO.findByCartIdAndItemBookId(cart.getId(), itemBookId);
+            if (lineItemBook == null) {
+                lineItemBookDAO.create(cart.getId(), itemBookId, quantity);
+                cart.setTotalPrice(cart.getTotalPrice() + itemBook.getPrice() * quantity);
+                cartDAO.update(cart);
+            } else {
+                if (quantity + lineItemBook.getQuantity() <= itemBook.getBook().getQuantity()) {
+                    lineItemBookDAO.updateQuantity(lineItemBook.getQuantity() + quantity, lineItemBook.getId());
+                    cart.setTotalPrice(cart.getTotalPrice() + itemBook.getPrice() * quantity);
+                    cartDAO.update(cart);
+                } else {
+                    request.setAttribute("messageResponse", "Kho không đủ hàng");
+                    request.setAttribute("alert", "danger");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/cart");
+                    dispatcher.forward(request, response);
+                    return;
+                }
             }
-            cartService.update(cart);
-//            response.sendRedirect("/cart");
+
+            response.sendRedirect("/cart");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/error");

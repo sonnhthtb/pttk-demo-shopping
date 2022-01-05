@@ -15,4 +15,6 @@ public interface LineItemBookDAO extends BaseDAO<LineItemBook> {
     void deleteLineItemBook(int id);
 
     LineItemBook findById(int id);
+
+    LineItemBook findByCartIdAndItemBookId(int cartId, int itemBookId);
 }

@@ -67,29 +67,6 @@
 						</td>
 					</tr>
 					</c:forEach>
-					<c:forEach var="item" items="${listLineClothes}">
-						<tr>
-							<td class="cart_product">
-								<img  width="100" height="120" src="${item.itemClothes.imageUrl}" alt=""/>
-							</td>
-							<td class="name">
-								<p style="font-size:x-large; text-align: center">
-										${item.itemClothes.clothes.name}
-								</p>
-							</td>
-							<td class="cart_price">
-								<p>${item.itemClothes.price}</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<input class="cart_quantity_input" disabled="disabled" type="text" name="quantity" value="${item.quantity}" autocomplete="off" size="2">
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price"> ${item.itemClothes.price*item.quantity}</p>
-							</td>
-						</tr>
-					</c:forEach>
 					</tbody>
 				</table>
 			</div>

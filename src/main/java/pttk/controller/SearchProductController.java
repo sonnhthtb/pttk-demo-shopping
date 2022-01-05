@@ -2,9 +2,9 @@ package pttk.controller;
 
 
 import pttk.constant.SystemConstant;
+import pttk.logic.application.bookDAO.ItemBookDAO;
+import pttk.logic.application.bookDAO.impl.ItemBookDAOImpl;
 import pttk.model.book.ItemBook;
-import pttk.service.ItemBookService;
-import pttk.service.impl.ItemBookServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,13 +18,13 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/search-product"})
 public class SearchProductController extends HttpServlet {
 
-    private final ItemBookService itemBookService = new ItemBookServiceImpl();
+    private final ItemBookDAO itemBookDAO = new ItemBookDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String name = request.getParameter("name");
-            List<ItemBook> listItemBook = itemBookService.findByName(name);
+            List<ItemBook> listItemBook = itemBookDAO.findByName(name);
             int totalItem = 1;
 
             // number of item in a page

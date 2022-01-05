@@ -15,9 +15,9 @@ public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
 
     @Override
     public Cart getCartByCustomerId(int customerId, String status) {
-        String sql = "SELECT * FROM cart WHERE CustomerId = ? and CartStatus = ?";
+        String sql = "SELECT * FROM cart WHERE UserId = ? and Status = ?";
         List<Cart> cartList = query(sql, new CartMapper(), customerId, status);
-        if (!cartList.isEmpty()) {
+        if (cartList != null && !cartList.isEmpty()) {
             return findById(cartList.get(0).getId());
         }
         return null;
@@ -35,15 +35,15 @@ public class CartDAOImpl extends BaseDAOImpl implements CartDAO {
 
     @Override
     public Long create(int customerId) {
-        String sql = "insert into cart(customerId, cartStatus, totalPrice) value (?,?,?)";
+        String sql = "insert into cart(userId, Status, totalPrice) value (?,?,?)";
         Long ans = insert(sql, customerId, "active", 0);
         return ans;
     }
 
     @Override
     public Cart update(Cart cart) {
-        String sql = "UPDATE Cart SET TotalPrice = ?, CartStatus = ? WHERE id = ?";
-        update(sql, cart.getTotalPrice(), cart.getCartStatus(), cart.getId());
+        String sql = "UPDATE Cart SET TotalPrice = ?, Status = ? WHERE id = ?";
+        update(sql, cart.getTotalPrice(), cart.getStatus(), cart.getId());
         return cart;
     }
 }

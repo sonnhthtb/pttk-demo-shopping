@@ -33,7 +33,7 @@
     <!-- header -->
 
     <div class="main-content">
-        <form action="<c:url value='/delete-product'/>" id="formSubmit" method="post">
+        <form action="<c:url value='/admin-delete-book-item'/>" id="formSubmit" method="post">
             <div class="main-content-inner">
                 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                     <ul class="breadcrumb">
@@ -60,7 +60,7 @@
                                         <div class="dt-buttons btn-overlap btn-group">
                                             <a flag="info"
                                                class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
-                                               title='Thêm sản phẩm' href='<c:url value="/admin-product?type=edit"/>'>
+                                               title='Thêm sản phẩm' href='<c:url value="/admin-book-item?type=edit"/>'>
                                                 <span>
                                                     <i class="fa fa-plus-circle bigger-110 purple"></i>
                                                 </span>
@@ -104,18 +104,20 @@
                                                 <th>Tên sản phẩm</th>
                                                 <th>Ảnh</th>
                                                 <th>Giá</th>
+                                                <th>Barcode</th>
                                                 <th>Thao tác</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="item" items="${productList}">
+                                            <c:forEach var="item" items="${itemBookList}">
                                                 <tr>
                                                     <td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" name="checkbox"></td>
-                                                    <td>${item.name}</td>
-                                                    <td><img src="${item.image}" width="100px", height="100px"/></td>
+                                                    <td>${item.book.title}</td>
+                                                    <td><img src="${item.imageUrl}" width="100px", height="100px"/></td>
                                                     <td>${item.price}</td>
+                                                    <td>${item.barcode}</td>
                                                     <td>
-                                                        <c:url var="editURL" value="/admin-product">
+                                                        <c:url var="editURL" value="/admin-book-item">
                                                             <c:param name="type" value="edit"/>
                                                             <c:param name="id" value="${item.id}"/>
                                                         </c:url>
@@ -132,7 +134,7 @@
                                                 <ul class="pagination">
                                                     <c:if test="${currentPage != 1}">
                                                         <li class="page-item">
-                                                            <a class="page-link" href="/admin-product?type=list&currentPage=${currentPage-1}" aria-label="Previous">
+                                                            <a class="page-link" href="/admin-book-item?type=list&currentPage=${currentPage-1}" aria-label="Previous">
                                                                 <span aria-hidden="true">&laquo;</span>
                                                                 <span class="sr-only">Previous</span>
                                                             </a>
@@ -143,12 +145,12 @@
                                                             <li class="page-item active"><a class="page-link active" href="#">${i}</a></li>
                                                         </c:if>
                                                         <c:if test="${currentPage != i}">
-                                                            <li class="page-item"><a class="page-link" href="/admin-product?type=list&currentPage=${i}">${i}</a></li>
+                                                            <li class="page-item"><a class="page-link" href="/admin-book-item?type=list&currentPage=${i}">${i}</a></li>
                                                         </c:if>
                                                     </c:forEach>
                                                     <c:if test="${currentPage != totalPage}">
                                                         <li class="page-item">
-                                                            <a class="page-link" href="/admin-product?type=list&currentPage=${currentPage+1}" aria-label="Next">
+                                                            <a class="page-link" href="/admin-book-item?type=list&currentPage=${currentPage+1}" aria-label="Next">
                                                                 <span aria-hidden="true">&raquo;</span>
                                                                 <span class="sr-only">Next</span>
                                                             </a>

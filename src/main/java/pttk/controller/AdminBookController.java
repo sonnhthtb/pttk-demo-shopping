@@ -4,10 +4,7 @@ import pttk.logic.application.bookDAO.BookDAO;
 import pttk.logic.application.bookDAO.impl.BookDAOImpl;
 import pttk.model.book.Author;
 import pttk.model.book.Book;
-import pttk.model.book.ItemBook;
 import pttk.model.book.Publisher;
-import pttk.service.ItemBookService;
-import pttk.service.impl.ItemBookServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin-book", "/admin-delete-book"})
@@ -35,32 +29,32 @@ public class AdminBookController extends HttpServlet {
             //show list product
             if (type.equals("list")) {
                 view = "views/admin/book/list-book.jsp";
-//                int totalItem = itemBookService.getTotalItem();
-//
-//                // number of item in a page
-//                int maxPageItem = 6;
-//                int totalPage = (int) Math.ceil((double) totalItem / maxPageItem);
-//                int currentPage = 1;
-//
-//                if (request.getParameter("currentPage") != null) {
-//                    currentPage = Integer.parseInt(request.getParameter("currentPage"));
-//                }
-//
-//                int offset = (currentPage - 1) * maxPageItem;
-//
-//                List<ItemBook> itemBookList = itemBookService.findAll(maxPageItem, offset);
+                int totalItem = bookDAO.getCount();
 
-//                request.setAttribute("itemBookList", itemBookList);
-//                request.setAttribute("totalPage", totalPage);
-//                request.setAttribute("currentPage", currentPage);
+                // number of item in a page
+                int maxPageItem = 6;
+                int totalPage = (int) Math.ceil((double) totalItem / maxPageItem);
+                int currentPage = 1;
+
+                if (request.getParameter("currentPage") != null) {
+                    currentPage = Integer.parseInt(request.getParameter("currentPage"));
+                }
+
+                int offset = (currentPage - 1) * maxPageItem;
+
+                List<Book> bookList = bookDAO.findAll(maxPageItem, offset);
+
+                request.setAttribute("bookList", bookList);
+                request.setAttribute("totalPage", totalPage);
+                request.setAttribute("currentPage", currentPage);
             }
             //show edit product
             else if (type.equals("edit")) {
-//                String id = request.getParameter("id");
-//                if (id != null) {
-//                    ItemBook itemBook = itemBookService.findById(Integer.parseInt(id));
-//                    request.setAttribute("itemBook", itemBook);
-//                }
+                String id = request.getParameter("id");
+                if (id != null) {
+                    Book book = bookDAO.findById(Integer.parseInt(id));
+                    request.setAttribute("book", book);
+                }
                 view = "views/admin/book/edit-book.jsp";
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher(view);
@@ -87,7 +81,6 @@ public class AdminBookController extends HttpServlet {
                 String language = request.getParameter("language");
                 String pageNumber = request.getParameter("pageNumber");
                 String publisherName = request.getParameter("publisherName");
-                String publicationDate = request.getParameter("publicationDate");
                 String publisherAddress = request.getParameter("publisherAddress");
                 String authorName = request.getParameter("authorName");
                 String authorBiography = request.getParameter("authorBiography");
@@ -96,38 +89,57 @@ public class AdminBookController extends HttpServlet {
                 // validate input
                 if (title.isEmpty() || language.isEmpty() || price.isEmpty() ||
                         type.isEmpty() || quantity.isEmpty() || pageNumber.isEmpty() || publisherName.isEmpty() ||
-                        authorName.isEmpty() || description.isEmpty() || publicationDate.isEmpty()) {
+                        authorName.isEmpty() || description.isEmpty()) {
                     request.setAttribute("messageResponse", "Bạn cần nhập đầy đủ thông tin");
                     request.setAttribute("alert", "danger");
                 } else {
                     Book book = new Book();
-                    book.setTitle(title);
-                    book.setPrice(Integer.parseInt(price));
-                    book.setType(type);
-                    book.setQuantity(Integer.parseInt(quantity));
-                    book.setLanguage(language);
-                    book.setPageNumber(Integer.parseInt(pageNumber));
-                    book.setPublicationDate(new SimpleDateFormat("yyyy-mm-dd").parse(publicationDate));
-                    book.setDescription(description);
-                    Publisher publisher = new Publisher();
-                    publisher.setName(publisherName);
-                    publisher.setAddress(publisherAddress);
-                    book.setPublisher(publisher);
-                    Author author = new Author();
-                    author.setName(authorName);
-                    author.setBiography(authorBiography);
-                    author.setNation(authorNation);
-                    book.setAuthor(author);
-                    book.setDescription(description);
                     // update product if find id
                     if (!id.isEmpty() && id != null) {
-                        book.setId(Integer.parseInt(id));
+                        book = bookDAO.findById(Integer.parseInt(id));
+                        book.setTitle(title);
+                        book.setPrice(Integer.parseInt(price));
+                        book.setType(type);
+                        book.setQuantity(Integer.parseInt(quantity));
+                        book.setLanguage(language);
+                        book.setPageNumber(Integer.parseInt(pageNumber));
+                        book.setDescription(description);
+                        Publisher publisher = new Publisher();
+                        publisher.setId(book.getPublisher().getId());
+                        publisher.setName(publisherName);
+                        publisher.setAddress(publisherAddress);
+                        book.setPublisher(publisher);
+                        Author author = new Author();
+                        author.setId(book.getAuthor().getId());
+                        author.setName(authorName);
+                        author.setBiography(authorBiography);
+                        author.setNation(authorNation);
+                        book.setAuthor(author);
+                        book.setDescription(description);
+
                         bookDAO.update(book);
                         request.setAttribute("messageResponse", "Cập nhật sản phẩm thành công");
                         request.setAttribute("alert", "success");
                     }
                     //create product if not find id
                     else {
+                        book.setTitle(title);
+                        book.setPrice(Integer.parseInt(price));
+                        book.setType(type);
+                        book.setQuantity(Integer.parseInt(quantity));
+                        book.setLanguage(language);
+                        book.setPageNumber(Integer.parseInt(pageNumber));
+                        book.setDescription(description);
+                        Publisher publisher = new Publisher();
+                        publisher.setName(publisherName);
+                        publisher.setAddress(publisherAddress);
+                        book.setPublisher(publisher);
+                        Author author = new Author();
+                        author.setName(authorName);
+                        author.setBiography(authorBiography);
+                        author.setNation(authorNation);
+                        book.setAuthor(author);
+                        book.setDescription(description);
                         bookDAO.save(book);
                         request.setAttribute("messageResponse", "Thêm sản phẩm thành công");
                         request.setAttribute("alert", "success");
@@ -144,30 +156,32 @@ public class AdminBookController extends HttpServlet {
             }
         } else {
             try {
-//                String[] ids = request.getParameterValues("checkbox");
-//                itemBookService.delete(ids);
+                String[] ids = request.getParameterValues("checkbox");
+                for (String id : ids) {
+                    bookDAO.delete(Integer.parseInt(id));
+                }
                 String view = "views/admin/book/list-book.jsp";
-//                request.setAttribute("messageResponse", "Xoá thành công");
-//                request.setAttribute("alert", "success");
-//
-//                int totalItem = itemBookService.getTotalItem();
-//
-//                // number of item in a page
-//                int maxPageItem = 6;
-//                int totalPage = (int) Math.ceil((double) totalItem / maxPageItem);
-//                int currentPage = 1;
-//
-//                if (request.getParameter("currentPage") != null) {
-//                    currentPage = Integer.parseInt(request.getParameter("currentPage"));
-//                }
-//
-//                int offset = (currentPage - 1) * maxPageItem;
-//
-//                List<ItemBook> itemBookList = itemBookService.findAll(maxPageItem, offset);
-//
-//                request.setAttribute("itemBookList", itemBookList);
-//                request.setAttribute("totalPage", totalPage);
-//                request.setAttribute("currentPage", currentPage);
+                request.setAttribute("messageResponse", "Xoá thành công");
+                request.setAttribute("alert", "success");
+
+                int totalItem = bookDAO.getCount();
+
+                // number of item in a page
+                int maxPageItem = 6;
+                int totalPage = (int) Math.ceil((double) totalItem / maxPageItem);
+                int currentPage = 1;
+
+                if (request.getParameter("currentPage") != null) {
+                    currentPage = Integer.parseInt(request.getParameter("currentPage"));
+                }
+
+                int offset = (currentPage - 1) * maxPageItem;
+
+                List<Book> bookList = bookDAO.findAll(maxPageItem, offset);
+
+                request.setAttribute("bookList", bookList);
+                request.setAttribute("totalPage", totalPage);
+                request.setAttribute("currentPage", currentPage);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(view);
                 dispatcher.forward(request, response);
             } catch (Exception e) {

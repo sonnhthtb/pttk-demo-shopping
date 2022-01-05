@@ -42,7 +42,7 @@
                             <a href="/admin">Trang chủ</a>
                         </li>
                         <li>
-                            <a href="/admin-product?type=list">Danh sách sản phẩm</a>
+                            <a href="/admin-book?type=list">Danh sách sản phẩm</a>
                         </li>
                     </ul>
                 </div>
@@ -102,22 +102,24 @@
                                             <tr>
                                                 <th><input type="checkbox" id="checkAll"></th>
                                                 <th>Tên sản phẩm</th>
-                                                <th>Ảnh</th>
+                                                <th>Thể Loại</th>
                                                 <th>Giá</th>
+                                                <th>Tồn Kho</th>
                                                 <th>Thao tác</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="item" items="${itemBookList}">
+                                            <c:forEach var="book" items="${bookList}">
                                                 <tr>
-                                                    <td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" name="checkbox"></td>
-                                                    <td>${item.book.title}</td>
-                                                    <td><img src="${item.imageUrl}" width="100px", height="100px"/></td>
-                                                    <td>${item.price}</td>
+                                                    <td><input type="checkbox" id="checkbox_${book.id}" value="${book.id}" name="checkbox"></td>
+                                                    <td>${book.title}</td>
+                                                    <td>${book.type}</td>
+                                                    <td>${book.price}</td>
+                                                    <td>${book.quantity}</td>
                                                     <td>
                                                         <c:url var="editURL" value="/admin-book">
                                                             <c:param name="type" value="edit"/>
-                                                            <c:param name="id" value="${item.id}"/>
+                                                            <c:param name="id" value="${book.id}"/>
                                                         </c:url>
                                                         <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
                                                            title="Cập nhật sản phẩm" href='${editURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>

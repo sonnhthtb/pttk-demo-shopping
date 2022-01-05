@@ -1,12 +1,12 @@
 package pttk.logic.application.orderDAO.impl;
 
 import pttk.logic.application.BaseDAOImpl;
-import pttk.logic.application.userDAO.UserDAO;
-import pttk.logic.application.userDAO.impl.UserDAOImpl;
 import pttk.logic.application.orderDAO.CartDAO;
 import pttk.logic.application.orderDAO.OrderDAO;
 import pttk.logic.application.orderDAO.PaymentDAO;
 import pttk.logic.application.orderDAO.ShipmentDAO;
+import pttk.logic.application.userDAO.UserDAO;
+import pttk.logic.application.userDAO.impl.UserDAOImpl;
 import pttk.model.order.Order;
 import pttk.util.impl.OrderMapper;
 
@@ -33,7 +33,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
 
     @Override
     public List<Order> findAllByCustomerId(int customerId) {
-        String sql = "SELECT * FROM `Order` WHERE CustomerID = ? ORDER BY Date DESC";
+        String sql = "SELECT * FROM `Order` WHERE UserID = ? ORDER BY Date DESC";
         List<Order> orderList = query(sql, new OrderMapper(), customerId);
         orderList.forEach(order -> {
             order.setCustomer(userDAO.findById(order.getCustomer().getId()));
@@ -53,7 +53,7 @@ public class OrderDAOImpl extends BaseDAOImpl implements OrderDAO {
 
     @Override
     public void save(Order order) {
-        String sql = "INSERT INTO `Order`(CustomerID, Status, CartID) VALUES(?, ? ,?)";
+        String sql = "INSERT INTO `Order`(UserID, Status, CartID) VALUES(?, ? ,?)";
         Long id = insert(sql, order.getCustomer().getId(), order.getStatus(), order.getCart().getId());
         cartDAO.update(order.getCart());
         shipmentDAO.save(order.getShipment(), Math.toIntExact(id));

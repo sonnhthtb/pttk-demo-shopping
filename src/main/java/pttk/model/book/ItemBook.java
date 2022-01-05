@@ -3,9 +3,8 @@ package pttk.model.book;
 
 public class ItemBook {
     private Integer id;
-    private Float price;
+    private Integer price;
     private String imageUrl;
-    private String type;
     private String barcode;
     private Book book;
 
@@ -17,13 +16,6 @@ public class ItemBook {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getBarcode() {
         return barcode;
@@ -33,11 +25,11 @@ public class ItemBook {
         this.barcode = barcode;
     }
 
-    public Float getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

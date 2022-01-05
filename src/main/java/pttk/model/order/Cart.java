@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Cart {
     private Integer id;
-    private String cartStatus;
+    private String status;
     private Float totalPrice;
     private List<LineItemBook> lineItemBooks;
     private User customer;
@@ -20,12 +20,12 @@ public class Cart {
         this.id = id;
     }
 
-    public String getCartStatus() {
-        return cartStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCartStatus(String cartStatus) {
-        this.cartStatus = cartStatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Float getTotalPrice() {

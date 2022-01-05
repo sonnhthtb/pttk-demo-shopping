@@ -1,10 +1,10 @@
 package pttk.controller;
 
+import pttk.logic.application.userDAO.UserDAO;
+import pttk.logic.application.userDAO.impl.UserDAOImpl;
 import pttk.model.user.Address;
-import pttk.model.user.User;
 import pttk.model.user.FullName;
-import pttk.service.CustomerService;
-import pttk.service.impl.CustomerServiceImpl;
+import pttk.model.user.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/change-password", "/my-account"})
 public class AccountController extends HttpServlet {
 
-    private final CustomerService customerService = new CustomerServiceImpl();
+    private final UserDAO userDAO = new UserDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -85,7 +85,7 @@ public class AccountController extends HttpServlet {
                         if (customer.getAccount().getPassword().equals(password)) {
                             customer.getAccount().setPassword(newPassword);
                             //update DB 
-                            Boolean isUpdated = customerService.updateCustomer(customer);
+                            Boolean isUpdated = userDAO.update(customer);
                             if (isUpdated == true) {
                                 session.setAttribute("customer", customer);
                                 Cookie[] cookies = request.getCookies();
@@ -116,7 +116,6 @@ public class AccountController extends HttpServlet {
                 String firstName = request.getParameter("first-name");
                 String middleName = request.getParameter("middle-name");
                 String lastName = request.getParameter("last-name");
-                String nation = request.getParameter("nation");
                 String city = request.getParameter("city");
                 String district = request.getParameter("district");
                 String street = request.getParameter("street");
@@ -128,7 +127,7 @@ public class AccountController extends HttpServlet {
                 User newCustomer = new User(customer.getAccount(), address, fullName, "customer", customer.getCart());
                 newCustomer.setId(customer.getId());
                 System.out.println("pttk.controller.AccountController.doPost()------------");
-                Boolean isUpdated = customerService.updateCustomer(newCustomer);
+                Boolean isUpdated = userDAO.update(newCustomer);
                 System.out.println("pttk.controller.AccountController.doPost()------------" + isUpdated + "----");
 
                 if (isUpdated == true) {

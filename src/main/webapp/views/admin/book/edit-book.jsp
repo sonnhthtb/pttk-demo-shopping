@@ -106,22 +106,13 @@
                                     </div>
                                 </div>
                                 <br />
-                                <br />
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Nhà xuất bản</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="publisherName"
-                                               name="publisherName" value="${book.publisher.name}" />
-                                    </div>
-                                </div>
-                                <br />
 
                                 <br />
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right">Ngày xuất bản</label>
+                                    <label class="col-sm-3 control-label no-padding-right">Tên Nhà Xuất Bản</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="publicationDate"
-                                               name="publicationDate" value="${book.publicationDate}" />
+                                        <input type="text" class="form-control" id="publisherName"
+                                               name="publisherName" value="${book.publisher.name}" />
                                     </div>
                                 </div>
                                 <br />

@@ -1,8 +1,6 @@
 package pttk.model.book;
 
 
-import java.util.Date;
-
 public class Book {
     private Integer id;
     private String title;
@@ -11,7 +9,6 @@ public class Book {
     private Integer pageNumber;
     private Integer quantity;
     private String language;
-    private Date publicationDate;
     private String description;
     private Publisher publisher;
     private Author author;
@@ -43,13 +40,6 @@ public class Book {
         this.language = language;
     }
 
-    public Date getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
-    }
 
     public Integer getId() {
         return id;

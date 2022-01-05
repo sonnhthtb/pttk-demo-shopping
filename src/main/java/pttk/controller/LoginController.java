@@ -2,11 +2,11 @@ package pttk.controller;
 
 
 import pttk.constant.SystemConstant;
+import pttk.logic.application.userDAO.UserDAO;
+import pttk.logic.application.userDAO.impl.UserDAOImpl;
 import pttk.model.user.Account;
-import pttk.model.user.User;
 import pttk.model.user.FullName;
-import pttk.service.CustomerService;
-import pttk.service.impl.CustomerServiceImpl;
+import pttk.model.user.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/login", "/signup"})
 public class LoginController extends HttpServlet {
 
-    private final CustomerService customerService = new CustomerServiceImpl();
+    private final UserDAO userDAO = new UserDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,7 +72,8 @@ public class LoginController extends HttpServlet {
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
                 String isRemember = request.getParameter("remember");
-                User customer = customerService.findByUserNameAndPassword(username, password);
+                Account account = new Account(username, password);
+                User customer = userDAO.findByAccount(account);
                 // check user
                 if (customer != null) {
                     // add username and password to cookie when select remember me
@@ -111,14 +112,14 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + "/login?message1=re-password_incorrect");
                     } else {
                         //check username exits or not
-                        User customer = customerService.findByUserNameAndPassword(username, password);
+                        Account account = new Account(username, password);
+                        User customer = userDAO.findByAccount(account);
                         if (customer == null) {
                             FullName fullName = new FullName(firstName, middleName, lastName);
-                            Account account = new Account(username, password);
                             customer = new User();
                             customer.setAccount(account);
                             customer.setFullName(fullName);
-                            Boolean isCreated = customerService.createNewCustomer(customer);
+                            Boolean isCreated = userDAO.create(customer);
                             if (isCreated) {
                                 request.setAttribute("message1", "Register Success!");
                                 request.setAttribute("alert", "success");

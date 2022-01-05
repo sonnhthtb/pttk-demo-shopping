@@ -24,7 +24,7 @@ public class PublisherDAOImpl extends BaseDAOImpl<Publisher> implements Publishe
 
     @Override
     public Publisher update(Publisher publisher) {
-        String sql = "UPDATE Author SET Name = ?, Address = ? WHERE ID = ?";
+        String sql = "UPDATE Publisher SET Name = ?, Address = ? WHERE ID = ?";
         update(sql, publisher.getName(), publisher.getAddress(), publisher.getId());
         return publisher;
     }
