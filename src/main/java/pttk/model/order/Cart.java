@@ -9,7 +9,6 @@ public class Cart {
     private Integer id;
     private String status;
     private Float totalPrice;
-    private List<LineItemBook> lineItemBooks;
     private User customer;
 
     public Integer getId() {
@@ -34,14 +33,6 @@ public class Cart {
 
     public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public List<LineItemBook> getLineItemBooks() {
-        return lineItemBooks;
-    }
-
-    public void setLineItemBooks(List<LineItemBook> lineItemBooks) {
-        this.lineItemBooks = lineItemBooks;
     }
 
     public User getCustomer() {
